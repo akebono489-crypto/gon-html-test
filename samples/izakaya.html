@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>炎の一丁 ラーメン・居酒屋</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans JP',sans-serif;color:#f0e8e0;background:#111}
+img{display:block;width:100%;height:100%;object-fit:cover}
+:root{--red:#c0392b;--red-l:#e74c3c;--red-d:#8c2616;--dark:#111;--dark2:#1a1a1a;--border:#2a2a2a;--mid:#888;--light:#f0e8e0}
+.wrap{max-width:900px;margin:0 auto;padding:0 20px}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:100;background:rgba(17,17,17,.97);backdrop-filter:blur(10px);border-bottom:2px solid var(--red-d)}
+.nav-inner{max-width:900px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:60px}
+.nav-brand{font-size:1.1rem;font-weight:900;color:#fff;letter-spacing:.08em}
+.nav-brand span{color:var(--red-l)}
+.nav-links{display:flex}
+.nav-links a{color:#aaa;text-decoration:none;font-size:12px;padding:8px 14px;letter-spacing:.06em;transition:color .2s;border-left:1px solid var(--border)}
+.nav-links a:hover{color:var(--red-l)}
+.hamb{display:none;background:none;border:1px solid var(--border);color:#aaa;padding:6px 12px;cursor:pointer;font-size:14px}
+@media(max-width:640px){.hamb{display:block}.nav-links{display:none;position:absolute;top:60px;left:0;right:0;background:#111;flex-direction:column;border-top:2px solid var(--red-d)}.nav-links.open{display:flex}.nav-links a{padding:14px 20px;border-left:none;border-bottom:1px solid var(--border)}}
+
+/* HERO */
+.hero{position:relative;height:90svh;min-height:480px;overflow:hidden}
+.hero img{position:absolute;inset:0;filter:brightness(.35)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 20%,rgba(17,17,17,.9) 100%)}
+.hero-txt{position:absolute;bottom:0;left:0;right:0;padding:48px 24px}
+.hero-tag{display:inline-block;background:var(--red);color:#fff;font-size:11px;font-weight:700;letter-spacing:.2em;padding:4px 14px;margin-bottom:14px;text-transform:uppercase}
+.hero-ttl{font-size:clamp(2rem,6vw,4rem);font-weight:900;color:#fff;line-height:1.1;letter-spacing:.04em;margin-bottom:12px}
+.hero-ttl em{color:var(--red-l);font-style:normal}
+.hero-lead{font-size:14px;color:rgba(255,255,255,.65);line-height:2}
+
+/* LINE BANNER */
+.line-banner{background:linear-gradient(90deg,var(--red-d),var(--red));padding:16px 20px;text-align:center}
+.line-banner p{color:#fff;font-size:14px;font-weight:700;letter-spacing:.05em}
+.line-banner span{font-size:12px;color:rgba(255,255,255,.75);display:block;margin-top:3px}
+
+/* SECTION */
+.sec{padding:64px 0;background:var(--dark2)}
+.sec:nth-child(odd){background:var(--dark)}
+.sec-tag{display:inline-block;background:var(--red);color:#fff;font-size:10px;font-weight:700;letter-spacing:.2em;padding:3px 12px;text-transform:uppercase;margin-bottom:12px}
+.sec-ttl{font-size:clamp(1.4rem,3vw,2rem);font-weight:900;color:#fff;letter-spacing:.05em;margin-bottom:4px}
+.sec-lead{font-size:13px;color:var(--mid);margin-bottom:36px;line-height:1.9}
+
+/* PHOTOS */
+.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
+.photo-item{aspect-ratio:4/3;overflow:hidden}
+.photo-item:first-child{grid-column:1/-1;aspect-ratio:16/6}
+
+/* MENU */
+.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media(max-width:560px){.menu-grid{grid-template-columns:1fr 1fr}}
+.menu-item{background:#111;border:1px solid var(--border);border-top:2px solid var(--red);border-radius:4px;overflow:hidden}
+.menu-img{aspect-ratio:4/3}
+.menu-body{padding:12px 14px}
+.menu-name{font-size:.9rem;font-weight:700;color:#fff;margin-bottom:4px}
+.menu-desc{font-size:11px;color:var(--mid);line-height:1.7;margin-bottom:8px}
+.menu-price{font-size:1.1rem;font-weight:900;color:var(--red-l)}
+
+/* FEATURES */
+.feat-list{display:flex;flex-direction:column;gap:12px;max-width:580px}
+.feat-item{display:flex;gap:16px;align-items:flex-start;padding:18px;background:#111;border:1px solid var(--border);border-left:3px solid var(--red)}
+.feat-ico{font-size:1.5rem;flex-shrink:0}
+.feat-ttl{font-size:.9rem;font-weight:700;color:#fff;margin-bottom:4px}
+.feat-desc{font-size:12px;color:var(--mid);line-height:1.9}
+
+/* INFO */
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:560px}
+@media(max-width:460px){.info-grid{grid-template-columns:1fr}}
+.info-item{padding:16px 18px;background:#111;border:1px solid var(--border)}
+.info-label{font-size:10px;letter-spacing:.2em;color:var(--red-l);text-transform:uppercase;margin-bottom:6px;font-weight:700}
+.info-val{font-size:13px;color:#ccc;line-height:1.9}
+
+/* LINE CTA */
+.line-cta{padding:72px 20px;text-align:center;background:#000;border-top:2px solid var(--red-d)}
+.line-cta-ttl{font-size:clamp(1.2rem,3vw,1.6rem);font-weight:900;color:#fff;margin-bottom:8px;letter-spacing:.05em}
+.line-cta-sub{font-size:13px;color:var(--mid);margin-bottom:28px;line-height:1.9}
+.btn-line{display:inline-flex;align-items:center;gap:10px;background:#06C755;color:#fff;text-decoration:none;font-size:15px;font-weight:700;padding:16px 40px;border-radius:4px;letter-spacing:.05em}
+
+footer{background:#000;color:#444;font-size:11px;text-align:center;padding:24px 20px 40px;border-top:1px solid var(--border);letter-spacing:.05em}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <span class="nav-brand">炎の<span>一丁</span></span>
+    <button class="hamb" onclick="this.nextElementSibling.classList.toggle('open')">☰</button>
+    <div class="nav-links">
+      <a href="#photos">お店の写真</a>
+      <a href="#menu">メニュー</a>
+      <a href="#features">特徴</a>
+      <a href="#info">店舗案内</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <img src="https://images.unsplash.com/photo-1557872943-16a5ac26437e?q=80&w=1800&auto=format&fit=crop" alt="炎の一丁 外観">
+  <div class="hero-overlay"></div>
+  <div class="hero-txt">
+    <p class="hero-tag">Ramen & Izakaya</p>
+    <h1 class="hero-ttl">この一杯に、<em>全力。</em></h1>
+    <p class="hero-lead">濃厚スープと手打ち麺が生み出す、唯一無二のラーメン。<br>夜は居酒屋として、こだわりの串焼き・小鉢もご用意。</p>
+  </div>
+</section>
+
+<div class="line-banner">
+  <p>🎁 LINE登録でワンドリンク無料プレゼント</p>
+  <span>ご来店時にLINE登録画面をご提示ください</span>
+</div>
+
+<section class="sec" id="photos">
+  <div class="wrap">
+    <div class="sec-tag">Gallery</div>
+    <h2 class="sec-ttl">お店の写真</h2>
+    <div class="photo-grid">
+      <div class="photo-item"><img src="https://images.unsplash.com/photo-1557872943-16a5ac26437e?q=80&w=1200&auto=format&fit=crop" alt="外観"></div>
+      <div class="photo-item"><img src="https://images.unsplash.com/photo-1555126634-323283e090fa?q=80&w=800&auto=format&fit=crop" alt="店内1"></div>
+      <div class="photo-item"><img src="https://images.unsplash.com/photo-1623341214825-9f4f963727da?q=80&w=800&auto=format&fit=crop" alt="店内2"></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="menu">
+  <div class="wrap">
+    <div class="sec-tag">Menu</div>
+    <h2 class="sec-ttl">メニュー</h2>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <div class="menu-img"><img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?q=80&w=600&auto=format&fit=crop" alt="濃厚醤油ラーメン"></div>
+        <div class="menu-body">
+          <p class="menu-name">濃厚醤油ラーメン</p>
+          <p class="menu-desc">豚骨・鶏ガラ12時間炊きのWスープ。手打ち太麺</p>
+          <p class="menu-price">¥980</p>
+        </div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-img"><img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=600&auto=format&fit=crop" alt="焼き鳥盛り合わせ"></div>
+        <div class="menu-body">
+          <p class="menu-name">焼き鳥盛り合わせ</p>
+          <p class="menu-desc">備長炭で丁寧に焼き上げる、5本盛り合わせ</p>
+          <p class="menu-price">¥880</p>
+        </div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-img"><img src="https://images.unsplash.com/photo-1553361371-9b22f78e8b1d?q=80&w=600&auto=format&fit=crop" alt="餃子"></div>
+        <div class="menu-body">
+          <p class="menu-name">手作り餃子（6個）</p>
+          <p class="menu-desc">毎日仕込む自家製餃子。外はパリッ、中はジューシー</p>
+          <p class="menu-price">¥550</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="features">
+  <div class="wrap">
+    <div class="sec-tag">Features</div>
+    <h2 class="sec-ttl">特徴</h2>
+    <div class="feat-list">
+      <div class="feat-item"><div class="feat-ico">🔥</div><div><p class="feat-ttl">12時間炊きの濃厚スープ</p><p class="feat-desc">豚骨と鶏ガラを12時間以上炊き続ける濃厚Wスープ。旨味が凝縮した一杯をどうぞ。</p></div></div>
+      <div class="feat-item"><div class="feat-ico">🍺</div><div><p class="feat-ttl">夜は居酒屋メニューも充実</p><p class="feat-desc">ランチはラーメン専門店、夜は居酒屋として串焼き・唐揚げ・お刺身もご提供。</p></div></div>
+      <div class="feat-item"><div class="feat-ico">🎵</div><div><p class="feat-ttl">深夜2時まで営業</p><p class="feat-desc">仕事帰りの一杯に。深夜2時まで元気に営業中。終電後もお気軽にどうぞ。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="info">
+  <div class="wrap">
+    <div class="sec-tag">Access</div>
+    <h2 class="sec-ttl">店舗案内</h2>
+    <div class="info-grid">
+      <div class="info-item"><p class="info-label">住所</p><p class="info-val">〒000-0000<br>○○県○○市○○町1-2-3</p></div>
+      <div class="info-item"><p class="info-label">営業時間</p><p class="info-val">ランチ 11:00〜15:00<br>夜 17:00〜翌2:00</p></div>
+      <div class="info-item"><p class="info-label">定休日</p><p class="info-val">日曜日</p></div>
+      <div class="info-item"><p class="info-label">電話</p><p class="info-val">000-000-0000<br>予約優先・当日OK</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="line-cta">
+  <h2 class="line-cta-ttl">LINEでご予約・お問い合わせ</h2>
+  <p class="line-cta-sub">LINE登録でワンドリンク無料 🎁<br>ご来店時に登録画面をご提示ください</p>
+  <a class="btn-line" href="https://lin.ee/XXXXXXXX" target="_blank" rel="noopener">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 40 40" fill="white"><path d="M20 4C11.163 4 4 10.163 4 17.6c0 4.356 2.31 8.228 5.926 10.8-.26 1.01-1.664 6.456-1.664 6.456s-.07.57.308.788c.378.218.787.03 1.02-.122 0 0 6.576-4.356 7.41-4.912.98.14 1.98.21 3 .21 8.837 0 16-6.163 16-13.62C36 10.163 28.837 4 20 4z"/></svg>
+    LINEで予約・問い合わせ
+  </a>
+</section>
+
+<footer>© 2025 炎の一丁 — All Rights Reserved.</footer>
+</body>
+</html>
