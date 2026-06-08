@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Café Lumière</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans JP',sans-serif;color:#3a3028;background:#faf8f5}
+img{display:block;width:100%;height:100%;object-fit:cover}
+:root{--beige:#f0ebe2;--beige2:#e8e0d3;--brown:#7a5c3a;--brown-l:#a07850;--dark:#3a3028;--mid:#8a7a6a;--serif:'Cormorant Garamond',serif}
+.wrap{max-width:900px;margin:0 auto;padding:0 20px}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:100;background:rgba(250,248,245,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--beige2)}
+.nav-inner{max-width:900px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:58px}
+.nav-brand{font-family:var(--serif);font-size:1.3rem;color:var(--brown);letter-spacing:.15em;font-style:italic}
+.nav-links{display:flex;gap:0}
+.nav-links a{color:var(--mid);text-decoration:none;font-size:12px;padding:8px 14px;letter-spacing:.06em;transition:color .2s}
+.nav-links a:hover{color:var(--brown)}
+.hamb{display:none;background:none;border:1px solid var(--beige2);color:var(--mid);padding:6px 12px;cursor:pointer;font-size:14px;border-radius:4px}
+@media(max-width:640px){.hamb{display:block}.nav-links{display:none;position:absolute;top:58px;left:0;right:0;background:#faf8f5;flex-direction:column;border-top:1px solid var(--beige2)}.nav-links.open{display:flex}.nav-links a{padding:14px 20px;border-bottom:1px solid var(--beige2)}}
+
+/* HERO */
+.hero{position:relative;height:88svh;min-height:460px;overflow:hidden}
+.hero img{position:absolute;inset:0;filter:brightness(.6)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(240,235,226,.15) 0%,rgba(58,48,40,.7) 100%)}
+.hero-txt{position:absolute;bottom:0;left:0;right:0;padding:48px 24px;background:linear-gradient(transparent,rgba(58,48,40,.85))}
+.hero-en{font-family:var(--serif);font-size:11px;letter-spacing:.4em;color:rgba(255,255,255,.6);text-transform:uppercase;margin-bottom:10px}
+.hero-ttl{font-family:var(--serif);font-size:clamp(2.2rem,5vw,4rem);color:#fff;letter-spacing:.15em;font-style:italic;margin-bottom:10px}
+.hero-lead{font-size:13px;color:rgba(255,255,255,.75);letter-spacing:.08em;line-height:1.9}
+
+/* LINE BANNER */
+.line-banner{background:var(--brown);padding:16px 20px;text-align:center}
+.line-banner p{color:#fff;font-size:14px;font-weight:500;letter-spacing:.05em}
+.line-banner span{font-size:12px;color:rgba(255,255,255,.75);display:block;margin-top:3px}
+
+/* SECTION */
+.sec{padding:72px 0;background:#faf8f5}
+.sec:nth-child(odd){background:var(--beige)}
+.sec-eyebrow{font-family:var(--serif);font-size:10px;letter-spacing:.35em;color:var(--brown-l);text-align:center;text-transform:uppercase;margin-bottom:8px}
+.sec-ttl{font-family:var(--serif);font-size:clamp(1.4rem,3vw,2rem);color:var(--dark);text-align:center;letter-spacing:.12em;margin-bottom:4px;font-style:italic}
+.sec-lead{font-size:13px;color:var(--mid);text-align:center;margin-bottom:40px;letter-spacing:.05em}
+.divider{width:28px;height:1px;background:var(--brown-l);margin:12px auto 32px}
+
+/* PHOTOS */
+.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.photo-item{aspect-ratio:4/3;overflow:hidden;border-radius:4px}
+.photo-item:first-child{grid-column:1/-1;aspect-ratio:16/7}
+
+/* MENU */
+.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:560px){.menu-grid{grid-template-columns:1fr 1fr}}
+.menu-item{background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.menu-img{aspect-ratio:4/3}
+.menu-body{padding:14px 16px}
+.menu-name{font-family:var(--serif);font-size:.95rem;color:var(--dark);letter-spacing:.08em;margin-bottom:4px;font-style:italic}
+.menu-desc{font-size:11px;color:var(--mid);line-height:1.7;margin-bottom:10px}
+.menu-price{font-family:var(--serif);font-size:1.1rem;color:var(--brown)}
+
+/* FEATURES */
+.feat-list{display:flex;flex-direction:column;gap:16px;max-width:580px;margin:0 auto}
+.feat-item{display:flex;gap:18px;align-items:flex-start;padding:20px 22px;background:#fff;border-radius:8px;box-shadow:0 1px 8px rgba(0,0,0,.05)}
+.feat-ico{font-size:1.6rem;flex-shrink:0}
+.feat-ttl{font-size:.9rem;color:var(--dark);font-weight:700;margin-bottom:5px}
+.feat-desc{font-size:12px;color:var(--mid);line-height:1.9}
+
+/* INFO */
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:580px;margin:0 auto}
+@media(max-width:460px){.info-grid{grid-template-columns:1fr}}
+.info-item{padding:18px 20px;background:#fff;border-radius:8px;box-shadow:0 1px 6px rgba(0,0,0,.04)}
+.info-label{font-size:10px;letter-spacing:.2em;color:var(--brown-l);text-transform:uppercase;margin-bottom:6px;font-weight:500}
+.info-val{font-size:13px;color:var(--dark);line-height:1.9}
+
+/* LINE CTA */
+.line-cta{padding:72px 20px;text-align:center;background:var(--brown)}
+.line-cta-ttl{font-family:var(--serif);font-size:clamp(1.2rem,2.5vw,1.6rem);color:#fff;margin-bottom:8px;letter-spacing:.1em;font-style:italic}
+.line-cta-sub{font-size:13px;color:rgba(255,255,255,.75);margin-bottom:28px;line-height:1.9}
+.btn-line{display:inline-flex;align-items:center;gap:10px;background:#06C755;color:#fff;text-decoration:none;font-size:15px;font-weight:700;padding:16px 40px;border-radius:50px;letter-spacing:.05em}
+
+footer{background:var(--dark);color:#888;font-size:11px;text-align:center;padding:24px 20px 40px;letter-spacing:.08em}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <span class="nav-brand">Café Lumière</span>
+    <button class="hamb" onclick="this.nextElementSibling.classList.toggle('open')">☰</button>
+    <div class="nav-links">
+      <a href="#photos">お店の写真</a>
+      <a href="#menu">メニュー</a>
+      <a href="#features">特徴</a>
+      <a href="#info">店舗案内</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=1800&auto=format&fit=crop" alt="Café Lumière 外観">
+  <div class="hero-overlay"></div>
+  <div class="hero-txt">
+    <p class="hero-en">Coffee & Western Cuisine</p>
+    <h1 class="hero-ttl">Café Lumière</h1>
+    <p class="hero-lead">こだわりのコーヒーと、手作りの洋食。ゆっくりと流れる時間の中で。</p>
+  </div>
+</section>
+
+<div class="line-banner">
+  <p>🎁 LINE登録でワンドリンク無料プレゼント</p>
+  <span>ご来店時にLINE登録画面をご提示ください</span>
+</div>
+
+<section class="sec" id="photos">
+  <div class="wrap">
+    <p class="sec-eyebrow">Gallery</p>
+    <h2 class="sec-ttl">お店の写真</h2>
+    <div class="divider"></div>
+    <div class="photo-grid">
+      <div class="photo-item"><img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=1200&auto=format&fit=crop" alt="外観"></div>
+      <div class="photo-item"><img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=800&auto=format&fit=crop" alt="店内1"></div>
+      <div class="photo-item"><img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?q=80&w=800&auto=format&fit=crop" alt="店内2"></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="menu">
+  <div class="wrap">
+    <p class="sec-eyebrow">Menu</p>
+    <h2 class="sec-ttl">メニュー</h2>
+    <div class="divider"></div>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <div class="menu-img"><img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=600&auto=format&fit=crop" alt="コーヒー"></div>
+        <div class="menu-body">
+          <p class="menu-name">スペシャルティコーヒー</p>
+          <p class="menu-desc">世界各地から厳選した豆を毎日丁寧に焙煎</p>
+          <p class="menu-price">¥680〜</p>
+        </div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-img"><img src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?q=80&w=600&auto=format&fit=crop" alt="ケーキ"></div>
+        <div class="menu-body">
+          <p class="menu-name">自家製ホールケーキ</p>
+          <p class="menu-desc">毎朝手作りの季節のケーキ。テイクアウトも可</p>
+          <p class="menu-price">¥550〜</p>
+        </div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-img"><img src="https://images.unsplash.com/photo-1565299507177-b0ac66763828?q=80&w=600&auto=format&fit=crop" alt="ランチ"></div>
+        <div class="menu-body">
+          <p class="menu-name">日替わりランチ</p>
+          <p class="menu-desc">スープ・サラダ・ドリンク付きのボリュームランチ</p>
+          <p class="menu-price">¥1,200</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="features">
+  <div class="wrap">
+    <p class="sec-eyebrow">Features</p>
+    <h2 class="sec-ttl">特徴</h2>
+    <div class="divider"></div>
+    <div class="feat-list">
+      <div class="feat-item"><div class="feat-ico">☕</div><div><p class="feat-ttl">スペシャルティコーヒー専門</p><p class="feat-desc">SCA資格を持つバリスタが、豆の個性を最大限に引き出した一杯をお届けします。</p></div></div>
+      <div class="feat-item"><div class="feat-ico">🌿</div><div><p class="feat-ttl">無添加・手作りのフード</p><p class="feat-desc">添加物を使わず、毎朝手作りするケーキとランチ。お体に優しい素材にこだわっています。</p></div></div>
+      <div class="feat-item"><div class="feat-ico">💻</div><div><p class="feat-ttl">テレワーク・勉強OK</p><p class="feat-desc">全席Wi-Fi完備・電源あり。静かな空間でのお仕事・勉強を歓迎しています（1ドリンク制）。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="info">
+  <div class="wrap">
+    <p class="sec-eyebrow">Access</p>
+    <h2 class="sec-ttl">店舗案内</h2>
+    <div class="divider"></div>
+    <div class="info-grid">
+      <div class="info-item"><p class="info-label">住所</p><p class="info-val">〒000-0000<br>○○県○○市○○町1-2-3</p></div>
+      <div class="info-item"><p class="info-label">営業時間</p><p class="info-val">8:00〜20:00<br>（L.O. 19:30）</p></div>
+      <div class="info-item"><p class="info-label">定休日</p><p class="info-val">火曜日・水曜日</p></div>
+      <div class="info-item"><p class="info-label">アクセス</p><p class="info-val">○○駅 徒歩5分<br>駐車場あり（3台）</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="line-cta">
+  <h2 class="line-cta-ttl">LINEでご予約・お問い合わせ</h2>
+  <p class="line-cta-sub">LINE登録でワンドリンク無料 🎁<br>ご来店時に登録画面をご提示ください</p>
+  <a class="btn-line" href="https://lin.ee/XXXXXXXX" target="_blank" rel="noopener">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 40 40" fill="white"><path d="M20 4C11.163 4 4 10.163 4 17.6c0 4.356 2.31 8.228 5.926 10.8-.26 1.01-1.664 6.456-1.664 6.456s-.07.57.308.788c.378.218.787.03 1.02-.122 0 0 6.576-4.356 7.41-4.912.98.14 1.98.21 3 .21 8.837 0 16-6.163 16-13.62C36 10.163 28.837 4 20 4z"/></svg>
+    LINEで予約・問い合わせ
+  </a>
+</section>
+
+<footer>© 2025 Café Lumière — All Rights Reserved.</footer>
+</body>
+</html>
