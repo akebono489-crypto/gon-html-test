@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Esprit Artisan｜あなたのお店のホームページを売れる顔に仕上げます</title>
+<title>Esprit Artisan｜飲食店専門ホームページ制作｜神奈川県小田原市</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -20,7 +20,6 @@
 *{box-sizing:border-box} html,body{margin:0;padding:0;background:var(--white);color:var(--black);font-family:var(--font-b);font-size:16px;line-height:1.7}
 img{display:block;max-width:100%;height:auto}
 
-/* NAV */
 .nav-wrap{position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--border2);box-shadow:0 2px 12px rgba(0,0,0,0.06)}
 .nav{max-width:var(--max);margin:auto;display:flex;align-items:center;justify-content:space-between;padding:14px 24px}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
@@ -37,7 +36,6 @@ img{display:block;max-width:100%;height:auto}
   .nav.open ul{display:flex;flex-direction:column;gap:4px;position:absolute;left:12px;right:12px;top:64px;background:#fff;border:1px solid var(--border2);border-radius:12px;padding:14px;z-index:100;box-shadow:0 8px 32px rgba(0,0,0,0.12)}
 }
 
-/* HERO */
 .hero{position:relative;min-height:88vh;display:grid;place-items:center;text-align:center;color:#fff;overflow:hidden}
 .hero-bg{position:absolute;inset:0;z-index:0}
 .hero-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.4s ease-in-out}
@@ -60,7 +58,6 @@ img{display:block;max-width:100%;height:auto}
 .scroll-hint{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);z-index:2;font-size:10px;color:rgba(255,255,255,.4);letter-spacing:.2em;display:flex;flex-direction:column;align-items:center;gap:6px}
 .scroll-hint::after{content:"";width:1px;height:32px;background:linear-gradient(var(--red-l),transparent)}
 
-/* SECTIONS */
 section{padding:clamp(60px,8vw,100px) 24px}
 section:nth-child(even){background:var(--light)}
 .wrap{max-width:var(--max);margin:auto}
@@ -68,7 +65,6 @@ section:nth-child(even){background:var(--light)}
 .sec-title{font-family:var(--font-d);font-size:clamp(1.6rem,1.2rem+2vw,2.6rem);color:var(--black);margin:0 0 8px;line-height:1.2;font-weight:600}
 .sec-lead{color:var(--mid);font-size:14px;line-height:1.9;margin:0 0 48px;max-width:560px}
 
-/* WHY */
 .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 @media(max-width:640px){.why-grid{grid-template-columns:1fr}}
 .why-item{padding:32px 28px;background:#fff;border:1px solid var(--border2);border-radius:var(--radius);border-left:4px solid var(--red);transition:box-shadow .2s,transform .2s}
@@ -77,7 +73,6 @@ section:nth-child(even){background:var(--light)}
 .why-title{font-size:.95rem;font-weight:700;color:var(--black);margin-bottom:8px}
 .why-desc{font-size:.82rem;color:var(--mid);line-height:1.85}
 
-/* PLANS */
 .plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:32px}
 .plans-cta-row{display:flex;justify-content:center;gap:16px;margin-top:32px;margin-bottom:40px}
 .plan-cta-btn{padding:15px 48px;border-radius:9px;font-size:15px;font-weight:600;cursor:pointer;letter-spacing:.06em;font-family:var(--font-b);transition:all .2s;min-width:200px}
@@ -95,14 +90,10 @@ section:nth-child(even){background:var(--light)}
 .plan-card-header-label{position:relative;z-index:1;font-family:var(--font-d);font-size:1.1rem;letter-spacing:.3em;color:#fff;text-transform:uppercase;font-style:italic;font-weight:600;text-shadow:0 1px 8px rgba(0,0,0,.5)}
 .plan-card-body{padding:24px 26px 28px}
 .plan-label{display:inline-block;font-family:var(--font-d);font-size:.88rem;letter-spacing:.32em;text-transform:uppercase;margin-bottom:16px;font-weight:400;font-style:italic}
-.plan-label.sl{color:var(--mid)}
-.plan-label.gl{color:var(--red)}
-.plan-label.pl{color:var(--dark)}
+.plan-label.sl{color:var(--mid)}.plan-label.gl{color:var(--red)}.plan-label.pl{color:var(--dark)}
 .plan-name{font-family:var(--font-d);font-size:1.6rem;color:var(--black);margin-bottom:6px;font-weight:600}
 .plan-price{font-family:var(--font-d);font-size:2.4rem;font-weight:600;line-height:1;margin-bottom:4px}
-.plan-price.sc{color:var(--mid)}
-.plan-price.gc{color:var(--red)}
-.plan-price.pc{color:var(--dark)}
+.plan-price.sc{color:var(--mid)}.plan-price.gc{color:var(--red)}.plan-price.pc{color:var(--dark)}
 .plan-price span{font-size:.85rem;color:var(--mid);font-family:var(--font-b);font-weight:400}
 .plan-note{font-size:.73rem;color:var(--mid);margin-bottom:18px}
 .plan-divider{height:1px;background:var(--border2);margin:18px 0}
@@ -113,21 +104,15 @@ section:nth-child(even){background:var(--light)}
 .plan-features li.hi{color:var(--dark);font-weight:500}
 .plan-tag{position:absolute;top:0;right:20px;background:var(--red);color:#fff;font-size:10px;letter-spacing:.15em;padding:4px 12px;border-radius:0 0 8px 8px;font-weight:700;z-index:2}
 
-/* COMPARE TABLE */
 .compare-wrap{overflow-x:auto}
 .compare-table{width:100%;border-collapse:collapse;font-size:.82rem}
 .compare-table th,.compare-table td{padding:14px 16px;text-align:center;border-bottom:1px solid var(--border2)}
 .compare-table th{font-weight:600;font-size:.78rem;letter-spacing:.1em;background:var(--light)}
 .compare-table td:first-child,.compare-table th:first-child{text-align:left;color:var(--mid);font-weight:400}
-.compare-table .th-sl{color:var(--mid)}
-.compare-table .th-gl{color:var(--red)}
-.compare-table .th-pl{color:var(--dark)}
+.compare-table .th-sl{color:var(--mid)}.compare-table .th-gl{color:var(--red)}.compare-table .th-pl{color:var(--dark)}
 .compare-table tbody tr:hover{background:var(--red-dim)}
-.ok{color:#27ae60;font-size:1rem}
-.no{color:#ccc;font-size:.9rem}
-.opt{color:var(--red);font-size:.8rem}
+.ok{color:#27ae60;font-size:1rem}.no{color:#ccc;font-size:.9rem}.opt{color:var(--red);font-size:.8rem}
 
-/* SPOT */
 .spot-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px}
 @media(max-width:640px){.spot-grid{grid-template-columns:1fr}}
 .spot-item{background:#fff;border:1px solid var(--border2);border-radius:10px;padding:18px 20px;border-top:3px solid var(--red)}
@@ -135,7 +120,6 @@ section:nth-child(even){background:var(--light)}
 .spot-price{font-family:var(--font-d);font-size:1.4rem;color:var(--black);font-weight:600}
 .spot-desc{font-size:.76rem;color:var(--mid);margin-top:4px}
 
-/* FLOW */
 .flow-list{display:flex;flex-direction:column;max-width:600px}
 .flow-item{display:grid;grid-template-columns:56px 1fr;padding:24px 0;border-bottom:1px solid var(--border2)}
 .flow-item:last-child{border-bottom:none}
@@ -146,7 +130,6 @@ section:nth-child(even){background:var(--light)}
 .flow-title{font-size:.92rem;font-weight:700;color:var(--black);margin-bottom:5px;margin-top:7px}
 .flow-desc{font-size:.80rem;color:var(--mid);line-height:1.8}
 
-/* WORKS */
 .proj-card{background:#fff;border:1px solid var(--border2);border-radius:var(--radius);overflow:hidden;margin-bottom:32px;box-shadow:0 2px 12px rgba(0,0,0,.04)}
 .proj-head{padding:20px 24px 16px;display:flex;flex-wrap:wrap;align-items:center;gap:10px;border-bottom:1px solid var(--border2)}
 .proj-title{font-size:1.05rem;font-weight:700;color:var(--black)}
@@ -157,7 +140,6 @@ section:nth-child(even){background:var(--light)}
 .proj-img:hover img{transform:scale(1.08);filter:brightness(1.05)}
 .work-tag{font-size:.65rem;letter-spacing:.12em;color:var(--red);text-transform:uppercase;background:var(--red-dim);padding:3px 8px;border-radius:4px}
 
-/* LIGHTBOX */
 #lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:9999;align-items:center;justify-content:center;cursor:zoom-out}
 #lightbox.open{display:flex;animation:lbFadeIn .2s ease}
 @keyframes lbFadeIn{from{opacity:0}to{opacity:1}}
@@ -167,22 +149,6 @@ section:nth-child(even){background:var(--light)}
 .lb-close{position:absolute;top:-44px;right:0;background:rgba(255,255,255,.2);border:none;color:#fff;font-size:20px;cursor:pointer;padding:6px 14px;border-radius:20px;transition:background .2s}
 .lb-close:hover{background:rgba(255,255,255,.35)}
 
-/* CONTACT */
-.contact-box{max-width:640px;margin:0 auto;background:#fff;border:1px solid var(--border2);border-radius:var(--radius);padding:clamp(28px,5vw,48px);box-shadow:0 4px 24px rgba(0,0,0,.06)}
-.contact-box h3{font-family:var(--font-d);font-size:1.6rem;color:var(--black);margin:0 0 6px}
-.contact-box p{font-size:.84rem;color:var(--mid);line-height:1.9;margin:0 0 26px}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
-@media(max-width:560px){.form-row{grid-template-columns:1fr}}
-.form-group{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
-.form-group label{font-size:.76rem;color:var(--mid);letter-spacing:.06em;font-weight:500}
-.form-group input,.form-group select,.form-group textarea{background:var(--light);border:1px solid var(--border2);border-radius:8px;padding:12px 14px;color:var(--black);font-size:.87rem;font-family:var(--font-b);outline:none;transition:border-color .18s}
-.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--red);background:#fff}
-.form-group textarea{resize:vertical;min-height:100px}
-.form-submit{width:100%;padding:15px;border-radius:10px;background:var(--red);color:#fff;border:none;font-size:14px;font-weight:600;letter-spacing:.1em;cursor:pointer;transition:all .2s;font-family:var(--font-b)}
-.form-submit:hover{background:var(--red-d);box-shadow:0 6px 24px rgba(192,57,43,.35);transform:translateY(-2px)}
-.form-note{font-size:.71rem;color:#aaa;text-align:center;margin-top:10px}
-
-/* FOOTER */
 footer{background:var(--black);color:#ccc;padding:48px 24px 28px}
 .foot-inner{max-width:var(--max);margin:auto;display:flex;justify-content:space-between;align-items:flex-start;gap:32px;flex-wrap:wrap}
 .foot-brand{font-family:var(--font-d);font-size:22px;color:#fff;font-style:italic;letter-spacing:.1em}
@@ -191,21 +157,10 @@ footer{background:var(--black);color:#ccc;padding:48px 24px 28px}
 .foot-links a{color:#888;text-decoration:none;font-size:.79rem;transition:color .18s}
 .foot-links a:hover{color:var(--red-l)}
 .foot-copy{max-width:var(--max);margin:24px auto 0;padding-top:18px;border-top:1px solid rgba(255,255,255,.08);font-size:.71rem;color:#555;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
-
-/* MODAL */
-.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:200;align-items:center;justify-content:center;padding:20px}
-.modal.active{display:flex}
-.modal-box{background:#fff;border-radius:var(--radius);padding:40px;max-width:480px;width:100%;position:relative;text-align:center}
-.modal-close{position:absolute;top:14px;right:14px;background:transparent;border:none;color:#aaa;font-size:20px;cursor:pointer}
-.modal-close:hover{color:var(--red)}
-.modal-icon{font-size:2.8rem;margin-bottom:14px}
-.modal-title{font-family:var(--font-d);font-size:1.5rem;color:var(--black);margin-bottom:10px}
-.modal-body{font-size:.84rem;color:var(--mid);line-height:1.9;margin-bottom:24px}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <div class="nav-wrap">
   <nav class="nav" id="nav">
     <a class="brand" href="#">
@@ -223,19 +178,18 @@ footer{background:var(--black);color:#ccc;padding:48px 24px 28px}
   </nav>
 </div>
 
-<!-- HERO -->
 <header class="hero">
   <div class="hero-bg">
     <div class="hero-slide active" style="background-image:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=2400&auto=format&fit=crop')"></div>
-    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=2400&auto=format&fit=crop')"></div>
-    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2400&auto=format&fit=crop')"></div>
+    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1569718212165-3a8278d5f624?q=80&w=2400&auto=format&fit=crop')"></div>
+    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=2400&auto=format&fit=crop')"></div>
   </div>
   <div class="hero-inner">
-    <p class="hero-eyebrow">Web Production for Restaurant &amp; Shop</p>
-    <h1 class="hero-title">あなたのお店の<em>HP</em>を、<br>売れる顔に仕上げます。</h1>
-    <p class="hero-sub">Esprit Artisan — エスプリ・アルティザン</p>
+    <p class="hero-eyebrow">Restaurant Web Production — Specialist</p>
+    <h1 class="hero-title">飲食店の<em>HP</em>を、<br>お客様が来る顔に。</h1>
+    <p class="hero-sub">Esprit Artisan — 飲食店専門ホームページ制作</p>
     <div class="hero-line"></div>
-    <p class="hero-lead">フランス仕込みの感性と20年の飲食業経験を持つアルティザンが、<br>飲食店・工務店・美容院…あらゆるお店のHPを本物の男前に変えます。<br>シルバー・ゴールド・プラチナの3プランで予算に合わせて即対応。</p>
+    <p class="hero-lead">ラーメン・フレンチ・居酒屋・カフェ・焼肉…<br>20年の飲食業経験を持つ制作者が、あなたのお店の魅力を<br>本物のホームページに仕上げます。最短3日で納品。</p>
     <div class="hero-btns">
       <a class="btn btn-red" href="#plans">料金プランを見る</a>
       <a class="btn btn-outline" href="#contact">無料相談する</a>
@@ -244,47 +198,45 @@ footer{background:var(--black);color:#ccc;padding:48px 24px 28px}
   <div class="scroll-hint">SCROLL</div>
 </header>
 
-<!-- WHY -->
 <section id="why">
   <div class="wrap">
     <p class="sec-eyebrow">Why Esprit Artisan</p>
-    <h2 class="sec-title">選ばれる4つの理由</h2>
-    <p class="sec-lead">制作会社ではなく、飲食の現場を知るアルティザンだからできること。</p>
+    <h2 class="sec-title">飲食店に選ばれる4つの理由</h2>
+    <p class="sec-lead">制作会社ではなく、飲食の現場を20年知り尽くした専門家だからできること。</p>
     <div class="why-grid">
       <div class="why-item">
         <div class="why-num">01</div>
         <div class="why-title">飲食業20年の現場感覚</div>
-        <div class="why-desc">フランス料理・ラーメン・映像制作を経験した唯一無二の視点。お客様が何を求めているかを肌で知っています。</div>
+        <div class="why-desc">フランス料理・ラーメン・映像制作を経験した唯一無二の視点。お客様が何を求めているか、何が刺さるかを肌で知っています。</div>
       </div>
       <div class="why-item">
         <div class="why-num">02</div>
         <div class="why-title">AIを使った爆速制作</div>
-        <div class="why-desc">最新AIツールを駆使し、通常1〜2ヶ月かかるHP制作を最短3日で納品。スピードもクオリティも妥協しません。</div>
+        <div class="why-desc">最新AIツールを駆使し、通常1〜2ヶ月かかるHP制作を最短3日で納品。開店前・リニューアルにも即対応します。</div>
       </div>
       <div class="why-item">
         <div class="why-num">03</div>
-        <div class="why-title">業種を選ばない対応力</div>
-        <div class="why-desc">飲食店はもちろん、工務店・美容院・整体院・電気工事店まで対応。どんな業種の顔も本物の男前に仕上げます。</div>
+        <div class="why-title">料理の写真が映えるデザイン</div>
+        <div class="why-desc">飲食店HPで一番大切なのは「食欲をそそる見せ方」。写真の選び方・配置・色使いにこだわり、見た瞬間に食べたくなるサイトを作ります。</div>
       </div>
       <div class="why-item">
         <div class="why-num">04</div>
-        <div class="why-title">ZIP納品から管理代行まで</div>
-        <div class="why-desc">ファイルを渡すだけのZIP納品から、毎月の更新・管理代行まで対応。大家さんモデルで丸ごとお任せも可能。</div>
+        <div class="why-title">開店後もずっとサポート</div>
+        <div class="why-desc">メニュー変更・季節限定メニューの更新・イベント告知など、開店後の運用もお任せ。月次管理プランで手間いらずの運営を実現します。</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PLANS -->
 <section id="plans">
   <div class="wrap">
     <p class="sec-eyebrow">Pricing Plans</p>
     <h2 class="sec-title">3つのプラン</h2>
-    <p class="sec-lead">すべてスマホ対応・税込。ほとんどの方はゴールドに落ち着きます。</p>
+    <p class="sec-lead">すべてスマホ対応・税込。ほとんどの飲食店様はゴールドに落ち着きます。</p>
     <div class="plans-grid">
       <div class="plan-card">
         <div class="plan-card-header">
-          <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=600&q=70&auto=format&fit=crop" alt="">
+          <img src="https://images.unsplash.com/photo-1555126634-323283e090fa?w=600&q=70&auto=format&fit=crop" alt="">
           <span class="plan-card-header-label">Silver</span>
         </div>
         <div class="plan-card-body">
@@ -295,9 +247,9 @@ footer{background:var(--black);color:#ccc;padding:48px 24px 28px}
           <div class="plan-divider"></div>
           <ul class="plan-features">
             <li><span class="check">—</span>1ページLP（縦長1枚物）</li>
-            <li><span class="check">—</span>写真掲載 最大<strong>8枚</strong></li>
+            <li><span class="check">—</span>料理写真掲載 最大<strong>8枚</strong></li>
             <li><span class="check">—</span>スマホ対応</li>
-            <li><span class="check">—</span>テキスト・写真差し替え済み</li>
+            <li><span class="check">—</span>営業時間・アクセス・地図掲載</li>
             <li><span class="check">—</span>ZIPファイルで納品</li>
             <li><span class="check">—</span>修正2回まで</li>
             <li><span class="check">—</span>アフターサポート 1ヶ月</li>
@@ -317,12 +269,12 @@ footer{background:var(--black);color:#ccc;padding:48px 24px 28px}
           <div class="plan-note">一回払い・サーバー設定込み</div>
           <div class="plan-divider"></div>
           <ul class="plan-features">
-            <li class="hi"><span class="check">✦</span>3〜5ページ構成</li>
-            <li class="hi"><span class="check">✦</span>写真掲載 最大<strong>20枚</strong>・クリック拡大</li>
+            <li class="hi"><span class="check">✦</span>3〜5ページ構成（トップ・メニュー・アクセス等）</li>
+            <li class="hi"><span class="check">✦</span>料理写真掲載 最大<strong>20枚</strong>・クリック拡大</li>
             <li class="hi"><span class="check">✦</span>スマホ対応（高品質）</li>
-            <li class="hi"><span class="check">✦</span>お問い合わせフォーム（自動返信付）</li>
+            <li class="hi"><span class="check">✦</span>予約・お問い合わせフォーム（自動返信付）</li>
             <li class="hi"><span class="check">✦</span>サーバー・ドメイン設定代行</li>
-            <li class="hi"><span class="check">✦</span>基本SEO設定</li>
+            <li class="hi"><span class="check">✦</span>基本SEO設定（Googleに表示されやすく）</li>
             <li class="hi"><span class="check">✦</span>修正5回まで</li>
             <li class="hi"><span class="check">✦</span>管理契約中は継続サポート</li>
           </ul>
@@ -330,7 +282,7 @@ footer{background:var(--black);color:#ccc;padding:48px 24px 28px}
       </div>
       <div class="plan-card">
         <div class="plan-card-header">
-          <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=600&q=70&auto=format&fit=crop" alt="">
+          <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&q=70&auto=format&fit=crop" alt="">
           <span class="plan-card-header-label">Platinum</span>
         </div>
         <div class="plan-card-body">
@@ -341,12 +293,12 @@ footer{background:var(--black);color:#ccc;padding:48px 24px 28px}
           <div class="plan-divider"></div>
           <ul class="plan-features">
             <li><span class="check">—</span>フルカスタムデザイン</li>
-            <li><span class="check">—</span>写真掲載 最大<strong>30枚</strong>・スライドギャラリー</li>
-            <li><span class="check">—</span>ページ数無制限</li>
+            <li><span class="check">—</span>料理写真掲載 最大<strong>30枚</strong>・スライドギャラリー</li>
+            <li><span class="check">—</span>ページ数無制限（メニュー・コース・個室等）</li>
             <li><span class="check">—</span>リッチアニメーション演出</li>
-            <li><span class="check">—</span>フォーム・自動返信・管理</li>
+            <li><span class="check">—</span>予約フォーム・自動返信・管理</li>
             <li><span class="check">—</span>サーバー公開・全部代行</li>
-            <li><span class="check">—</span>毎月の更新・管理代行（¥5,000/月〜）</li>
+            <li><span class="check">—</span>メニュー更新・季節情報の管理代行（¥5,000/月〜）</li>
             <li><span class="check">—</span>修正無制限・契約継続中はずっとサポート</li>
           </ul>
         </div>
@@ -359,24 +311,19 @@ footer{background:var(--black);color:#ccc;padding:48px 24px 28px}
     <div class="compare-wrap">
       <table class="compare-table">
         <thead>
-          <tr>
-            <th>項目</th>
-            <th class="th-sl">Silver</th>
-            <th class="th-gl">Gold</th>
-            <th class="th-pl">Platinum</th>
-          </tr>
+          <tr><th>項目</th><th class="th-sl">Silver</th><th class="th-gl">Gold</th><th class="th-pl">Platinum</th></tr>
         </thead>
         <tbody>
           <tr><td>価格</td><td>¥30,000〜</td><td style="color:var(--red)">¥80,000〜</td><td>¥150,000〜</td></tr>
           <tr><td>ページ数</td><td>1ページ</td><td>3〜5ページ</td><td>無制限</td></tr>
-          <tr><td>写真枚数</td><td>最大8枚</td><td>最大20枚</td><td>最大30枚</td></tr>
+          <tr><td>料理写真枚数</td><td>最大8枚</td><td>最大20枚</td><td>最大30枚</td></tr>
           <tr><td>クリック拡大</td><td><span class="no">—</span></td><td><span class="ok">✓</span></td><td><span class="ok">✓</span></td></tr>
           <tr><td>スライドギャラリー</td><td><span class="no">—</span></td><td><span class="no">—</span></td><td><span class="ok">✓</span></td></tr>
           <tr><td>スマホ対応</td><td><span class="ok">✓</span></td><td><span class="ok">✓</span></td><td><span class="ok">✓ 高速</span></td></tr>
-          <tr><td>お問合せフォーム</td><td><span class="no">—</span></td><td><span class="ok">✓ 自動返信</span></td><td><span class="ok">✓ 自動返信</span></td></tr>
+          <tr><td>予約・問合せフォーム</td><td><span class="no">—</span></td><td><span class="ok">✓ 自動返信</span></td><td><span class="ok">✓ 自動返信</span></td></tr>
           <tr><td>サーバー・ドメイン設定</td><td>手順案内</td><td><span class="ok">✓ 代行</span></td><td><span class="ok">✓ 全部代行</span></td></tr>
           <tr><td>SEO設定</td><td><span class="no">—</span></td><td>基本のみ</td><td><span class="ok">✓ 詳細設定</span></td></tr>
-          <tr><td>月次管理・更新代行</td><td><span class="no">—</span></td><td><span class="opt">¥5,000/月〜</span></td><td><span class="opt">¥5,000/月〜</span></td></tr>
+          <tr><td>メニュー更新・管理代行</td><td><span class="no">—</span></td><td><span class="opt">¥5,000/月〜</span></td><td><span class="opt">¥5,000/月〜</span></td></tr>
           <tr><td>修正回数</td><td>2回</td><td>5回</td><td>無制限</td></tr>
           <tr><td>アフターサポート</td><td>納品後1ヶ月</td><td>管理契約中は継続</td><td>契約中ずっと</td></tr>
           <tr><td>納期目安</td><td>7日〜</td><td>10日〜</td><td>相談</td></tr>
@@ -386,24 +333,23 @@ footer{background:var(--black);color:#ccc;padding:48px 24px 28px}
     <div style="margin-top:32px;padding:24px 28px;background:var(--light);border-radius:var(--radius)">
       <p style="font-size:.75rem;color:var(--red);letter-spacing:.22em;text-transform:uppercase;margin:0 0 14px">スポット修正・追加費用</p>
       <div class="spot-grid">
-        <div class="spot-item"><div class="spot-label">テキスト変更</div><div class="spot-price">¥3,000<span style="font-size:.8rem;color:var(--mid)">〜</span></div><div class="spot-desc">文字の差し替え・修正</div></div>
-        <div class="spot-item"><div class="spot-label">写真差し替え</div><div class="spot-price">¥3,000<span style="font-size:.8rem;color:var(--mid)">〜</span></div><div class="spot-desc">1〜3枚の写真入れ替え</div></div>
-        <div class="spot-item"><div class="spot-label">セクション追加</div><div class="spot-price">¥10,000<span style="font-size:.8rem;color:var(--mid)">〜</span></div><div class="spot-desc">新しいコーナーを追加</div></div>
+        <div class="spot-item"><div class="spot-label">メニュー変更</div><div class="spot-price">¥3,000<span style="font-size:.8rem;color:var(--mid)">〜</span></div><div class="spot-desc">料理名・価格・説明文の更新</div></div>
+        <div class="spot-item"><div class="spot-label">写真差し替え</div><div class="spot-price">¥3,000<span style="font-size:.8rem;color:var(--mid)">〜</span></div><div class="spot-desc">1〜3枚の料理写真入れ替え</div></div>
+        <div class="spot-item"><div class="spot-label">ページ追加</div><div class="spot-price">¥10,000<span style="font-size:.8rem;color:var(--mid)">〜</span></div><div class="spot-desc">コースページ・個室案内など追加</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FLOW -->
 <section id="flow">
   <div class="wrap">
     <p class="sec-eyebrow">Process</p>
     <h2 class="sec-title">制作の流れ</h2>
-    <p class="sec-lead">お問い合わせから最短3日で納品。ステップはシンプルです。</p>
+    <p class="sec-lead">LINEでのご相談から最短3日で納品。忙しいお店の方でも安心です。</p>
     <div class="flow-list">
       <div class="flow-item">
         <div class="flow-num-wrap"><div class="flow-num">1</div><div class="flow-line"></div></div>
-        <div><div class="flow-title">無料相談・ヒアリング（当日〜翌日）</div><div class="flow-desc">お店の雰囲気・希望・予算をお聞きします。電話・メール・LINEで気軽にどうぞ。</div></div>
+        <div><div class="flow-title">無料相談・ヒアリング（当日〜翌日）</div><div class="flow-desc">お店のコンセプト・ターゲット・ご希望・予算をLINEでお聞きします。営業中でもトークで気軽にどうぞ。</div></div>
       </div>
       <div class="flow-item">
         <div class="flow-num-wrap"><div class="flow-num">2</div><div class="flow-line"></div></div>
@@ -411,7 +357,7 @@ footer{background:var(--black);color:#ccc;padding:48px 24px 28px}
       </div>
       <div class="flow-item">
         <div class="flow-num-wrap"><div class="flow-num">3</div><div class="flow-line"></div></div>
-        <div><div class="flow-title">素材収集・制作（3日〜2週間）</div><div class="flow-desc">写真・テキストをいただき制作開始。途中でプレビューを共有します。</div></div>
+        <div><div class="flow-title">料理写真・素材の収集（3日〜2週間）</div><div class="flow-desc">料理写真やメニュー情報をいただき制作開始。写真がなくても相談できます。途中でプレビューを共有します。</div></div>
       </div>
       <div class="flow-item">
         <div class="flow-num-wrap"><div class="flow-num">4</div><div class="flow-line"></div></div>
@@ -419,59 +365,58 @@ footer{background:var(--black);color:#ccc;padding:48px 24px 28px}
       </div>
       <div class="flow-item">
         <div class="flow-num-wrap"><div class="flow-num">5</div></div>
-        <div><div class="flow-title">納品・公開・残金精算</div><div class="flow-desc">ZIP納品またはサーバーに直接アップして公開。完了後もサポートします。</div></div>
+        <div><div class="flow-title">納品・公開・残金精算</div><div class="flow-desc">ZIP納品またはサーバーに直接アップして公開。開店後のメニュー更新もお任せいただけます。</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- WORKS -->
 <section id="works">
   <div class="wrap">
     <p class="sec-eyebrow">Works</p>
     <h2 class="sec-title">制作実績</h2>
-    <p class="sec-lead">業種を問わず対応。飲食店・工務店・美容院・整体院など。</p>
+    <p class="sec-lead">ラーメン・フレンチ・居酒屋・カフェなど、飲食店専門で対応しています。</p>
     <div class="proj-card">
       <div class="proj-head">
         <span class="work-tag">ラーメン店 / GOLD</span>
         <div class="proj-title">○○ラーメン（小田原）</div>
-        <div class="proj-desc">20枚掲載・メニュー・地図・フォーム付き</div>
+        <div class="proj-desc">料理写真20枚・メニュー・地図・予約フォーム付き</div>
       </div>
       <div class="proj-grid">
         <div class="proj-img" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=600&q=70&auto=format&fit=crop" alt="ラーメン1" loading="lazy"></div>
         <div class="proj-img" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1557872943-16a5ac26437e?w=600&q=70&auto=format&fit=crop" alt="ラーメン2" loading="lazy"></div>
         <div class="proj-img" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1614563637806-1d0e645e0940?w=600&q=70&auto=format&fit=crop" alt="ラーメン3" loading="lazy"></div>
-        <div class="proj-img" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&q=70&auto=format&fit=crop" alt="ラーメン4" loading="lazy"></div>
+        <div class="proj-img" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1623341214825-9f4f963727da?w=600&q=70&auto=format&fit=crop" alt="ラーメン4" loading="lazy"></div>
         <div class="proj-img" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1555126634-323283e090fa?w=600&q=70&auto=format&fit=crop" alt="ラーメン5" loading="lazy"></div>
-        <div class="proj-img" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1623341214825-9f4f963727da?w=600&q=70&auto=format&fit=crop" alt="ラーメン6" loading="lazy"></div>
+        <div class="proj-img" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&q=70&auto=format&fit=crop" alt="ラーメン6" loading="lazy"></div>
       </div>
     </div>
     <div class="proj-card">
       <div class="proj-head">
-        <span class="work-tag">工務店 / PLATINUM</span>
-        <div class="proj-title">○○工務店</div>
-        <div class="proj-desc">施工事例30枚・月次更新・管理代行</div>
+        <span class="work-tag">フレンチ / PLATINUM</span>
+        <div class="proj-title">○○レストラン</div>
+        <div class="proj-desc">コース料理ページ・個室案内・月次更新管理代行</div>
       </div>
       <div class="proj-grid">
-        <div class="proj-img" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=600&q=70&auto=format&fit=crop" alt="工務店1" loading="lazy"></div>
-        <div class="proj-img" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=70&auto=format&fit=crop" alt="工務店2" loading="lazy"></div>
-        <div class="proj-img" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=70&auto=format&fit=crop" alt="工務店3" loading="lazy"></div>
-        <div class="proj-img" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=70&auto=format&fit=crop" alt="工務店4" loading="lazy"></div>
-        <div class="proj-img" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&q=70&auto=format&fit=crop" alt="工務店5" loading="lazy"></div>
-        <div class="proj-img" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?w=600&q=70&auto=format&fit=crop" alt="工務店6" loading="lazy"></div>
+        <div class="proj-img" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=70&auto=format&fit=crop" alt="フレンチ1" loading="lazy"></div>
+        <div class="proj-img" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=70&auto=format&fit=crop" alt="フレンチ2" loading="lazy"></div>
+        <div class="proj-img" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3b28?w=600&q=70&auto=format&fit=crop" alt="フレンチ3" loading="lazy"></div>
+        <div class="proj-img" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=600&q=70&auto=format&fit=crop" alt="フレンチ4" loading="lazy"></div>
+        <div class="proj-img" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=600&q=70&auto=format&fit=crop" alt="フレンチ5" loading="lazy"></div>
+        <div class="proj-img" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1493770348161-369560ae357d?w=600&q=70&auto=format&fit=crop" alt="フレンチ6" loading="lazy"></div>
       </div>
     </div>
     <div class="proj-card">
       <div class="proj-head">
-        <span class="work-tag">美容院 / SILVER</span>
-        <div class="proj-title">○○ヘアサロン</div>
-        <div class="proj-desc">1ページLP・写真8枚・予約ボタン付き</div>
+        <span class="work-tag">カフェ / SILVER</span>
+        <div class="proj-title">○○カフェ</div>
+        <div class="proj-desc">1ページLP・写真8枚・営業時間・アクセス付き</div>
       </div>
       <div class="proj-grid">
-        <div class="proj-img" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&q=70&auto=format&fit=crop" alt="サロン1" loading="lazy"></div>
-        <div class="proj-img" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=600&q=70&auto=format&fit=crop" alt="サロン2" loading="lazy"></div>
-        <div class="proj-img" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600&q=70&auto=format&fit=crop" alt="サロン3" loading="lazy"></div>
-        <div class="proj-img" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?w=600&q=70&auto=format&fit=crop" alt="サロン4" loading="lazy"></div>
+        <div class="proj-img" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600&q=70&auto=format&fit=crop" alt="カフェ1" loading="lazy"></div>
+        <div class="proj-img" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&q=70&auto=format&fit=crop" alt="カフェ2" loading="lazy"></div>
+        <div class="proj-img" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=600&q=70&auto=format&fit=crop" alt="カフェ3" loading="lazy"></div>
+        <div class="proj-img" onclick="openLightbox(this)"><img src="https://images.unsplash.com/photo-1453614512568-c4024d13c247?w=600&q=70&auto=format&fit=crop" alt="カフェ4" loading="lazy"></div>
       </div>
     </div>
   </div>
@@ -483,19 +428,15 @@ footer{background:var(--black);color:#ccc;padding:48px 24px 28px}
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
   <div class="wrap">
     <p class="sec-eyebrow" style="text-align:center">Contact</p>
-    <h2 class="sec-title" style="text-align:center">無料相談・お問い合わせ</h2>
+    <h2 class="sec-title" style="text-align:center">無料相談・お申し込み</h2>
     <p class="sec-lead" style="text-align:center;margin-inline:auto">まずはお気軽にどうぞ。24時間以内に返信します。</p>
-
     <div style="text-align:center;margin:0 auto 16px">
       <a href="https://lin.ee/sdehOTl" target="_blank" rel="noopener"
          style="display:inline-flex;align-items:center;gap:12px;background:#06C755;color:#fff;text-decoration:none;font-size:17px;font-weight:700;padding:20px 48px;border-radius:50px;box-shadow:0 6px 24px rgba(6,199,85,0.4);transition:all .2s;letter-spacing:.05em">
-        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 40 40" fill="white">
-          <path d="M20 4C11.163 4 4 10.163 4 17.6c0 4.356 2.31 8.228 5.926 10.8-.26 1.01-1.664 6.456-1.664 6.456s-.07.57.308.788c.378.218.787.03 1.02-.122 0 0 6.576-4.356 7.41-4.912.98.14 1.98.21 3 .21 8.837 0 16-6.163 16-13.62C36 10.163 28.837 4 20 4z"/>
-        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 40 40" fill="white"><path d="M20 4C11.163 4 4 10.163 4 17.6c0 4.356 2.31 8.228 5.926 10.8-.26 1.01-1.664 6.456-1.664 6.456s-.07.57.308.788c.378.218.787.03 1.02-.122 0 0 6.576-4.356 7.41-4.912.98.14 1.98.21 3 .21 8.837 0 16-6.163 16-13.62C36 10.163 28.837 4 20 4z"/></svg>
         LINEで無料相談・お申し込み
       </a>
       <p style="margin-top:12px;font-size:.82rem;color:#888">トーク画面からそのまま送れます。24時間以内に返信します。</p>
@@ -503,12 +444,11 @@ footer{background:var(--black);color:#ccc;padding:48px 24px 28px}
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="foot-inner">
     <div>
       <div class="foot-brand">Esprit Artisan</div>
-      <p class="foot-tagline">飲食・店舗のHP制作 | 神奈川県小田原市</p>
+      <p class="foot-tagline">飲食店専門ホームページ制作 | 神奈川県小田原市</p>
     </div>
     <div class="foot-links">
       <a href="#why">選ばれる理由</a>
@@ -524,36 +464,26 @@ footer{background:var(--black);color:#ccc;padding:48px 24px 28px}
   </div>
 </footer>
 
-
 <script>
-  (function(){
-    var slides=document.querySelectorAll('.hero-slide'),i=0;
-    setInterval(function(){
-      slides[i].classList.remove('active');
-      i=(i+1)%slides.length;
-      slides[i].classList.add('active');
-    },4500);
-  })();
-  const nav=document.getElementById('nav');
-  document.getElementById('hamb')?.addEventListener('click',()=>nav.classList.toggle('open'));
-  document.querySelectorAll('a[href^="#"]').forEach(a=>{
-    a.addEventListener('click',e=>{
-      const id=a.getAttribute('href');
-      if(id.length>1){e.preventDefault();document.querySelector(id)?.scrollIntoView({behavior:'smooth',block:'start'});nav.classList.remove('open');}
-    });
+(function(){
+  var slides=document.querySelectorAll('.hero-slide'),i=0;
+  setInterval(function(){
+    slides[i].classList.remove('active');
+    i=(i+1)%slides.length;
+    slides[i].classList.add('active');
+  },4500);
+})();
+const nav=document.getElementById('nav');
+document.getElementById('hamb')?.addEventListener('click',()=>nav.classList.toggle('open'));
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const id=a.getAttribute('href');
+    if(id.length>1){e.preventDefault();document.querySelector(id)?.scrollIntoView({behavior:'smooth',block:'start'});nav.classList.remove('open');}
   });
-  function openLightbox(el){
-    var img=el.querySelector('img');
-    if(!img)return;
-    document.getElementById('lb-img').src=img.src;
-    document.getElementById('lightbox').classList.add('open');
-    document.body.style.overflow='hidden';
-  }
-  function closeLightbox(){
-    document.getElementById('lightbox').classList.remove('open');
-    document.body.style.overflow='';
-  }
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLightbox();});
+});
+function openLightbox(el){var img=el.querySelector('img');if(!img)return;document.getElementById('lb-img').src=img.src;document.getElementById('lightbox').classList.add('open');document.body.style.overflow='hidden';}
+function closeLightbox(){document.getElementById('lightbox').classList.remove('open');document.body.style.overflow='';}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLightbox();});
 </script>
 </body>
 </html>
