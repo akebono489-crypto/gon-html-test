@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>特定商取引法に基づく表記｜Esprit Artisan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#c0392b; --red-d:#96281b;
+  --black:#1a1a1a; --mid:#555;
+  --light:#f5f3f0; --white:#ffffff;
+  --border2:rgba(0,0,0,0.08);
+  --font-d:"Cormorant Garamond",serif; --font-b:"Noto Sans JP",sans-serif;
+  --radius:12px; --max:800px;
+}
+*{box-sizing:border-box} html,body{margin:0;padding:0;background:var(--white);color:var(--black);font-family:var(--font-b);font-size:16px;line-height:1.7}
+
+/* NAV */
+.nav-wrap{position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--border2);box-shadow:0 2px 12px rgba(0,0,0,0.06)}
+.nav{max-width:1100px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:14px 24px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand-mark{width:36px;height:36px;border-radius:6px;background:linear-gradient(135deg,var(--red-d),var(--red));display:grid;place-items:center;font-family:var(--font-d);font-size:17px;color:#fff;font-weight:700}
+.brand-name{font-family:var(--font-d);font-size:22px;letter-spacing:.1em;color:var(--black);font-style:italic}
+.nav-back{color:var(--mid);text-decoration:none;font-size:13px;padding:7px 12px;border-radius:8px;transition:background .18s}
+.nav-back:hover{background:var(--light)}
+
+/* CONTENT */
+.page-wrap{max-width:var(--max);margin:60px auto;padding:0 24px 80px}
+.page-title{font-family:var(--font-d);font-size:clamp(1.8rem,1.4rem+2vw,2.8rem);color:var(--black);margin:0 0 48px;font-weight:600}
+table{width:100%;border-collapse:collapse;font-size:.88rem}
+th,td{padding:16px 18px;border-bottom:1px solid var(--border2);vertical-align:top;line-height:1.8}
+th{width:200px;color:var(--mid);font-weight:500;background:var(--light);white-space:nowrap}
+td{color:var(--black)}
+@media(max-width:560px){th{width:120px;font-size:.78rem}td{font-size:.82rem}}
+
+/* FOOTER */
+footer{background:#1a1a1a;color:#ccc;padding:28px 24px;text-align:center;font-size:.74rem}
+footer a{color:#888;text-decoration:none}
+footer a:hover{color:#fff}
+</style>
+</head>
+<body>
+
+<div class="nav-wrap">
+  <nav class="nav">
+    <a class="brand" href="index.html">
+      <div class="brand-mark">E</div>
+      <span class="brand-name">Esprit Artisan</span>
+    </a>
+    <a class="nav-back" href="index.html">← トップへ戻る</a>
+  </nav>
+</div>
+
+<div class="page-wrap">
+  <h1 class="page-title">特定商取引法に基づく表記</h1>
+  <table>
+    <tr>
+      <th>販売業者名</th>
+      <td>【ここに屋号または氏名を記入】</td>
+    </tr>
+    <tr>
+      <th>運営責任者</th>
+      <td>【ここに氏名を記入】</td>
+    </tr>
+    <tr>
+      <th>所在地</th>
+      <td>神奈川県小田原市【ここに番地を記入】</td>
+    </tr>
+    <tr>
+      <th>電話番号</th>
+      <td>【ここに電話番号を記入】<br><small style="color:var(--mid)">※お問い合わせはLINEにて承っております。</small></td>
+    </tr>
+    <tr>
+      <th>メールアドレス</th>
+      <td>【ここにメールアドレスを記入】</td>
+    </tr>
+    <tr>
+      <th>サービス内容</th>
+      <td>ホームページ制作・管理代行サービス</td>
+    </tr>
+    <tr>
+      <th>販売価格</th>
+      <td>各サービスページに記載の価格（税込）</td>
+    </tr>
+    <tr>
+      <th>支払方法</th>
+      <td>銀行振込</td>
+    </tr>
+    <tr>
+      <th>支払時期</th>
+      <td>ご契約時に着手金50%、納品時に残金50%をお振込みください。</td>
+    </tr>
+    <tr>
+      <th>サービス提供時期</th>
+      <td>ご契約・着手金入金確認後、制作を開始します。納期はプランにより異なります（7日〜）。</td>
+    </tr>
+    <tr>
+      <th>キャンセル・返品</th>
+      <td>制作開始後のキャンセルはお受けできません。制作開始前のキャンセルについては、着手金の返金はいたしかねます。</td>
+    </tr>
+    <tr>
+      <th>特別条件</th>
+      <td>デジタルコンテンツのため、納品後の返品・返金はお受けできません。</td>
+    </tr>
+  </table>
+</div>
+
+<footer>
+  <p>© 2025 Esprit Artisan — <a href="index.html">トップページ</a> ｜ <a href="privacy.html">プライバシーポリシー</a></p>
+</footer>
+
+</body>
+</html>
