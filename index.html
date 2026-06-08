@@ -218,7 +218,7 @@ footer{background:var(--black);color:#ccc;padding:48px 24px 28px}
       <li><a href="#plans">料金プラン</a></li>
       <li><a href="#flow">制作の流れ</a></li>
       <li><a href="#works">制作実績</a></li>
-      <li><a href="#contact" class="nav-cta">無料相談</a></li>
+      <li><a href="#contact" class="nav-cta">LINEで相談</a></li>
     </ul>
   </nav>
 </div>
@@ -353,8 +353,8 @@ footer{background:var(--black);color:#ccc;padding:48px 24px 28px}
       </div>
     </div>
     <div class="plans-cta-row">
-      <button class="plan-cta-btn plan-cta-consult" onclick="openModal('無料相談','sl')">まず相談してみる</button>
-      <button class="plan-cta-btn plan-cta-apply" onclick="openModal('ゴールドプラン（¥80,000〜）','gl')">申し込む</button>
+      <a class="plan-cta-btn plan-cta-consult" href="https://lin.ee/sdehOTl" target="_blank" rel="noopener" style="text-decoration:none;text-align:center">まず相談してみる</a>
+      <a class="plan-cta-btn plan-cta-apply" href="https://lin.ee/sdehOTl" target="_blank" rel="noopener" style="text-decoration:none;text-align:center">LINEで申し込む</a>
     </div>
     <div class="compare-wrap">
       <table class="compare-table">
@@ -489,28 +489,16 @@ footer{background:var(--black);color:#ccc;padding:48px 24px 28px}
     <p class="sec-eyebrow" style="text-align:center">Contact</p>
     <h2 class="sec-title" style="text-align:center">無料相談・お問い合わせ</h2>
     <p class="sec-lead" style="text-align:center;margin-inline:auto">まずはお気軽にどうぞ。24時間以内に返信します。</p>
-    <div class="contact-box">
-      <form id="contactForm" onsubmit="submitForm(event)">
-        <div class="form-row">
-          <div class="form-group"><label>お名前 *</label><input type="text" name="name" placeholder="山田 太郎" required></div>
-          <div class="form-group"><label>電話番号</label><input type="tel" name="tel" placeholder="090-0000-0000"></div>
-        </div>
-        <div class="form-group"><label>メールアドレス *</label><input type="email" name="email" placeholder="your@email.com" required></div>
-        <div class="form-group">
-          <label>ご希望のプラン</label>
-          <select name="plan" id="planSelect">
-            <option value="">選択してください</option>
-            <option value="silver">Silver（¥30,000〜）</option>
-            <option value="gold">Gold（¥80,000〜）人気</option>
-            <option value="platinum">Platinum（¥150,000〜＋月額）</option>
-            <option value="undecided">まだ決まっていない</option>
-          </select>
-        </div>
-        <div class="form-group"><label>業種・お店の種類</label><input type="text" name="genre" placeholder="例：ラーメン店、工務店、美容院など"></div>
-        <div class="form-group"><label>ご相談内容</label><textarea name="message" placeholder="お気軽にどうぞ。「まず話を聞きたい」でもOKです。"></textarea></div>
-        <button type="submit" class="form-submit">送信する →</button>
-        <p class="form-note">送信後、24時間以内にメールまたはお電話でご連絡します。</p>
-      </form>
+
+    <div style="text-align:center;margin:0 auto 16px">
+      <a href="https://lin.ee/sdehOTl" target="_blank" rel="noopener"
+         style="display:inline-flex;align-items:center;gap:12px;background:#06C755;color:#fff;text-decoration:none;font-size:17px;font-weight:700;padding:20px 48px;border-radius:50px;box-shadow:0 6px 24px rgba(6,199,85,0.4);transition:all .2s;letter-spacing:.05em">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 40 40" fill="white">
+          <path d="M20 4C11.163 4 4 10.163 4 17.6c0 4.356 2.31 8.228 5.926 10.8-.26 1.01-1.664 6.456-1.664 6.456s-.07.57.308.788c.378.218.787.03 1.02-.122 0 0 6.576-4.356 7.41-4.912.98.14 1.98.21 3 .21 8.837 0 16-6.163 16-13.62C36 10.163 28.837 4 20 4z"/>
+        </svg>
+        LINEで無料相談・お申し込み
+      </a>
+      <p style="margin-top:12px;font-size:.82rem;color:#888">トーク画面からそのまま送れます。24時間以内に返信します。</p>
     </div>
   </div>
 </section>
@@ -536,16 +524,6 @@ footer{background:var(--black);color:#ccc;padding:48px 24px 28px}
   </div>
 </footer>
 
-<!-- MODAL -->
-<div class="modal" id="modal" onclick="closeModalOutside(event)">
-  <div class="modal-box">
-    <button class="modal-close" onclick="closeModal()">✕</button>
-    <div class="modal-icon">✉️</div>
-    <div class="modal-title" id="modal-title">お問い合わせ</div>
-    <div class="modal-body" id="modal-body">ありがとうございます！<br>下のフォームからご相談いただくか、<br>直接お電話・メールでもお気軽にどうぞ。</div>
-    <a class="btn btn-red" href="#contact" onclick="closeModal()" style="margin-top:4px">相談フォームへ →</a>
-  </div>
-</div>
 
 <script>
   (function(){
@@ -564,29 +542,6 @@ footer{background:var(--black);color:#ccc;padding:48px 24px 28px}
       if(id.length>1){e.preventDefault();document.querySelector(id)?.scrollIntoView({behavior:'smooth',block:'start'});nav.classList.remove('open');}
     });
   });
-  function openModal(plan,type){
-    document.getElementById('modal-title').textContent=plan+' のご相談';
-    document.getElementById('modal').classList.add('active');
-    document.body.style.overflow='hidden';
-    const sel=document.getElementById('planSelect');
-    if(sel){
-      if(type==='sl')sel.value='silver';
-      else if(type==='gl')sel.value='gold';
-      else if(type==='pl')sel.value='platinum';
-    }
-  }
-  function closeModal(){document.getElementById('modal').classList.remove('active');document.body.style.overflow='';}
-  function closeModalOutside(e){if(e.target===document.getElementById('modal'))closeModal();}
-  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
-  function submitForm(e){
-    e.preventDefault();
-    const name=e.target.name.value;
-    document.getElementById('modal-title').textContent=name+'さん、ありがとうございます！';
-    document.getElementById('modal-body').textContent='24時間以内にご連絡いたします。しばらくお待ちください。';
-    document.getElementById('modal').classList.add('active');
-    document.body.style.overflow='hidden';
-    e.target.reset();
-  }
   function openLightbox(el){
     var img=el.querySelector('img');
     if(!img)return;
