@@ -9,19 +9,23 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Noto Sans JP',sans-serif;background:#f6f4f1;color:#2a2a2a}
+
 .header{background:#1c1008;padding:40px 20px;text-align:center}
 .header h1{font-family:'Noto Serif JP',serif;font-size:clamp(1.4rem,4vw,2rem);color:#fff;font-weight:700;margin-bottom:8px}
 .header p{font-size:13px;color:rgba(255,255,255,.6)}
-.main{max-width:640px;margin:0 auto;padding:40px 20px 60px;display:flex;flex-direction:column;gap:16px}
-.item{background:#fff;border-radius:10px;display:flex;align-items:center;gap:20px;padding:20px;box-shadow:0 2px 10px rgba(0,0,0,.07)}
-.item img{width:120px;height:76px;object-fit:cover;border-radius:6px;flex-shrink:0}
-@media(max-width:480px){.item img{width:90px;height:58px}}
-.item-info{flex:1;min-width:0}
-.item-name{font-weight:700;font-size:.95rem;margin-bottom:3px}
-.item-sub{font-size:11px;color:#888}
-.btn{display:inline-block;background:#2a2a2a;color:#fff;font-size:13px;font-weight:700;padding:9px 22px;border-radius:6px;text-decoration:none;white-space:nowrap;flex-shrink:0;transition:background .2s}
+
+.main{max-width:720px;margin:0 auto;padding:48px 20px 80px;display:flex;flex-direction:column;gap:48px}
+
+.sample{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 16px rgba(0,0,0,.08)}
+.sample img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
+.sample-body{padding:28px 32px 32px}
+.sample-num{font-size:11px;color:#aaa;letter-spacing:.15em;margin-bottom:8px}
+.sample-name{font-family:'Noto Serif JP',serif;font-size:1.4rem;font-weight:700;margin-bottom:6px}
+.sample-sub{font-size:13px;color:#888;margin-bottom:24px}
+.btn{display:inline-block;background:#2a2a2a;color:#fff;font-size:14px;font-weight:700;padding:13px 40px;border-radius:8px;text-decoration:none;letter-spacing:.06em;transition:background .2s}
 .btn:hover{background:#555}
-footer{background:#1a1a1a;color:#666;font-size:11px;text-align:center;padding:18px;letter-spacing:.08em}
+
+footer{background:#1a1a1a;color:#666;font-size:11px;text-align:center;padding:20px;letter-spacing:.08em}
 footer a{color:#888;text-decoration:none}
 </style>
 </head>
@@ -29,54 +33,59 @@ footer a{color:#888;text-decoration:none}
 
 <div class="header">
   <h1>飲食店ホームページ サンプル一覧</h1>
-  <p>クリックして各サンプルをご覧ください</p>
+  <p>5種類のデザインテーマをご用意しています</p>
 </div>
 
 <main class="main">
 
-  <div class="item">
-    <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?q=70&w=400&auto=format&fit=crop" alt="和食">
-    <div class="item-info">
-      <p class="item-name">和食・日本料理</p>
-      <p class="item-sub">黒・金　高級感</p>
+  <div class="sample">
+    <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?q=70&w=1200&auto=format&fit=crop" alt="和食テンプレート">
+    <div class="sample-body">
+      <p class="sample-num">SAMPLE 01</p>
+      <p class="sample-name">和食・日本料理</p>
+      <p class="sample-sub">黒・金　高級感のある落ち着いたデザイン</p>
+      <a class="btn" href="washoku.html" target="_blank">サンプルを見る</a>
     </div>
-    <a class="btn" href="washoku.html" target="_blank">見る</a>
   </div>
 
-  <div class="item">
-    <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=70&w=400&auto=format&fit=crop" alt="カフェ">
-    <div class="item-info">
-      <p class="item-name">カフェ・洋食</p>
-      <p class="item-sub">白・ベージュ　ナチュラル</p>
+  <div class="sample">
+    <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=70&w=1200&auto=format&fit=crop" alt="カフェテンプレート">
+    <div class="sample-body">
+      <p class="sample-num">SAMPLE 02</p>
+      <p class="sample-name">カフェ・洋食</p>
+      <p class="sample-sub">白・ベージュ　ナチュラルでおしゃれなデザイン</p>
+      <a class="btn" href="cafe.html" target="_blank">サンプルを見る</a>
     </div>
-    <a class="btn" href="cafe.html" target="_blank">見る</a>
   </div>
 
-  <div class="item">
-    <img src="https://images.unsplash.com/photo-1557872943-16a5ac26437e?q=70&w=400&auto=format&fit=crop" alt="居酒屋">
-    <div class="item-info">
-      <p class="item-name">居酒屋・ラーメン</p>
-      <p class="item-sub">赤・黒　力強さ</p>
+  <div class="sample">
+    <img src="https://images.unsplash.com/photo-1557872943-16a5ac26437e?q=70&w=1200&auto=format&fit=crop" alt="居酒屋テンプレート">
+    <div class="sample-body">
+      <p class="sample-num">SAMPLE 03</p>
+      <p class="sample-name">居酒屋・ラーメン</p>
+      <p class="sample-sub">赤・黒　力強くインパクトのあるデザイン</p>
+      <a class="btn" href="izakaya.html" target="_blank">サンプルを見る</a>
     </div>
-    <a class="btn" href="izakaya.html" target="_blank">見る</a>
   </div>
 
-  <div class="item">
-    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=70&w=400&auto=format&fit=crop" alt="ファミリー">
-    <div class="item-info">
-      <p class="item-name">ファミリーレストラン</p>
-      <p class="item-sub">オレンジ・緑　明るい</p>
+  <div class="sample">
+    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=70&w=1200&auto=format&fit=crop" alt="ファミリーレストランテンプレート">
+    <div class="sample-body">
+      <p class="sample-num">SAMPLE 04</p>
+      <p class="sample-name">ファミリーレストラン</p>
+      <p class="sample-sub">オレンジ・緑　明るく親しみやすいデザイン</p>
+      <a class="btn" href="family.html" target="_blank">サンプルを見る</a>
     </div>
-    <a class="btn" href="family.html" target="_blank">見る</a>
   </div>
 
-  <div class="item">
-    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=70&w=400&auto=format&fit=crop" alt="フレンチ">
-    <div class="item-info">
-      <p class="item-name">フレンチ・イタリアン</p>
-      <p class="item-sub">白・深緑　上品</p>
+  <div class="sample">
+    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=70&w=1200&auto=format&fit=crop" alt="フレンチテンプレート">
+    <div class="sample-body">
+      <p class="sample-num">SAMPLE 05</p>
+      <p class="sample-name">フレンチ・イタリアン</p>
+      <p class="sample-sub">白・深緑　上品で洗練されたデザイン</p>
+      <a class="btn" href="french.html" target="_blank">サンプルを見る</a>
     </div>
-    <a class="btn" href="french.html" target="_blank">見る</a>
   </div>
 
 </main>
