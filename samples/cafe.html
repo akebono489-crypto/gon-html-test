@@ -1,208 +1,1300 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Café Lumière</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:'Noto Sans JP',sans-serif;color:#3a3028;background:#faf8f5}
-img{display:block;width:100%;height:100%;object-fit:cover}
-:root{--beige:#f0ebe2;--beige2:#e8e0d3;--brown:#7a5c3a;--brown-l:#a07850;--dark:#3a3028;--mid:#8a7a6a;--serif:'Cormorant Garamond',serif}
-.wrap{max-width:900px;margin:0 auto;padding:0 20px}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="カフェ・喫茶店向けの店舗ホームページ制作サンプル。メニュー、写真、店舗情報、予約導線まで整えた1ページサイトです。">
+  <title>Sample Cafe | 店舗ホームページ制作サンプル</title>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <style>
+    :root {
+      --bg: #f7f4ec;
+      --surface: #fffdf8;
+      --surface-strong: #ede5d5;
+      --ink: #24211d;
+      --muted: #6f675d;
+      --line: rgba(36, 33, 29, 0.14);
+      --brand: #6f3f25;
+      --brand-strong: #3f2518;
+      --accent: #2f6b5f;
+      --accent-soft: #dbe9e4;
+      --warm: #c9793f;
+      --shadow: 0 20px 60px rgba(31, 24, 17, 0.14);
+      --radius: 8px;
+      --max: 1160px;
+    }
 
-/* NAV */
-.nav{position:sticky;top:0;z-index:100;background:rgba(250,248,245,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--beige2)}
-.nav-inner{max-width:900px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:58px}
-.nav-brand{font-family:var(--serif);font-size:1.3rem;color:var(--brown);letter-spacing:.15em;font-style:italic}
-.nav-links{display:flex;gap:0}
-.nav-links a{color:var(--mid);text-decoration:none;font-size:12px;padding:8px 14px;letter-spacing:.06em;transition:color .2s}
-.nav-links a:hover{color:var(--brown)}
-.hamb{display:none;background:none;border:1px solid var(--beige2);color:var(--mid);padding:6px 12px;cursor:pointer;font-size:14px;border-radius:4px}
-@media(max-width:640px){.hamb{display:block}.nav-links{display:none;position:absolute;top:58px;left:0;right:0;background:#faf8f5;flex-direction:column;border-top:1px solid var(--beige2)}.nav-links.open{display:flex}.nav-links a{padding:14px 20px;border-bottom:1px solid var(--beige2)}}
+    [data-theme="urban"] {
+      --bg: #f5f7f5;
+      --surface: #ffffff;
+      --surface-strong: #e7ece9;
+      --ink: #151b1a;
+      --muted: #5f6865;
+      --line: rgba(21, 27, 26, 0.13);
+      --brand: #18443e;
+      --brand-strong: #0d2724;
+      --accent: #9b5a2e;
+      --accent-soft: #efe3d9;
+      --warm: #bd743c;
+      --shadow: 0 20px 58px rgba(14, 28, 25, 0.12);
+    }
 
-/* HERO */
-.hero{position:relative;height:88svh;min-height:460px;overflow:hidden}
-.hero img{position:absolute;inset:0;filter:brightness(.6)}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(240,235,226,.15) 0%,rgba(58,48,40,.7) 100%)}
-.hero-txt{position:absolute;bottom:0;left:0;right:0;padding:48px 24px;background:linear-gradient(transparent,rgba(58,48,40,.85))}
-.hero-en{font-family:var(--serif);font-size:11px;letter-spacing:.4em;color:rgba(255,255,255,.6);text-transform:uppercase;margin-bottom:10px}
-.hero-ttl{font-family:var(--serif);font-size:clamp(2.2rem,5vw,4rem);color:#fff;letter-spacing:.15em;font-style:italic;margin-bottom:10px}
-.hero-lead{font-size:13px;color:rgba(255,255,255,.75);letter-spacing:.08em;line-height:1.9}
+    [data-theme="night"] {
+      --bg: #171615;
+      --surface: #22201e;
+      --surface-strong: #312d29;
+      --ink: #fbf7ee;
+      --muted: #c4b8a9;
+      --line: rgba(251, 247, 238, 0.15);
+      --brand: #d99a5f;
+      --brand-strong: #f1c99a;
+      --accent: #8ec7b6;
+      --accent-soft: #283b36;
+      --warm: #d9a45f;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.32);
+    }
 
-/* LINE BANNER */
-.line-banner{background:var(--brown);padding:16px 20px;text-align:center}
-.line-banner p{color:#fff;font-size:14px;font-weight:500;letter-spacing:.05em}
-.line-banner span{font-size:12px;color:rgba(255,255,255,.75);display:block;margin-top:3px}
+    * {
+      box-sizing: border-box;
+    }
 
-/* SECTION */
-.sec{padding:72px 0;background:#faf8f5}
-.sec:nth-child(odd){background:var(--beige)}
-.sec-eyebrow{font-family:var(--serif);font-size:10px;letter-spacing:.35em;color:var(--brown-l);text-align:center;text-transform:uppercase;margin-bottom:8px}
-.sec-ttl{font-family:var(--serif);font-size:clamp(1.4rem,3vw,2rem);color:var(--dark);text-align:center;letter-spacing:.12em;margin-bottom:4px;font-style:italic}
-.sec-lead{font-size:13px;color:var(--mid);text-align:center;margin-bottom:40px;letter-spacing:.05em}
-.divider{width:28px;height:1px;background:var(--brown-l);margin:12px auto 32px}
+    html {
+      scroll-behavior: smooth;
+    }
 
-/* PHOTOS */
-.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
-.photo-item{aspect-ratio:4/3;overflow:hidden;border-radius:4px}
-.photo-item:first-child{grid-column:1/-1;aspect-ratio:16/7}
+    body {
+      margin: 0;
+      min-width: 320px;
+      font-family: "Yu Gothic", "Hiragino Kaku Gothic ProN", Meiryo, system-ui, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.7;
+    }
 
-/* MENU */
-.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-@media(max-width:560px){.menu-grid{grid-template-columns:1fr 1fr}}
-.menu-item{background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.06)}
-.menu-img{aspect-ratio:4/3}
-.menu-body{padding:14px 16px}
-.menu-name{font-family:var(--serif);font-size:.95rem;color:var(--dark);letter-spacing:.08em;margin-bottom:4px;font-style:italic}
-.menu-desc{font-size:11px;color:var(--mid);line-height:1.7;margin-bottom:10px}
-.menu-price{font-family:var(--serif);font-size:1.1rem;color:var(--brown)}
+    body.menu-open {
+      overflow: hidden;
+    }
 
-/* FEATURES */
-.feat-list{display:flex;flex-direction:column;gap:16px;max-width:580px;margin:0 auto}
-.feat-item{display:flex;gap:18px;align-items:flex-start;padding:20px 22px;background:#fff;border-radius:8px;box-shadow:0 1px 8px rgba(0,0,0,.05)}
-.feat-ico{font-size:1.6rem;flex-shrink:0}
-.feat-ttl{font-size:.9rem;color:var(--dark);font-weight:700;margin-bottom:5px}
-.feat-desc{font-size:12px;color:var(--mid);line-height:1.9}
+    img {
+      max-width: 100%;
+      display: block;
+    }
 
-/* INFO */
-.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:580px;margin:0 auto}
-@media(max-width:460px){.info-grid{grid-template-columns:1fr}}
-.info-item{padding:18px 20px;background:#fff;border-radius:8px;box-shadow:0 1px 6px rgba(0,0,0,.04)}
-.info-label{font-size:10px;letter-spacing:.2em;color:var(--brown-l);text-transform:uppercase;margin-bottom:6px;font-weight:500}
-.info-val{font-size:13px;color:var(--dark);line-height:1.9}
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-/* LINE CTA */
-.line-cta{padding:72px 20px;text-align:center;background:var(--brown)}
-.line-cta-ttl{font-family:var(--serif);font-size:clamp(1.2rem,2.5vw,1.6rem);color:#fff;margin-bottom:8px;letter-spacing:.1em;font-style:italic}
-.line-cta-sub{font-size:13px;color:rgba(255,255,255,.75);margin-bottom:28px;line-height:1.9}
-.btn-line{display:inline-flex;align-items:center;gap:10px;background:#06C755;color:#fff;text-decoration:none;font-size:15px;font-weight:700;padding:16px 40px;border-radius:50px;letter-spacing:.05em}
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
 
-footer{background:var(--dark);color:#888;font-size:11px;text-align:center;padding:24px 20px 40px;letter-spacing:.08em}
-</style>
+    button {
+      cursor: pointer;
+    }
+
+    .container {
+      width: min(100% - 40px, var(--max));
+      margin-inline: auto;
+    }
+
+    .site-header {
+      position: fixed;
+      z-index: 30;
+      inset: 0 0 auto;
+      border-bottom: 1px solid transparent;
+      transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .site-header.is-scrolled,
+    body.menu-open .site-header {
+      background: color-mix(in srgb, var(--surface) 92%, transparent);
+      border-color: var(--line);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+      backdrop-filter: blur(16px);
+    }
+
+    body:not(.menu-open) .site-header:not(.is-scrolled) .logo,
+    body:not(.menu-open) .site-header:not(.is-scrolled) .logo-text small,
+    body:not(.menu-open) .site-header:not(.is-scrolled) .nav a {
+      color: #fff;
+    }
+
+    body:not(.menu-open) .site-header:not(.is-scrolled) .logo-mark {
+      border-color: rgba(255, 255, 255, 0.46);
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+    }
+
+    body:not(.menu-open) .site-header:not(.is-scrolled) .menu-toggle {
+      border-color: rgba(255, 255, 255, 0.34);
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+    }
+
+    .header-inner {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+      color: var(--ink);
+    }
+
+    .logo-mark {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border: 1px solid color-mix(in srgb, var(--brand) 55%, transparent);
+      background: color-mix(in srgb, var(--surface) 84%, transparent);
+      border-radius: 50%;
+      color: var(--brand);
+      font-weight: 800;
+      letter-spacing: 0;
+      flex: 0 0 auto;
+    }
+
+    .logo-text {
+      display: grid;
+      line-height: 1.2;
+    }
+
+    .logo-text strong {
+      font-size: 1.02rem;
+      letter-spacing: 0;
+    }
+
+    .logo-text small {
+      color: var(--muted);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-left: auto;
+    }
+
+    .nav a {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      padding: 0 13px;
+      border-radius: 999px;
+      color: color-mix(in srgb, var(--ink) 86%, transparent);
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .nav a:hover,
+    .nav a:focus-visible {
+      background: color-mix(in srgb, var(--accent-soft) 80%, transparent);
+      outline: none;
+    }
+
+    .header-cta {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 18px;
+      border-radius: 999px;
+      background: var(--brand);
+      color: #fff;
+      font-weight: 800;
+      box-shadow: 0 12px 26px color-mix(in srgb, var(--brand) 24%, transparent);
+    }
+
+    .menu-toggle {
+      width: 44px;
+      height: 44px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--surface);
+      color: var(--ink);
+    }
+
+    .menu-toggle span,
+    .menu-toggle::before,
+    .menu-toggle::after {
+      width: 18px;
+      height: 2px;
+      display: block;
+      border-radius: 99px;
+      background: currentColor;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+      content: "";
+    }
+
+    .menu-toggle {
+      gap: 4px;
+      flex-direction: column;
+    }
+
+    .menu-toggle.is-active span {
+      opacity: 0;
+    }
+
+    .menu-toggle.is-active::before {
+      transform: translateY(6px) rotate(45deg);
+    }
+
+    .menu-toggle.is-active::after {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 82svh;
+      display: grid;
+      align-items: end;
+      isolation: isolate;
+      overflow: hidden;
+      color: #fff;
+      background: #181614;
+    }
+
+    .hero::before {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background:
+        linear-gradient(90deg, rgba(12, 10, 9, 0.82), rgba(12, 10, 9, 0.45) 48%, rgba(12, 10, 9, 0.16)),
+        linear-gradient(0deg, rgba(12, 10, 9, 0.72), rgba(12, 10, 9, 0.05) 44%),
+        url("https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=2200&auto=format&fit=crop") center / cover;
+      content: "";
+    }
+
+    .hero::after {
+      position: absolute;
+      inset: auto 0 0;
+      z-index: -1;
+      height: 34%;
+      background: linear-gradient(0deg, var(--bg), transparent);
+      opacity: 0.98;
+      content: "";
+    }
+
+    .hero-content {
+      padding: 136px 0 72px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 14px;
+      color: color-mix(in srgb, #fff 84%, var(--warm));
+      font-weight: 800;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      width: 32px;
+      height: 1px;
+      background: currentColor;
+      content: "";
+    }
+
+    .hero h1 {
+      max-width: 800px;
+      margin: 0;
+      font-size: clamp(2.5rem, 7vw, 5.9rem);
+      line-height: 0.98;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+
+    .hero-lead {
+      max-width: 620px;
+      margin: 26px 0 0;
+      color: rgba(255, 255, 255, 0.86);
+      font-size: clamp(1rem, 1.8vw, 1.22rem);
+      font-weight: 600;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 34px;
+    }
+
+    .btn {
+      min-height: 50px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 0 22px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      font-weight: 800;
+      line-height: 1.2;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    .btn-primary {
+      background: var(--brand);
+      color: #fff;
+      box-shadow: 0 18px 34px color-mix(in srgb, var(--brand) 34%, transparent);
+    }
+
+    .btn-secondary {
+      border-color: rgba(255, 255, 255, 0.38);
+      background: rgba(255, 255, 255, 0.13);
+      color: #fff;
+      backdrop-filter: blur(10px);
+    }
+
+    .booking-strip {
+      position: relative;
+      z-index: 4;
+      transform: translateY(-34px);
+    }
+
+    .booking-inner {
+      display: grid;
+      grid-template-columns: 1.1fr repeat(3, 0.8fr) auto;
+      gap: 1px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .booking-cell {
+      min-height: 92px;
+      display: grid;
+      align-content: center;
+      gap: 4px;
+      padding: 18px 22px;
+      background: var(--surface);
+    }
+
+    .booking-cell span {
+      color: var(--muted);
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .booking-cell strong {
+      font-size: 1.05rem;
+      line-height: 1.35;
+    }
+
+    .booking-cell .muted {
+      color: var(--muted);
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+
+    .booking-action {
+      min-width: 170px;
+      display: grid;
+      place-items: center;
+      padding: 18px 24px;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 900;
+      text-align: center;
+    }
+
+    .section {
+      padding: 76px 0;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 34px;
+    }
+
+    .section-kicker {
+      margin: 0 0 8px;
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(1.75rem, 3.8vw, 3.1rem);
+      line-height: 1.18;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+
+    .section-copy {
+      max-width: 520px;
+      margin: 0;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .concept-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 44px;
+      align-items: center;
+    }
+
+    .photo-frame {
+      overflow: hidden;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      background: var(--surface-strong);
+      aspect-ratio: 4 / 5;
+    }
+
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .concept-copy {
+      display: grid;
+      gap: 22px;
+    }
+
+    .concept-copy p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.02rem;
+      font-weight: 600;
+    }
+
+    .feature-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    .feature-item {
+      min-height: 154px;
+      display: grid;
+      align-content: start;
+      gap: 8px;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+    }
+
+    .feature-item span {
+      color: var(--warm);
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+    }
+
+    .feature-item strong {
+      font-size: 1.02rem;
+      line-height: 1.4;
+    }
+
+    .feature-item p {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .menu-section {
+      background: var(--surface);
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .menu-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+    }
+
+    .menu-card img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+    }
+
+    .menu-body {
+      display: grid;
+      gap: 10px;
+      padding: 22px;
+    }
+
+    .menu-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .menu-body h3 {
+      margin: 0;
+      font-size: 1.28rem;
+      line-height: 1.35;
+    }
+
+    .menu-body p {
+      margin: 0;
+      min-height: 58px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .menu-price {
+      color: var(--brand);
+      font-size: 1.24rem;
+      font-weight: 900;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-rows: 260px 260px;
+      gap: 16px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: var(--radius);
+    }
+
+    .gallery img:first-child {
+      grid-row: span 2;
+    }
+
+    .voice-section {
+      background: color-mix(in srgb, var(--accent-soft) 54%, var(--bg));
+    }
+
+    .voice-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .voice-card {
+      min-height: 250px;
+      display: grid;
+      align-content: space-between;
+      gap: 28px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+    }
+
+    .voice-card p {
+      margin: 0;
+      color: var(--ink);
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .voice-card span {
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 800;
+    }
+
+    .access-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .info-panel {
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+    }
+
+    .info-list {
+      margin: 24px 0 0;
+      display: grid;
+      gap: 1px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--line);
+    }
+
+    .info-list div {
+      display: grid;
+      grid-template-columns: 108px 1fr;
+      gap: 18px;
+      padding: 15px 16px;
+      background: var(--surface);
+    }
+
+    .info-list dt {
+      color: var(--muted);
+      font-weight: 900;
+    }
+
+    .info-list dd {
+      margin: 0;
+      font-weight: 700;
+    }
+
+    .map-box {
+      min-height: 420px;
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background:
+        linear-gradient(135deg, color-mix(in srgb, var(--surface-strong) 86%, transparent), color-mix(in srgb, var(--accent-soft) 75%, transparent)),
+        repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(0, 0, 0, 0.05) 41px),
+        repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(0, 0, 0, 0.05) 41px);
+      border: 1px solid var(--line);
+    }
+
+    .map-pin {
+      position: absolute;
+      left: 50%;
+      top: 48%;
+      transform: translate(-50%, -50%);
+      width: min(72%, 360px);
+      padding: 24px;
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .map-pin strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 1.18rem;
+    }
+
+    .map-pin span {
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .cta {
+      padding: 86px 0;
+      color: #fff;
+      background:
+        linear-gradient(90deg, rgba(20, 18, 16, 0.86), rgba(20, 18, 16, 0.54)),
+        url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2000&auto=format&fit=crop") center / cover;
+    }
+
+    .cta-inner {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .cta h2 {
+      max-width: 760px;
+    }
+
+    .cta p {
+      max-width: 650px;
+      margin: 18px 0 0;
+      color: rgba(255, 255, 255, 0.82);
+      font-weight: 600;
+    }
+
+    .footer {
+      padding: 34px 0 100px;
+      background: var(--brand-strong);
+      color: color-mix(in srgb, #fff 88%, var(--warm));
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .theme-switcher {
+      position: fixed;
+      z-index: 35;
+      right: 18px;
+      bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--surface) 92%, transparent);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.14);
+      backdrop-filter: blur(14px);
+    }
+
+    .theme-switcher span {
+      padding: 0 8px 0 10px;
+      color: var(--muted);
+      font-size: 0.74rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+    }
+
+    .theme-btn {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: var(--surface);
+    }
+
+    .theme-btn::before {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--dot);
+      content: "";
+    }
+
+    .theme-btn[data-theme-value="organic"] {
+      --dot: #6f3f25;
+    }
+
+    .theme-btn[data-theme-value="urban"] {
+      --dot: #18443e;
+    }
+
+    .theme-btn[data-theme-value="night"] {
+      --dot: #171615;
+    }
+
+    .theme-btn.is-active {
+      outline: 3px solid color-mix(in srgb, var(--accent) 26%, transparent);
+      outline-offset: 2px;
+    }
+
+    .toast {
+      position: fixed;
+      z-index: 50;
+      left: 50%;
+      bottom: 88px;
+      transform: translate(-50%, 14px);
+      width: min(calc(100% - 36px), 420px);
+      padding: 14px 18px;
+      border-radius: var(--radius);
+      background: var(--brand-strong);
+      color: #fff;
+      box-shadow: var(--shadow);
+      text-align: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      font-weight: 800;
+    }
+
+    .toast.is-visible {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    @media (max-width: 980px) {
+      .header-cta,
+      .nav {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .nav.is-open {
+        position: fixed;
+        inset: 76px 0 0;
+        display: grid;
+        align-content: start;
+        gap: 0;
+        padding: 18px 20px 28px;
+        background: var(--surface);
+        border-top: 1px solid var(--line);
+      }
+
+      .nav.is-open a {
+        min-height: 58px;
+        border-bottom: 1px solid var(--line);
+        border-radius: 0;
+        font-size: 1.04rem;
+      }
+
+      .booking-inner,
+      .concept-grid,
+      .access-grid,
+      .cta-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .booking-strip {
+        transform: translateY(-22px);
+      }
+
+      .booking-action {
+        min-height: 72px;
+      }
+
+      .feature-list,
+      .menu-grid,
+      .voice-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 220px 220px;
+      }
+
+      .gallery img:first-child {
+        grid-column: span 2;
+        grid-row: auto;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(100% - 28px, var(--max));
+      }
+
+      .header-inner {
+        min-height: 68px;
+      }
+
+      .logo-text small {
+        display: none;
+      }
+
+      .nav.is-open {
+        inset: 68px 0 0;
+      }
+
+      .hero {
+        min-height: 80svh;
+      }
+
+      .hero-content {
+        padding: 116px 0 58px;
+      }
+
+      .hero-actions {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .section {
+        padding: 58px 0;
+      }
+
+      .section-head {
+        display: grid;
+        gap: 12px;
+      }
+
+      .booking-cell {
+        min-height: 82px;
+        padding: 16px;
+      }
+
+      .photo-frame {
+        aspect-ratio: 1 / 1;
+      }
+
+      .menu-card img {
+        height: 210px;
+      }
+
+      .gallery {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: none;
+      }
+
+      .gallery img,
+      .gallery img:first-child {
+        grid-column: auto;
+        height: 220px;
+      }
+
+      .info-list div {
+        grid-template-columns: 1fr;
+        gap: 3px;
+      }
+
+      .map-box {
+        min-height: 320px;
+      }
+
+      .theme-switcher {
+        left: 14px;
+        right: 14px;
+        justify-content: center;
+      }
+
+      .theme-switcher span {
+        display: none;
+      }
+
+      .footer {
+        padding-bottom: 88px;
+      }
+    }
+  </style>
 </head>
-<body>
-
-<nav class="nav">
-  <div class="nav-inner">
-    <span class="nav-brand">Café Lumière</span>
-    <button class="hamb" onclick="this.nextElementSibling.classList.toggle('open')">☰</button>
-    <div class="nav-links">
-      <a href="#photos">お店の写真</a>
-      <a href="#menu">メニュー</a>
-      <a href="#features">特徴</a>
-      <a href="#info">店舗案内</a>
+<body data-theme="organic">
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a class="logo" href="#top" aria-label="Sample Cafe ホームへ">
+        <span class="logo-mark">SC</span>
+        <span class="logo-text">
+          <strong>Sample Cafe</strong>
+          <small>Cafe Website Sample</small>
+        </span>
+      </a>
+      <nav class="nav" id="nav" aria-label="メインメニュー">
+        <a href="#concept">コンセプト</a>
+        <a href="#menu">メニュー</a>
+        <a href="#gallery">写真</a>
+        <a href="#access">店舗情報</a>
+        <a href="#reserve">予約</a>
+      </nav>
+      <a class="header-cta" href="../index.html">LINEで予約</a>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="メニューを開閉" aria-controls="nav" aria-expanded="false">
+        <span></span>
+      </button>
     </div>
-  </div>
-</nav>
+  </header>
 
-<section class="hero">
-  <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=1800&auto=format&fit=crop" alt="Café Lumière 外観">
-  <div class="hero-overlay"></div>
-  <div class="hero-txt">
-    <p class="hero-en">Coffee & Western Cuisine</p>
-    <h1 class="hero-ttl">Café Lumière</h1>
-    <p class="hero-lead">こだわりのコーヒーと、手作りの洋食。ゆっくりと流れる時間の中で。</p>
-  </div>
-</section>
-
-<div class="line-banner">
-  <p>🎁 LINE登録でワンドリンク無料プレゼント</p>
-  <span>ご来店時にLINE登録画面をご提示ください</span>
-</div>
-
-<section class="sec" id="photos">
-  <div class="wrap">
-    <p class="sec-eyebrow">Gallery</p>
-    <h2 class="sec-ttl">お店の写真</h2>
-    <div class="divider"></div>
-    <div class="photo-grid">
-      <div class="photo-item"><img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=1200&auto=format&fit=crop" alt="外観"></div>
-      <div class="photo-item"><img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=800&auto=format&fit=crop" alt="店内1"></div>
-      <div class="photo-item"><img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?q=80&w=800&auto=format&fit=crop" alt="店内2"></div>
-    </div>
-  </div>
-</section>
-
-<section class="sec" id="menu">
-  <div class="wrap">
-    <p class="sec-eyebrow">Menu</p>
-    <h2 class="sec-ttl">メニュー</h2>
-    <div class="divider"></div>
-    <div class="menu-grid">
-      <div class="menu-item">
-        <div class="menu-img"><img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=600&auto=format&fit=crop" alt="コーヒー"></div>
-        <div class="menu-body">
-          <p class="menu-name">スペシャルティコーヒー</p>
-          <p class="menu-desc">世界各地から厳選した豆を毎日丁寧に焙煎</p>
-          <p class="menu-price">¥680〜</p>
+  <main id="top">
+    <section class="hero" aria-labelledby="heroTitle">
+      <div class="container hero-content">
+        <p class="eyebrow">Cafe Website Sample</p>
+        <h1 id="heroTitle">Sample Cafe</h1>
+        <p class="hero-lead">
+          香り、空間、メニュー、予約導線まで伝わる、カフェ・喫茶店向けの1ページ店舗サイトです。
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#menu">メニューを見る</a>
+          <a class="btn btn-secondary" href="#access">店舗情報を見る</a>
         </div>
       </div>
-      <div class="menu-item">
-        <div class="menu-img"><img src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?q=80&w=600&auto=format&fit=crop" alt="ケーキ"></div>
-        <div class="menu-body">
-          <p class="menu-name">自家製ホールケーキ</p>
-          <p class="menu-desc">毎朝手作りの季節のケーキ。テイクアウトも可</p>
-          <p class="menu-price">¥550〜</p>
+    </section>
+
+    <section class="booking-strip" aria-label="店舗の基本情報">
+      <div class="container booking-inner">
+        <div class="booking-cell">
+          <span>Today</span>
+          <strong>本日 9:00 - 20:00 営業</strong>
+          <div class="muted">火曜定休・テイクアウト対応</div>
+        </div>
+        <div class="booking-cell">
+          <span>Lunch</span>
+          <strong>11:00 - 14:30</strong>
+        </div>
+        <div class="booking-cell">
+          <span>Seat</span>
+          <strong>26席</strong>
+        </div>
+        <div class="booking-cell">
+          <span>Station</span>
+          <strong>駅から徒歩5分</strong>
+        </div>
+        <a class="booking-action" href="#reserve">予約・問い合わせ</a>
+      </div>
+    </section>
+
+    <section class="section" id="concept">
+      <div class="container concept-grid">
+        <div class="photo-frame">
+          <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?q=80&w=1200&auto=format&fit=crop" alt="木目のテーブルと落ち着いたカフェ店内">
+        </div>
+        <div class="concept-copy">
+          <div>
+            <p class="section-kicker">Concept</p>
+            <h2>はじめての人にも、常連にも、入りやすい空気を。</h2>
+          </div>
+          <p>
+            店舗サイトで大事なのは、きれいに見せることだけではありません。
+            入店前の不安を減らし、メニューの魅力を伝え、来店や予約につながる導線を用意することです。
+          </p>
+          <div class="feature-list">
+            <article class="feature-item">
+              <span>01</span>
+              <strong>写真で雰囲気を伝える</strong>
+              <p>店内、メニュー、外観を見せて、来店前のイメージを作ります。</p>
+            </article>
+            <article class="feature-item">
+              <span>02</span>
+              <strong>価格と内容を見やすく</strong>
+              <p>スマホでも選びやすいメニュー構成で、迷いを減らします。</p>
+            </article>
+            <article class="feature-item">
+              <span>03</span>
+              <strong>予約まで迷わせない</strong>
+              <p>LINE、電話、地図など、次の行動につながる場所を固定します。</p>
+            </article>
+          </div>
         </div>
       </div>
-      <div class="menu-item">
-        <div class="menu-img"><img src="https://images.unsplash.com/photo-1565299507177-b0ac66763828?q=80&w=600&auto=format&fit=crop" alt="ランチ"></div>
-        <div class="menu-body">
-          <p class="menu-name">日替わりランチ</p>
-          <p class="menu-desc">スープ・サラダ・ドリンク付きのボリュームランチ</p>
-          <p class="menu-price">¥1,200</p>
+    </section>
+
+    <section class="section menu-section" id="menu">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">Menu</p>
+            <h2>おすすめメニュー</h2>
+          </div>
+          <p class="section-copy">
+            写真、価格、ひとこと説明をそろえるだけで、メニューはぐっと選ばれやすくなります。
+          </p>
+        </div>
+        <div class="menu-grid">
+          <article class="menu-card">
+            <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=900&auto=format&fit=crop" alt="ハンドドリップコーヒー">
+            <div class="menu-body">
+              <div class="menu-meta"><span>Coffee</span><span>人気</span></div>
+              <h3>ハンドドリップコーヒー</h3>
+              <p>豆の香りと余韻を楽しめる、毎日飲みたい定番の一杯です。</p>
+              <div class="menu-price">580円</div>
+            </div>
+          </article>
+          <article class="menu-card">
+            <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?q=80&w=900&auto=format&fit=crop" alt="季節のスイーツ">
+            <div class="menu-body">
+              <div class="menu-meta"><span>Sweets</span><span>季節限定</span></div>
+              <h3>季節のスイーツプレート</h3>
+              <p>旬の果物と自家製クリームを合わせた、午後の時間に合う一皿です。</p>
+              <div class="menu-price">780円</div>
+            </div>
+          </article>
+          <article class="menu-card">
+            <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=900&auto=format&fit=crop" alt="ランチプレート">
+            <div class="menu-body">
+              <div class="menu-meta"><span>Lunch</span><span>平日限定</span></div>
+              <h3>週替わりランチプレート</h3>
+              <p>野菜とメインをバランスよく。短い昼休みにも食べやすいセットです。</p>
+              <div class="menu-price">1,180円</div>
+            </div>
+          </article>
         </div>
       </div>
+    </section>
+
+    <section class="section" id="gallery">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">Photo</p>
+            <h2>来店前に、空気感が伝わる写真を。</h2>
+          </div>
+          <p class="section-copy">
+            外観、席、料理、スタッフの写真を整理すると、初めてのお客様にも選ばれやすくなります。
+          </p>
+        </div>
+        <div class="gallery">
+          <img src="https://images.unsplash.com/photo-1511081692775-05d0f180a065?q=80&w=1200&auto=format&fit=crop" alt="カフェの客席">
+          <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?q=80&w=900&auto=format&fit=crop" alt="コーヒーと作業風景">
+          <img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?q=80&w=900&auto=format&fit=crop" alt="カフェの外観">
+        </div>
+      </div>
+    </section>
+
+    <section class="section voice-section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">Use Case</p>
+            <h2>店舗サイトで伝えること</h2>
+          </div>
+        </div>
+        <div class="voice-grid">
+          <article class="voice-card">
+            <p>メニューの値段、写真、提供時間が見えるので、来店前の迷いを減らせます。</p>
+            <span>メニュー導線</span>
+          </article>
+          <article class="voice-card">
+            <p>席数や営業時間、定休日をすぐ見られるので、電話対応の手間も減らせます。</p>
+            <span>店舗案内</span>
+          </article>
+          <article class="voice-card">
+            <p>LINE予約や地図への導線を置くことで、見た人がそのまま行動できます。</p>
+            <span>予約・問い合わせ</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="access">
+      <div class="container access-grid">
+        <div class="info-panel">
+          <p class="section-kicker">Information</p>
+          <h2>店舗情報</h2>
+          <dl class="info-list">
+            <div>
+              <dt>店舗名</dt>
+              <dd>Sample Cafe</dd>
+            </div>
+            <div>
+              <dt>営業時間</dt>
+              <dd>9:00 - 20:00</dd>
+            </div>
+            <div>
+              <dt>定休日</dt>
+              <dd>火曜日</dd>
+            </div>
+            <div>
+              <dt>住所</dt>
+              <dd>東京都サンプル区 1-2-3</dd>
+            </div>
+            <div>
+              <dt>支払い</dt>
+              <dd>現金・クレジット・QR決済</dd>
+            </div>
+          </dl>
+        </div>
+        <div class="map-box" aria-label="地図エリア">
+          <div class="map-pin">
+            <strong>Google Map 埋め込み位置</strong>
+            <span>実案件では店舗の地図に差し替えます</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="reserve">
+      <div class="container cta-inner">
+        <div>
+          <p class="eyebrow">Reservation</p>
+          <h2>気になったら、そのまま予約・問い合わせへ。</h2>
+          <p>
+            実案件ではLINE、電話、Googleマップ、Instagramなど、店舗に合う導線へ差し替えます。
+            小さな店でも必要な情報が迷わず届く構成です。
+          </p>
+        </div>
+        <a class="btn btn-primary" href="../index.html">LINEで予約・相談する</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>© 2026 Sample Cafe</span>
+      <span>Created as a cafe website production sample.</span>
     </div>
+  </footer>
+
+  <div class="theme-switcher" aria-label="デザインテーマ切替">
+    <span>STYLE</span>
+    <button class="theme-btn is-active" type="button" data-theme-value="organic" aria-label="Organic theme"></button>
+    <button class="theme-btn" type="button" data-theme-value="urban" aria-label="Urban theme"></button>
+    <button class="theme-btn" type="button" data-theme-value="night" aria-label="Night theme"></button>
   </div>
-</section>
+  <div class="toast" id="toast" role="status" aria-live="polite">実案件では店舗のLINE予約へ接続します</div>
 
-<section class="sec" id="features">
-  <div class="wrap">
-    <p class="sec-eyebrow">Features</p>
-    <h2 class="sec-ttl">特徴</h2>
-    <div class="divider"></div>
-    <div class="feat-list">
-      <div class="feat-item"><div class="feat-ico">☕</div><div><p class="feat-ttl">スペシャルティコーヒー専門</p><p class="feat-desc">SCA資格を持つバリスタが、豆の個性を最大限に引き出した一杯をお届けします。</p></div></div>
-      <div class="feat-item"><div class="feat-ico">🌿</div><div><p class="feat-ttl">無添加・手作りのフード</p><p class="feat-desc">添加物を使わず、毎朝手作りするケーキとランチ。お体に優しい素材にこだわっています。</p></div></div>
-      <div class="feat-item"><div class="feat-ico">💻</div><div><p class="feat-ttl">テレワーク・勉強OK</p><p class="feat-desc">全席Wi-Fi完備・電源あり。静かな空間でのお仕事・勉強を歓迎しています（1ドリンク制）。</p></div></div>
-    </div>
-  </div>
-</section>
+  <script>
+    const body = document.body;
+    const header = document.getElementById("siteHeader");
+    const nav = document.getElementById("nav");
+    const menuToggle = document.getElementById("menuToggle");
+    const toast = document.getElementById("toast");
 
-<section class="sec" id="info">
-  <div class="wrap">
-    <p class="sec-eyebrow">Access</p>
-    <h2 class="sec-ttl">店舗案内</h2>
-    <div class="divider"></div>
-    <div class="info-grid">
-      <div class="info-item"><p class="info-label">住所</p><p class="info-val">〒000-0000<br>○○県○○市○○町1-2-3</p></div>
-      <div class="info-item"><p class="info-label">営業時間</p><p class="info-val">8:00〜20:00<br>（L.O. 19:30）</p></div>
-      <div class="info-item"><p class="info-label">定休日</p><p class="info-val">火曜日・水曜日</p></div>
-      <div class="info-item"><p class="info-label">アクセス</p><p class="info-val">○○駅 徒歩5分<br>駐車場あり（3台）</p></div>
-    </div>
-  </div>
-</section>
+    function setHeaderState() {
+      header.classList.toggle("is-scrolled", window.scrollY > 24);
+    }
 
+    function closeMenu() {
+      nav.classList.remove("is-open");
+      menuToggle.classList.remove("is-active");
+      menuToggle.setAttribute("aria-expanded", "false");
+      body.classList.remove("menu-open");
+    }
 
-    <div style="margin-top:24px">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12960!2d139.1566!3d35.2646!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x601775b7b38b85e9%3A0x4d498e77a2768e29!2z5bCP55Sw5Y6f5biC!5e0!3m2!1sja!2sjp!4v1700000000000" width="100%" height="240" style="border:0;display:block;border-radius:8px" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="店舗地図"></iframe>
-      <p style="font-size:11px;text-align:center;margin-top:6px;opacity:.6">※ 地図は納品時にお店の実際の住所に差し替えます</p>
-    </div>
+    window.addEventListener("scroll", setHeaderState, { passive: true });
+    setHeaderState();
 
-<section class="line-cta">
-  <h2 class="line-cta-ttl">LINEでご予約・お問い合わせ</h2>
-  <p class="line-cta-sub">LINE登録でワンドリンク無料 🎁<br>ご来店時に登録画面をご提示ください</p>
-  <a class="btn-line" href="../index.html" target="_blank" rel="noopener">
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 40 40" fill="white"><path d="M20 4C11.163 4 4 10.163 4 17.6c0 4.356 2.31 8.228 5.926 10.8-.26 1.01-1.664 6.456-1.664 6.456s-.07.57.308.788c.378.218.787.03 1.02-.122 0 0 6.576-4.356 7.41-4.912.98.14 1.98.21 3 .21 8.837 0 16-6.163 16-13.62C36 10.163 28.837 4 20 4z"/></svg>
-    LINEで予約・問い合わせ
-  </a>
-</section>
+    menuToggle.addEventListener("click", () => {
+      const isOpen = nav.classList.toggle("is-open");
+      menuToggle.classList.toggle("is-active", isOpen);
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      body.classList.toggle("menu-open", isOpen);
+    });
 
-<footer>© 2025 Café Lumière — All Rights Reserved.</footer>
+    nav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+
+    document.querySelectorAll(".theme-btn").forEach((button) => {
+      button.addEventListener("click", () => {
+        body.dataset.theme = button.dataset.themeValue;
+        document.querySelectorAll(".theme-btn").forEach((item) => item.classList.remove("is-active"));
+        button.classList.add("is-active");
+      });
+    });
+
+    document.getElementById("reserveButton").addEventListener("click", () => {
+      toast.classList.add("is-visible");
+      window.setTimeout(() => toast.classList.remove("is-visible"), 2600);
+    });
+  </script>
 </body>
 </html>
