@@ -56,10 +56,63 @@
     .drawer a:hover { color: var(--accent); }
     .drawer .drawer-cta { background: var(--accent); color: #fff; padding: 14px 40px; font-size: 14px; border-radius: 2px; }
     .hero { position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden; background: #0C1410; }
-    .hero-bg { position: absolute; inset: 0; background-image: url('hakamairi-imgs/hero.jpg'); background-size: cover; background-position: center; opacity: .55; }
+    .hero-bg { position: absolute; inset: 0; background-image: url('hakamairi-imgs/hero.jpg'); background-size: cover; background-position: center; opacity: .55; transition: opacity .3s; }
     .hero-ov { position: absolute; inset: 0; background: linear-gradient(105deg, rgba(8,18,10,.72) 0%, rgba(8,18,10,.35) 55%, rgba(8,18,10,.10) 100%); }
     .hero-deco { position: absolute; right: 3%; bottom: 0; font-family: var(--ff-serif); font-size: clamp(140px,20vw,280px); color: rgba(255,255,255,.04); line-height: 1; pointer-events: none; user-select: none; }
     .hero-c { position: relative; z-index: 1; padding: calc(var(--hh) + 70px) 40px 80px; max-width: var(--hw); margin: 0 auto; width: 100%; }
+
+    /* 明るさコントロール */
+    .brightness-ctrl {
+      position: absolute;
+      bottom: 24px;
+      right: 24px;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0,0,0,.35);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 20px;
+      padding: 7px 14px;
+    }
+    .brightness-ctrl label {
+      font-size: 11px;
+      color: rgba(255,255,255,.7);
+      letter-spacing: .06em;
+      white-space: nowrap;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .brightness-ctrl input[type=range] {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 90px;
+      height: 3px;
+      background: rgba(255,255,255,.3);
+      border-radius: 2px;
+      outline: none;
+      cursor: pointer;
+    }
+    .brightness-ctrl input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 1px 4px rgba(0,0,0,.4);
+    }
+    .brightness-ctrl input[type=range]::-moz-range-thumb {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #fff;
+      border: none;
+      box-shadow: 0 1px 4px rgba(0,0,0,.4);
+    }
+
     .eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 10px; letter-spacing: .28em; text-transform: uppercase; color: var(--gold); margin-bottom: 26px; }
     .eyebrow::before { content: ''; display: block; width: 26px; height: 1px; background: currentColor; }
     h1 { font-family: var(--ff-serif); font-size: clamp(1.9rem,4.8vw,3.1rem); font-weight: 700; color: #fff; line-height: 1.52; margin-bottom: 24px; text-wrap: balance; }
@@ -178,6 +231,8 @@
       .stat:last-child { border-bottom: none; }
       .qr-inner { flex-direction: column; align-items: flex-start; gap: 32px; }
       .card-preview { width: 100%; }
+      .brightness-ctrl { bottom: 16px; right: 16px; }
+      .brightness-ctrl input[type=range] { width: 70px; }
     }
   </style>
 </head>
@@ -218,7 +273,7 @@
   </nav>
 
   <section class="hero" id="top">
-    <div class="hero-bg"></div>
+    <div class="hero-bg" id="heroBg"></div>
     <div class="hero-ov"></div>
     <div class="hero-deco">縁</div>
     <div class="hero-c">
@@ -229,6 +284,15 @@
         <a class="btn btn-solid" href="#plans">プランを見る</a>
         <a class="btn btn-ghost" href="#cta">まずは無料相談</a>
       </div>
+    </div>
+    <div class="brightness-ctrl">
+      <label for="brightnessSlider">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="2" stroke-linecap="round">
+          <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+        明るさ
+      </label>
+      <input type="range" id="brightnessSlider" min="10" max="100" value="55" step="1">
     </div>
   </section>
 
@@ -459,6 +523,13 @@
       const t = document.getElementById('toast');
       t.classList.add('show');
       setTimeout(() => t.classList.remove('show'), 2800);
+    });
+
+    // 明るさスライダー
+    const slider = document.getElementById('brightnessSlider');
+    const heroBg = document.getElementById('heroBg');
+    slider.addEventListener('input', () => {
+      heroBg.style.opacity = slider.value / 100;
     });
   </script>
 </body>
