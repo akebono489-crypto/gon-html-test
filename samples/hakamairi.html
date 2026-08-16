@@ -60,59 +60,11 @@
     .hero-ov { position: absolute; inset: 0; background: linear-gradient(105deg, rgba(8,18,10,.72) 0%, rgba(8,18,10,.35) 55%, rgba(8,18,10,.10) 100%); }
     .hero-deco { position: absolute; right: 3%; bottom: 0; font-family: var(--ff-serif); font-size: clamp(140px,20vw,280px); color: rgba(255,255,255,.04); line-height: 1; pointer-events: none; user-select: none; }
     .hero-c { position: relative; z-index: 1; padding: calc(var(--hh) + 70px) 40px 80px; max-width: var(--hw); margin: 0 auto; width: 100%; }
-
-    /* 明るさコントロール */
-    .brightness-ctrl {
-      position: absolute;
-      bottom: 24px;
-      right: 24px;
-      z-index: 10;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(0,0,0,.35);
-      backdrop-filter: blur(6px);
-      border: 1px solid rgba(255,255,255,.15);
-      border-radius: 20px;
-      padding: 7px 14px;
-    }
-    .brightness-ctrl label {
-      font-size: 11px;
-      color: rgba(255,255,255,.7);
-      letter-spacing: .06em;
-      white-space: nowrap;
-      user-select: none;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-    .brightness-ctrl input[type=range] {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 90px;
-      height: 3px;
-      background: rgba(255,255,255,.3);
-      border-radius: 2px;
-      outline: none;
-      cursor: pointer;
-    }
-    .brightness-ctrl input[type=range]::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      background: #fff;
-      box-shadow: 0 1px 4px rgba(0,0,0,.4);
-    }
-    .brightness-ctrl input[type=range]::-moz-range-thumb {
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      background: #fff;
-      border: none;
-      box-shadow: 0 1px 4px rgba(0,0,0,.4);
-    }
-
+    .brightness-ctrl { position: absolute; bottom: 24px; right: 24px; z-index: 10; display: flex; align-items: center; gap: 8px; background: rgba(0,0,0,.35); backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,.15); border-radius: 20px; padding: 7px 14px; }
+    .brightness-ctrl label { font-size: 11px; color: rgba(255,255,255,.7); letter-spacing: .06em; white-space: nowrap; user-select: none; display: flex; align-items: center; gap: 5px; }
+    .brightness-ctrl input[type=range] { -webkit-appearance: none; appearance: none; width: 90px; height: 3px; background: rgba(255,255,255,.3); border-radius: 2px; outline: none; cursor: pointer; }
+    .brightness-ctrl input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 14px; height: 14px; border-radius: 50%; background: #fff; box-shadow: 0 1px 4px rgba(0,0,0,.4); }
+    .brightness-ctrl input[type=range]::-moz-range-thumb { width: 14px; height: 14px; border-radius: 50%; background: #fff; border: none; box-shadow: 0 1px 4px rgba(0,0,0,.4); }
     .eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 10px; letter-spacing: .28em; text-transform: uppercase; color: var(--gold); margin-bottom: 26px; }
     .eyebrow::before { content: ''; display: block; width: 26px; height: 1px; background: currentColor; }
     h1 { font-family: var(--ff-serif); font-size: clamp(1.9rem,4.8vw,3.1rem); font-weight: 700; color: #fff; line-height: 1.52; margin-bottom: 24px; text-wrap: balance; }
@@ -183,12 +135,20 @@
     .vwho { font-size: 12px; color: var(--sub); }
     .cta-sec { background: #101810; padding: 88px 0; position: relative; overflow: hidden; }
     .cta-bg { position: absolute; inset: 0; background-image: url('hakamairi-imgs/hero.jpg'); background-size: cover; background-position: center; opacity: .15; }
-    .cta-inner { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 48px; }
+    .cta-inner { position: relative; z-index: 1; }
+    .cta-top { display: flex; align-items: center; justify-content: space-between; gap: 48px; margin-bottom: 40px; }
     .cta-sec .eyebrow { color: var(--gold); }
     .cta-sec h2 { font-family: var(--ff-serif); color: #fff; font-size: clamp(1.3rem,2.5vw,1.9rem); margin-bottom: 12px; margin-top: 12px; }
     .cta-sec p { color: rgba(255,255,255,.55); font-size: 14px; line-height: 1.8; }
+    .cta-btns { display: flex; gap: 16px; flex-wrap: wrap; }
     .btn-line { display: inline-flex; align-items: center; gap: 10px; background: #06C755; color: #fff; padding: 14px 34px; font-size: 15px; font-weight: 700; border-radius: 4px; border: none; cursor: pointer; font-family: inherit; letter-spacing: .06em; transition: background .2s; white-space: nowrap; text-decoration: none; }
     .btn-line:hover { background: #05b04c; }
+    .btn-form { display: inline-flex; align-items: center; gap: 10px; background: transparent; color: #fff; padding: 14px 34px; font-size: 15px; font-weight: 700; border-radius: 4px; border: 1.5px solid rgba(255,255,255,.4); cursor: pointer; font-family: inherit; letter-spacing: .06em; transition: background .2s, border-color .2s; white-space: nowrap; text-decoration: none; }
+    .btn-form:hover { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.7); }
+    .contact-note { position: relative; z-index: 1; border-top: 1px solid rgba(255,255,255,.1); padding-top: 28px; display: flex; gap: 32px; flex-wrap: wrap; }
+    .contact-note-item { display: flex; align-items: flex-start; gap: 10px; }
+    .contact-note-label { font-size: 10px; letter-spacing: .15em; color: var(--gold); font-weight: 700; white-space: nowrap; padding-top: 2px; }
+    .contact-note-text { font-size: 13px; color: rgba(255,255,255,.5); line-height: 1.6; }
     .qr-sec { background: var(--surface); border-top: 1px solid var(--border); padding: 64px 0; }
     .qr-inner { display: flex; align-items: center; gap: 48px; }
     .qr-box { flex-shrink: 0; width: 160px; height: 160px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; background: #fff; }
@@ -225,7 +185,7 @@
       .profile-photo img { aspect-ratio: 3/2; }
       .why-grid { grid-template-columns: 1fr; }
       .voice-grid { grid-template-columns: 1fr; }
-      .cta-inner { flex-direction: column; align-items: flex-start; gap: 28px; }
+      .cta-top { flex-direction: column; align-items: flex-start; gap: 28px; }
       .stats-row { grid-template-columns: 1fr; }
       .stat { border-right: none; border-bottom: 1px solid var(--border); padding: 24px; }
       .stat:last-child { border-bottom: none; }
@@ -233,6 +193,7 @@
       .card-preview { width: 100%; }
       .brightness-ctrl { bottom: 16px; right: 16px; }
       .brightness-ctrl input[type=range] { width: 70px; }
+      .contact-note { flex-direction: column; gap: 16px; }
     }
   </style>
 </head>
@@ -252,10 +213,11 @@
         <a href="#gallery">ギャラリー</a>
         <a href="#profile">プロフィール</a>
         <a href="#plans">料金</a>
+        <a href="#cta">お問い合わせ</a>
         <a href="../../tokusho.html">特定商取引法</a>
         <a href="../../privacy.html">プライバシーポリシー</a>
       </nav>
-      <a class="hdr-cta" href="#cta">LINEで無料相談</a>
+      <a class="hdr-cta" href="#cta">お問い合わせ</a>
       <button class="hamburger" id="hamburger" aria-label="メニューを開閉" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -267,9 +229,10 @@
     <a href="#gallery" data-close>ギャラリー</a>
     <a href="#profile" data-close>プロフィール</a>
     <a href="#plans" data-close>料金プラン</a>
+    <a href="#cta" data-close>お問い合わせ</a>
     <a href="../../tokusho.html" data-close>特定商取引法</a>
     <a href="../../privacy.html" data-close>プライバシーポリシー</a>
-    <a class="drawer-cta btn-line" href="#cta" data-close>LINEで無料相談</a>
+    <a class="drawer-cta btn-line" href="#cta" data-close>お問い合わせ</a>
   </nav>
 
   <section class="hero" id="top">
@@ -453,15 +416,33 @@
   <section class="cta-sec" id="cta">
     <div class="cta-bg"></div>
     <div class="wrap cta-inner">
-      <div>
-        <p class="eyebrow">Contact</p>
-        <h2>まずは無料でご相談ください。</h2>
-        <p>「料金だけ聞きたい」「見学したい」だけでも大歓迎です。<br>LINEからお気軽にメッセージをどうぞ。</p>
+      <div class="cta-top">
+        <div>
+          <p class="eyebrow">Contact</p>
+          <h2>まずは無料でご相談ください。</h2>
+          <p>「料金だけ聞きたい」「見学したい」だけでも大歓迎です。<br>お気軽にご連絡ください。</p>
+        </div>
+        <div class="cta-btns">
+          <button class="btn-line" id="lineBtn" type="button">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+            LINEで相談する
+          </button>
+          <a class="btn-form" href="https://docs.google.com/forms/d/e/1FAIpQLScJhGiV0ExoG5uOQ35VXyl6djFf5mdMQjEdndo2g_m3sV7xpw/viewform" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            お問い合わせフォーム
+          </a>
+        </div>
       </div>
-      <button class="btn-line" id="lineBtn" type="button">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
-        LINEで無料相談する
-      </button>
+      <div class="contact-note">
+        <div class="contact-note-item">
+          <div class="contact-note-label">LINE</div>
+          <div class="contact-note-text">急ぎのご相談・既存のお客様との連絡に</div>
+        </div>
+        <div class="contact-note-item">
+          <div class="contact-note-label">フォーム</div>
+          <div class="contact-note-text">じっくり検討したい方・初めてのご依頼に。回答は通常1〜2営業日以内。</div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -524,8 +505,6 @@
       t.classList.add('show');
       setTimeout(() => t.classList.remove('show'), 2800);
     });
-
-    // 明るさスライダー
     const slider = document.getElementById('brightnessSlider');
     const heroBg = document.getElementById('heroBg');
     slider.addEventListener('input', () => {
