@@ -114,7 +114,7 @@
     }
     .hero-bg {
       position: absolute; inset: 0;
-      background-image: url('https://images.unsplash.com/photo-1528360983277-13d401cdc186?q=80&w=1800&auto=format&fit=crop');
+      background-image: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=1800&auto=format&fit=crop');
       background-size: cover; background-position: center;
       opacity: .55;
     }
@@ -225,10 +225,26 @@
     .fstep p { font-size: 12px; color: var(--sub); line-height: 1.7; }
 
     /* ── GALLERY ── */
-    .gallery-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 6px; }
-    .gimg { aspect-ratio: 4/3; overflow: hidden; }
-    .gimg img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
-    .gimg:hover img { transform: scale(1.04); }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+    }
+    .gitem { position: relative; overflow: hidden; aspect-ratio: 4/3; }
+    .gitem img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; display: block; }
+    .gitem:hover img { transform: scale(1.05); }
+    .gitem-cap {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(10,18,10,.75));
+      color: #fff; font-size: 12px; letter-spacing: .06em;
+      padding: 24px 14px 12px;
+    }
+    .gitem-cap span {
+      display: inline-block;
+      background: var(--accent); font-size: 9px;
+      padding: 2px 8px; letter-spacing: .1em; margin-bottom: 4px;
+    }
+    .gitem-cap p { font-size: 12px; line-height: 1.4; }
 
     /* ── SPLIT ── */
     .split { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
@@ -502,17 +518,36 @@
   <section class="sec" id="gallery">
     <div class="wrap">
       <div class="sec-head">
-        <div><p class="kicker">Gallery</p><h2>施工ギャラリー</h2></div>
-        <p>清掃前後の写真を必ずお届けします。お墓の様子を遠くにいても確認できます。</p>
+        <div><p class="kicker">Gallery</p><h2>作業ギャラリー</h2></div>
+        <p>実際の作業風景・施工前後の写真です。毎回このような形でご報告します。</p>
       </div>
       <div class="gallery-grid">
-        <div class="gimg"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=800&auto=format&fit=crop" alt="お墓の清掃"></div>
-        <div class="gimg"><img src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?q=80&w=800&auto=format&fit=crop" alt="石庭"></div>
-        <div class="gimg"><img src="https://images.unsplash.com/photo-1548681528-6a5c45dbe38f?q=80&w=800&auto=format&fit=crop" alt="献花"></div>
-        <div class="gimg"><img src="https://images.unsplash.com/photo-1504701954957-2010ec3bcec1?q=80&w=800&auto=format&fit=crop" alt="石畳の道"></div>
-        <div class="gimg"><img src="https://images.unsplash.com/photo-1614254732781-66d2440db6ec?q=80&w=800&auto=format&fit=crop" alt="日本の庭"></div>
-        <div class="gimg"><img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5ce?q=80&w=800&auto=format&fit=crop" alt="緑の苔"></div>
+        <div class="gitem">
+          <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=800&auto=format&fit=crop" alt="お墓参り">
+          <div class="gitem-cap"><span>お参り</span><p>合掌・礼拝の様子</p></div>
+        </div>
+        <div class="gitem">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=800&auto=format&fit=crop" alt="墓石清掃">
+          <div class="gitem-cap"><span>清掃</span><p>墓石の拭き掃除・水洗い</p></div>
+        </div>
+        <div class="gitem">
+          <img src="https://images.unsplash.com/photo-1548694269-82b6c34cbf80?q=80&w=800&auto=format&fit=crop" alt="献花">
+          <div class="gitem-cap"><span>献花</span><p>季節の生花をお供え</p></div>
+        </div>
+        <div class="gitem">
+          <img src="https://images.unsplash.com/photo-1591474200742-8e512e6f98f8?q=80&w=800&auto=format&fit=crop" alt="お線香">
+          <div class="gitem-cap"><span>お線香</span><p>お線香・お水のお供え</p></div>
+        </div>
+        <div class="gitem">
+          <img src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?q=80&w=800&auto=format&fit=crop" alt="住職へのご挨拶">
+          <div class="gitem-cap"><span>ご挨拶</span><p>住職・管理者へのご挨拶</p></div>
+        </div>
+        <div class="gitem">
+          <img src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?q=80&w=800&auto=format&fit=crop" alt="霊園の様子">
+          <div class="gitem-cap"><span>霊園</span><p>対応霊園・墓地の様子</p></div>
+        </div>
       </div>
+      <p style="font-size:12px;color:var(--sub);margin-top:16px;text-align:center;">※ 実際のサービスでは作業ごとに施工前後の写真をLINEでお届けします</p>
     </div>
   </section>
 
