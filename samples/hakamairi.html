@@ -6,592 +6,411 @@
   <meta name="description" content="縁一寸木のお墓参り・清掃代行サービス。遠方のご家族に代わり、心を込めてお参り・お掃除いたします。">
   <title>縁一寸木 | お墓参り・清掃代行サービス</title>
   <style>
-    /* ── RESET & BASE ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --clr-bg:       #F4F2EE;
-      --clr-surface:  #FFFFFF;
-      --clr-text:     #252420;
-      --clr-sub:      #6A6860;
-      --clr-accent:   #5A8468;
-      --clr-accent2:  #3E6050;
-      --clr-gold:     #B09060;
-      --clr-border:   #DDD9D2;
-      --clr-hero:     #0C1410;
-      --ff-serif: "Hiragino Mincho ProN","Yu Mincho","游明朝","HG明朝E",Georgia,serif;
-      --ff-sans:  "Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic","游ゴシック",Meiryo,sans-serif;
-      --container: 1080px;
-      --header-h: 68px;
+      --bg:       #F4F2EE;
+      --surface:  #FFFFFF;
+      --text:     #252420;
+      --sub:      #6A6860;
+      --accent:   #5A8468;
+      --accent2:  #3E6050;
+      --gold:     #A08050;
+      --border:   #DDD9D2;
+      --ff-serif: "Hiragino Mincho ProN","Yu Mincho","游明朝",Georgia,serif;
+      --ff-sans:  "Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic",Meiryo,sans-serif;
+      --hw: 1080px;
+      --hh: 68px;
     }
     html { scroll-behavior: smooth; }
-    body {
-      font-family: var(--ff-sans);
-      background: var(--clr-bg);
-      color: var(--clr-text);
-      line-height: 1.75;
-      font-size: 15px;
-    }
+    body { font-family: var(--ff-sans); background: var(--bg); color: var(--text); line-height: 1.75; font-size: 15px; }
+    body.menu-open { overflow: hidden; }
     img { max-width: 100%; display: block; }
     a { color: inherit; text-decoration: none; }
 
-    /* ── CONTAINER ── */
-    .container {
-      max-width: var(--container);
-      margin: 0 auto;
-      padding: 0 40px;
-    }
+    .wrap { max-width: var(--hw); margin: 0 auto; padding: 0 40px; }
 
     /* ── HEADER ── */
-    .site-header {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      height: var(--header-h);
-      z-index: 200;
-      transition: background 0.35s, border-color 0.35s, box-shadow 0.35s;
+    .hdr {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: var(--hh); z-index: 200;
+      transition: background .35s, border-color .35s;
     }
-    .site-header.is-scrolled {
-      background: rgba(244,242,238,0.95);
-      border-bottom: 1px solid var(--clr-border);
-      box-shadow: 0 1px 20px rgba(0,0,0,0.05);
+    .hdr.scrolled {
+      background: rgba(244,242,238,.95);
+      border-bottom: 1px solid var(--border);
       backdrop-filter: blur(8px);
     }
-    .header-inner {
+    .hdr-inner {
       height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
     }
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+    /* logo */
+    .logo { display: flex; align-items: center; gap: 10px; }
     .logo-mark {
-      width: 40px; height: 40px;
-      border: 1.5px solid rgba(255,255,255,0.6);
+      width: 38px; height: 38px;
+      border: 1.5px solid rgba(255,255,255,.6);
       display: flex; align-items: center; justify-content: center;
-      font-family: var(--ff-serif);
-      font-size: 20px;
-      font-weight: 700;
+      font-family: var(--ff-serif); font-size: 19px; font-weight: 700;
       color: #fff;
-      transition: border-color 0.35s, color 0.35s;
-      flex-shrink: 0;
+      transition: border-color .35s, color .35s;
     }
-    .site-header.is-scrolled .logo-mark {
-      border-color: var(--clr-accent);
-      color: var(--clr-accent);
+    .hdr.scrolled .logo-mark { border-color: var(--accent); color: var(--accent); }
+    .logo-ja { font-family: var(--ff-serif); font-size: 14px; font-weight: 700; color: #fff; letter-spacing: .06em; transition: color .35s; }
+    .logo-en { font-size: 9px; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.55); transition: color .35s; line-height: 1; }
+    .hdr.scrolled .logo-ja { color: var(--text); }
+    .hdr.scrolled .logo-en { color: var(--sub); }
+    /* nav */
+    .nav { display: flex; align-items: center; gap: 24px; }
+    .nav a { font-size: 13px; color: rgba(255,255,255,.8); letter-spacing: .04em; transition: color .2s; }
+    .nav a:hover, .nav a.current { color: #fff; }
+    .hdr.scrolled .nav a { color: var(--sub); }
+    .hdr.scrolled .nav a:hover, .hdr.scrolled .nav a.current { color: var(--accent); }
+    /* cta */
+    .hdr-cta {
+      background: var(--accent); color: #fff;
+      padding: 8px 18px; font-size: 12px; font-weight: 700;
+      letter-spacing: .08em; border-radius: 2px; transition: background .2s; white-space: nowrap;
     }
-    .logo-text {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.2;
+    .hdr-cta:hover { background: var(--accent2); }
+    /* hamburger */
+    .hamburger {
+      display: none;
+      width: 36px; height: 36px;
+      flex-direction: column; justify-content: center; align-items: center; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 4px;
     }
-    .logo-ja {
-      font-family: var(--ff-serif);
-      font-size: 15px;
-      font-weight: 700;
-      color: #fff;
-      transition: color 0.35s;
-      letter-spacing: 0.06em;
+    .hamburger span {
+      display: block; width: 22px; height: 1.5px;
+      background: #fff; transition: background .35s, transform .3s, opacity .3s;
     }
-    .site-header.is-scrolled .logo-ja { color: var(--clr-text); }
-    .logo-en {
-      font-size: 9px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.6);
-      transition: color 0.35s;
+    .hdr.scrolled .hamburger span { background: var(--text); }
+    .hamburger.active span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+    /* drawer */
+    .drawer {
+      display: none;
+      position: fixed; inset: 0; top: var(--hh); z-index: 190;
+      background: rgba(244,242,238,.97);
+      backdrop-filter: blur(10px);
+      flex-direction: column; align-items: center; justify-content: center; gap: 36px;
     }
-    .site-header.is-scrolled .logo-en { color: var(--clr-sub); }
-
-    .header-cta {
-      background: var(--clr-accent);
-      color: #fff;
-      padding: 9px 22px;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      border-radius: 2px;
-      transition: background 0.2s;
-      white-space: nowrap;
+    .drawer.open { display: flex; }
+    .drawer a {
+      font-family: var(--ff-serif); font-size: 1.4rem; font-weight: 700;
+      color: var(--text); letter-spacing: .1em;
     }
-    .header-cta:hover { background: var(--clr-accent2); }
+    .drawer a:hover { color: var(--accent); }
+    .drawer .drawer-cta {
+      background: var(--accent); color: #fff;
+      padding: 14px 40px; font-size: 14px; border-radius: 2px;
+    }
 
     /* ── HERO ── */
     .hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      overflow: hidden;
-      background: var(--clr-hero);
+      position: relative; min-height: 100vh;
+      display: flex; align-items: center; overflow: hidden;
+      background: #0C1410;
     }
-    .hero-img {
-      position: absolute;
-      inset: 0;
+    .hero-bg {
+      position: absolute; inset: 0;
       background-image: url('https://images.unsplash.com/photo-1528360983277-13d401cdc186?q=80&w=1800&auto=format&fit=crop');
-      background-size: cover;
-      background-position: center;
-      opacity: 0.40;
+      background-size: cover; background-position: center;
+      opacity: .55;
     }
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        105deg,
-        rgba(8,16,10,0.80) 0%,
-        rgba(8,16,10,0.45) 55%,
-        rgba(8,16,10,0.20) 100%
-      );
+    .hero-ov {
+      position: absolute; inset: 0;
+      background: linear-gradient(105deg, rgba(8,18,10,.72) 0%, rgba(8,18,10,.35) 55%, rgba(8,18,10,.10) 100%);
     }
     .hero-deco {
-      position: absolute;
-      right: 4%;
-      bottom: 0;
+      position: absolute; right: 3%; bottom: 0;
       font-family: var(--ff-serif);
-      font-size: clamp(160px, 22vw, 300px);
-      color: rgba(255,255,255,0.035);
-      line-height: 1;
-      pointer-events: none;
-      user-select: none;
-      letter-spacing: -0.05em;
+      font-size: clamp(140px,20vw,280px);
+      color: rgba(255,255,255,.04);
+      line-height: 1; pointer-events: none; user-select: none;
     }
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      padding: calc(var(--header-h) + 60px) 40px 80px;
-      max-width: var(--container);
-      margin: 0 auto;
-      width: 100%;
+    .hero-c {
+      position: relative; z-index: 1;
+      padding: calc(var(--hh) + 70px) 40px 80px;
+      max-width: var(--hw); margin: 0 auto; width: 100%;
     }
     .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 10px;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--clr-gold);
-      margin-bottom: 28px;
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 10px; letter-spacing: .28em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 26px;
     }
-    .eyebrow::before {
-      content: '';
-      display: block;
-      width: 28px; height: 1px;
-      background: var(--clr-gold);
-    }
-    .hero-content h1 {
+    .eyebrow::before { content: ''; display: block; width: 26px; height: 1px; background: currentColor; }
+    h1 {
       font-family: var(--ff-serif);
-      font-size: clamp(2rem, 5vw, 3.2rem);
-      font-weight: 700;
-      color: #fff;
-      line-height: 1.5;
-      margin-bottom: 24px;
-      text-wrap: balance;
+      font-size: clamp(1.9rem,4.8vw,3.1rem);
+      font-weight: 700; color: #fff; line-height: 1.52;
+      margin-bottom: 24px; text-wrap: balance;
     }
-    .hero-lead {
-      font-size: 15px;
-      color: rgba(255,255,255,0.68);
-      max-width: 420px;
-      line-height: 1.9;
-      margin-bottom: 44px;
-    }
-    .hero-btns {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
+    .hero-lead { font-size: 15px; color: rgba(255,255,255,.68); max-width: 400px; line-height: 1.9; margin-bottom: 40px; }
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
     .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 14px 32px;
-      font-size: 14px;
-      font-family: inherit;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      border: none;
-      border-radius: 2px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: background 0.2s, border-color 0.2s, color 0.2s;
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 30px; font-size: 14px; font-family: inherit;
+      font-weight: 700; letter-spacing: .07em; border: none; border-radius: 2px;
+      cursor: pointer; text-decoration: none;
+      transition: background .2s, border-color .2s, color .2s;
     }
-    .btn-solid { background: var(--clr-accent); color: #fff; }
-    .btn-solid:hover { background: var(--clr-accent2); }
-    .btn-ghost {
-      background: transparent;
-      color: rgba(255,255,255,0.85);
-      border: 1px solid rgba(255,255,255,0.30);
-      font-weight: 400;
-    }
-    .btn-ghost:hover { border-color: rgba(255,255,255,0.7); color: #fff; }
+    .btn-solid { background: var(--accent); color: #fff; }
+    .btn-solid:hover { background: var(--accent2); }
+    .btn-ghost { background: transparent; color: rgba(255,255,255,.85); border: 1px solid rgba(255,255,255,.28); font-weight: 400; }
+    .btn-ghost:hover { border-color: rgba(255,255,255,.7); color: #fff; }
 
-    /* ── STATS STRIP ── */
-    .stats-strip {
-      background: var(--clr-surface);
-      border-bottom: 1px solid var(--clr-border);
-    }
-    .stats-inner {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-    }
-    .stat-item {
-      padding: 36px 24px;
-      text-align: center;
-      border-right: 1px solid var(--clr-border);
-    }
-    .stat-item:last-child { border-right: none; }
-    .stat-num {
-      font-family: var(--ff-serif);
-      font-size: 2.6rem;
-      font-weight: 700;
-      color: var(--clr-accent);
-      line-height: 1;
-      font-variant-numeric: tabular-nums;
-    }
-    .stat-unit { font-size: 14px; font-weight: 400; margin-left: 2px; }
-    .stat-label { font-size: 12px; color: var(--clr-sub); margin-top: 8px; letter-spacing: 0.06em; }
+    /* ── STATS ── */
+    .stats-bar { background: var(--surface); border-bottom: 1px solid var(--border); }
+    .stats-row { display: grid; grid-template-columns: repeat(3,1fr); }
+    .stat { padding: 34px 24px; text-align: center; border-right: 1px solid var(--border); }
+    .stat:last-child { border-right: none; }
+    .stat-n { font-family: var(--ff-serif); font-size: 2.5rem; font-weight: 700; color: var(--accent); line-height: 1; }
+    .stat-u { font-size: 14px; font-weight: 400; margin-left: 2px; }
+    .stat-l { font-size: 12px; color: var(--sub); margin-top: 7px; letter-spacing: .06em; }
 
     /* ── SECTIONS ── */
-    .section { padding: 96px 0; }
-    .section-alt { background: var(--clr-surface); }
-
-    .section-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 40px;
-      margin-bottom: 56px;
+    .sec { padding: 88px 0; }
+    .sec-alt { background: var(--surface); }
+    .sec-head {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      gap: 40px; margin-bottom: 52px;
     }
-    .section-head > div { flex: 0 0 auto; }
-    .section-head > p { flex: 1; font-size: 14px; color: var(--clr-sub); line-height: 1.85; max-width: 420px; padding-top: 8px; }
-
-    .section-kicker {
-      font-size: 10px;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--clr-accent);
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
+    .sec-head > p { flex: 1; font-size: 14px; color: var(--sub); line-height: 1.85; max-width: 400px; padding-top: 6px; }
+    .kicker {
+      font-size: 10px; letter-spacing: .28em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 10px;
+      display: flex; align-items: center; gap: 8px;
     }
-    .section-kicker::after { content: ''; display: block; width: 24px; height: 1px; background: var(--clr-accent); }
-
-    h2 {
-      font-family: var(--ff-serif);
-      font-size: clamp(1.5rem, 2.8vw, 2rem);
-      font-weight: 700;
-      line-height: 1.4;
-      text-wrap: balance;
-    }
+    .kicker::after { content: ''; display: block; width: 24px; height: 1px; background: var(--accent); }
+    h2 { font-family: var(--ff-serif); font-size: clamp(1.4rem,2.6vw,1.9rem); font-weight: 700; line-height: 1.4; text-wrap: balance; }
 
     /* ── PLAN CARDS ── */
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+    .card-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+    .plan {
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 34px 26px 30px; position: relative;
     }
-    .plan-card {
-      background: var(--clr-surface);
-      border: 1px solid var(--clr-border);
-      padding: 36px 28px 32px;
-      position: relative;
+    .sec-alt .plan { background: var(--bg); }
+    .plan.feat { border-color: var(--accent); }
+    .badge {
+      position: absolute; top: -11px; left: 50%; transform: translateX(-50%);
+      background: var(--accent); color: #fff;
+      font-size: 10px; font-weight: 700; padding: 3px 14px; letter-spacing: .10em; white-space: nowrap;
     }
-    .section-alt .plan-card { background: var(--clr-bg); }
-    .plan-card.featured { border-color: var(--clr-accent); }
-    .plan-badge {
-      position: absolute;
-      top: -11px; left: 50%;
-      transform: translateX(-50%);
-      background: var(--clr-accent);
-      color: #fff;
-      font-size: 10px;
-      font-weight: 700;
-      padding: 3px 14px;
-      letter-spacing: 0.10em;
-      white-space: nowrap;
-    }
-    .card-kicker {
-      font-size: 10px;
-      letter-spacing: 0.20em;
-      text-transform: uppercase;
-      color: var(--clr-accent);
-      margin-bottom: 6px;
-    }
-    .plan-card h3 {
-      font-family: var(--ff-serif);
-      font-size: 1.15rem;
-      font-weight: 700;
-      margin-bottom: 18px;
-    }
-    .price {
-      font-family: var(--ff-serif);
-      font-size: 2rem;
-      font-weight: 700;
-      line-height: 1;
-      margin-bottom: 4px;
-      font-variant-numeric: tabular-nums;
-    }
-    .price-note { font-size: 12px; color: var(--clr-sub); margin-bottom: 22px; }
-    .plan-hr { border: none; border-top: 1px solid var(--clr-border); margin-bottom: 20px; }
-    .plan-features { list-style: none; display: flex; flex-direction: column; gap: 9px; }
-    .plan-features li {
-      font-size: 13px;
-      color: var(--clr-sub);
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-      line-height: 1.5;
-    }
-    .plan-features li::before { content: '✓'; color: var(--clr-accent); flex-shrink: 0; }
+    .ck { font-size: 10px; letter-spacing: .20em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+    .plan h3 { font-family: var(--ff-serif); font-size: 1.1rem; font-weight: 700; margin-bottom: 16px; }
+    .price { font-family: var(--ff-serif); font-size: 1.9rem; font-weight: 700; line-height: 1; margin-bottom: 4px; }
+    .pnote { font-size: 12px; color: var(--sub); margin-bottom: 20px; }
+    .phr { border: none; border-top: 1px solid var(--border); margin-bottom: 18px; }
+    .plist { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .plist li { font-size: 13px; color: var(--sub); display: flex; align-items: flex-start; gap: 7px; line-height: 1.5; }
+    .plist li::before { content: '✓'; color: var(--accent); flex-shrink: 0; }
 
     /* ── FLOW ── */
-    .flow-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      position: relative;
+    .flow { display: grid; grid-template-columns: repeat(4,1fr); position: relative; }
+    .flow::before {
+      content: ''; position: absolute;
+      top: 25px; left: 12.5%; right: 12.5%; height: 1px; background: var(--border);
     }
-    .flow-grid::before {
-      content: '';
-      position: absolute;
-      top: 26px;
-      left: calc(12.5%);
-      right: calc(12.5%);
-      height: 1px;
-      background: var(--clr-border);
+    .fstep { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 10px; }
+    .fnum {
+      width: 50px; height: 50px; border: 1.5px solid var(--accent); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--ff-serif); font-size: 16px; font-weight: 700; color: var(--accent);
+      background: var(--bg); position: relative; z-index: 1; margin-bottom: 16px;
     }
-    .flow-step {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      padding: 0 12px;
-    }
-    .flow-num {
-      width: 52px; height: 52px;
-      border: 1.5px solid var(--clr-accent);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--ff-serif);
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--clr-accent);
-      background: var(--clr-bg);
-      position: relative;
-      z-index: 1;
-      margin-bottom: 18px;
-    }
-    .section-alt .flow-num { background: var(--clr-surface); }
-    .flow-step h3 { font-family: var(--ff-serif); font-size: 15px; font-weight: 700; margin-bottom: 8px; }
-    .flow-step p { font-size: 13px; color: var(--clr-sub); line-height: 1.7; }
+    .sec-alt .fnum { background: var(--surface); }
+    .fstep h3 { font-family: var(--ff-serif); font-size: 14px; font-weight: 700; margin-bottom: 7px; }
+    .fstep p { font-size: 12px; color: var(--sub); line-height: 1.7; }
 
-    /* ── SPLIT (photo + copy) ── */
-    .split {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items: center;
+    /* ── GALLERY ── */
+    .gallery-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 6px; }
+    .gimg { aspect-ratio: 4/3; overflow: hidden; }
+    .gimg img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+    .gimg:hover img { transform: scale(1.04); }
+
+    /* ── SPLIT ── */
+    .split { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+    .photo-tall img { width: 100%; height: 420px; object-fit: cover; }
+    .copy p { font-size: 14px; line-height: 1.9; color: var(--sub); margin-bottom: 16px; }
+    .copy h2 { margin-bottom: 18px; }
+
+    /* ── PROFILE ── */
+    .profile-box {
+      display: grid; grid-template-columns: 280px 1fr; gap: 56px; align-items: start;
     }
-    .split.reverse { direction: rtl; }
-    .split.reverse > * { direction: ltr; }
-    .photo { border-radius: 0; overflow: hidden; }
-    .photo img { width: 100%; height: 400px; object-fit: cover; display: block; }
-    .copy .eyebrow { color: var(--clr-gold); }
-    .copy p { font-size: 15px; line-height: 1.9; color: var(--clr-sub); margin-bottom: 20px; }
+    .profile-photo img { width: 100%; aspect-ratio: 3/4; object-fit: cover; }
+    .profile-name { font-family: var(--ff-serif); font-size: 1.6rem; font-weight: 700; margin-bottom: 6px; }
+    .profile-role { font-size: 12px; color: var(--sub); letter-spacing: .1em; margin-bottom: 24px; }
+    .profile-text p { font-size: 14px; color: var(--sub); line-height: 1.9; margin-bottom: 14px; }
+
+    /* ── WHY ── */
+    .why-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 2px; }
+    .why-item { background: var(--bg); padding: 32px 34px; display: flex; gap: 18px; align-items: flex-start; }
+    .sec-alt .why-item { background: var(--surface); }
+    .wi { width: 42px; height: 42px; background: #E6EFEA; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0; }
+    .why-item h3 { font-family: var(--ff-serif); font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+    .why-item p { font-size: 13px; color: var(--sub); line-height: 1.75; }
 
     /* ── VOICE ── */
-    .voice-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-    .voice {
-      background: var(--clr-surface);
-      border: 1px solid var(--clr-border);
-      padding: 32px;
-      position: relative;
-    }
-    .section-alt .voice { background: var(--clr-bg); }
-    .voice-q {
-      font-family: var(--ff-serif);
-      font-size: 52px;
-      color: #DDE8DE;
-      line-height: 1;
-      position: absolute;
-      top: 14px; left: 22px;
-    }
-    .voice-text {
-      font-size: 14px;
-      line-height: 1.9;
-      padding-top: 20px;
-      margin-bottom: 18px;
-    }
-    .voice-who { font-size: 12px; color: var(--clr-sub); }
-
-    /* ── WHY GRID ── */
-    .why-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2px;
-    }
-    .why-item {
-      background: var(--clr-bg);
-      padding: 36px;
-      display: flex;
-      gap: 20px;
-      align-items: flex-start;
-    }
-    .section-alt .why-item { background: var(--clr-surface); }
-    .why-icon {
-      width: 44px; height: 44px;
-      background: #E8F0EA;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      flex-shrink: 0;
-    }
-    .why-item h3 { font-family: var(--ff-serif); font-size: 15px; font-weight: 700; margin-bottom: 7px; }
-    .why-item p { font-size: 13px; color: var(--clr-sub); line-height: 1.75; }
+    .voice-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 18px; }
+    .voice { background: var(--surface); border: 1px solid var(--border); padding: 30px; position: relative; }
+    .sec-alt .voice { background: var(--bg); }
+    .vq { font-family: var(--ff-serif); font-size: 48px; color: #DDE8DE; line-height: 1; position: absolute; top: 12px; left: 20px; }
+    .vtext { font-size: 14px; line-height: 1.9; padding-top: 18px; margin-bottom: 16px; }
+    .vwho { font-size: 12px; color: var(--sub); }
 
     /* ── CTA ── */
-    .cta {
-      background: #111C11;
-      padding: 96px 0;
-      position: relative;
-      overflow: hidden;
+    .cta-sec { background: #101810; padding: 88px 0; position: relative; overflow: hidden; }
+    .cta-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=1600&auto=format&fit=crop');
+      background-size: cover; background-position: center; opacity: .15;
     }
-    .cta-img {
-      position: absolute;
-      inset: 0;
-      background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1800&auto=format&fit=crop');
-      background-size: cover;
-      background-position: center;
-      opacity: 0.15;
-    }
-    .cta-inner {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 48px;
-    }
-    .cta .eyebrow { color: var(--clr-gold); margin-bottom: 16px; }
-    .cta h2 {
-      font-family: var(--ff-serif);
-      color: #fff;
-      font-size: clamp(1.4rem, 2.5vw, 1.9rem);
-      margin-bottom: 12px;
-    }
-    .cta p { color: rgba(255,255,255,0.55); font-size: 14px; line-height: 1.8; }
+    .cta-inner { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 48px; }
+    .cta-sec .eyebrow { color: var(--gold); }
+    .cta-sec h2 { font-family: var(--ff-serif); color: #fff; font-size: clamp(1.3rem,2.5vw,1.9rem); margin-bottom: 12px; margin-top: 12px; }
+    .cta-sec p { color: rgba(255,255,255,.55); font-size: 14px; line-height: 1.8; }
     .btn-line {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: #06C755;
-      color: #fff;
-      padding: 15px 36px;
-      font-size: 15px;
-      font-weight: 700;
-      border-radius: 4px;
-      border: none;
-      cursor: pointer;
-      font-family: inherit;
-      letter-spacing: 0.06em;
-      transition: background 0.2s;
-      white-space: nowrap;
-      text-decoration: none;
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #06C755; color: #fff;
+      padding: 14px 34px; font-size: 15px; font-weight: 700; border-radius: 4px;
+      border: none; cursor: pointer; font-family: inherit; letter-spacing: .06em;
+      transition: background .2s; white-space: nowrap; text-decoration: none;
     }
     .btn-line:hover { background: #05b04c; }
-    .btn-line svg { flex-shrink: 0; }
+
+    /* ── QR SECTION ── */
+    .qr-sec { background: var(--surface); border-top: 1px solid var(--border); padding: 64px 0; }
+    .qr-inner { display: flex; align-items: center; gap: 48px; }
+    .qr-box {
+      flex-shrink: 0;
+      width: 160px; height: 160px;
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      background: #fff;
+    }
+    .qr-box img { width: 140px; height: 140px; }
+    .qr-copy h3 { font-family: var(--ff-serif); font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; }
+    .qr-copy p { font-size: 14px; color: var(--sub); line-height: 1.85; margin-bottom: 14px; }
+    .qr-url { font-size: 11px; color: var(--sub); word-break: break-all; background: var(--bg); padding: 8px 12px; border-radius: 2px; }
+    .card-preview {
+      flex-shrink: 0;
+      width: 280px; height: 160px;
+      background: #131A12;
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 24px 20px;
+      box-shadow: 0 4px 24px rgba(0,0,0,.18);
+      position: relative; overflow: hidden;
+    }
+    .card-preview::before {
+      content: '縁'; position: absolute; right: -10px; bottom: -20px;
+      font-family: var(--ff-serif); font-size: 90px; color: rgba(255,255,255,.06);
+      pointer-events: none;
+    }
+    .card-info { color: #fff; }
+    .card-brand { font-family: var(--ff-serif); font-size: 1rem; font-weight: 700; margin-bottom: 4px; letter-spacing: .04em; }
+    .card-sub { font-size: 9px; color: rgba(255,255,255,.5); letter-spacing: .12em; margin-bottom: 16px; }
+    .card-name { font-size: 12px; color: rgba(255,255,255,.9); margin-bottom: 2px; }
+    .card-tel { font-size: 11px; color: rgba(255,255,255,.55); }
+    .card-qr { width: 52px; height: 52px; background: #fff; border-radius: 2px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .card-qr img { width: 44px; height: 44px; }
 
     /* ── FOOTER ── */
-    .site-footer {
-      background: #0C130C;
-      color: rgba(255,255,255,0.35);
-      padding: 32px 40px;
-      text-align: center;
-      font-size: 12px;
-      letter-spacing: 0.08em;
+    .footer {
+      background: #0B120B; color: rgba(255,255,255,.35);
+      padding: 28px 40px; text-align: center; font-size: 11px; letter-spacing: .08em;
     }
 
     /* ── TOAST ── */
     .toast {
-      position: fixed;
-      bottom: 32px;
-      left: 50%;
-      transform: translateX(-50%) translateY(16px);
-      background: var(--clr-text);
-      color: var(--clr-bg);
-      padding: 11px 26px;
-      font-size: 13px;
-      border-radius: 3px;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s, transform 0.3s;
-      white-space: nowrap;
-      z-index: 999;
+      position: fixed; bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(14px);
+      background: var(--text); color: var(--bg);
+      padding: 10px 24px; font-size: 13px; border-radius: 3px;
+      opacity: 0; pointer-events: none;
+      transition: opacity .3s, transform .3s; white-space: nowrap; z-index: 999;
     }
-    .toast.is-visible { opacity: 1; transform: translateX(-50%) translateY(0); }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
     /* ── RESPONSIVE ── */
-    @media (max-width: 860px) {
-      :root { --container: 100%; }
-      .container { padding: 0 24px; }
-      .hero-content { padding: calc(var(--header-h) + 48px) 24px 64px; }
-      .section { padding: 64px 0; }
-      .section-head { flex-direction: column; gap: 16px; }
-      .section-head > p { padding-top: 0; }
+    @media (max-width: 900px) {
+      .wrap { padding: 0 20px; }
+      .nav { display: none; }
+      .hamburger { display: flex; }
+      .hdr-cta { display: none; }
+      .hero-c { padding: calc(var(--hh) + 48px) 20px 60px; }
+      .sec { padding: 56px 0; }
+      .sec-head { flex-direction: column; gap: 12px; }
+      .sec-head > p { padding-top: 0; }
       .card-grid { grid-template-columns: 1fr; }
-      .flow-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
-      .flow-grid::before { display: none; }
-      .split { grid-template-columns: 1fr; gap: 32px; }
-      .split.reverse { direction: ltr; }
-      .photo img { height: 260px; }
+      .flow { grid-template-columns: 1fr 1fr; gap: 28px; }
+      .flow::before { display: none; }
+      .gallery-grid { grid-template-columns: repeat(2,1fr); }
+      .split { grid-template-columns: 1fr; gap: 28px; }
+      .photo-tall img { height: 260px; }
+      .profile-box { grid-template-columns: 1fr; gap: 28px; }
+      .profile-photo img { aspect-ratio: 3/2; }
       .why-grid { grid-template-columns: 1fr; }
       .voice-grid { grid-template-columns: 1fr; }
-      .cta-inner { flex-direction: column; align-items: flex-start; gap: 32px; }
-      .stats-inner { grid-template-columns: 1fr; }
-      .stat-item { border-right: none; border-bottom: 1px solid var(--clr-border); }
-      .stat-item:last-child { border-bottom: none; }
+      .cta-inner { flex-direction: column; align-items: flex-start; gap: 28px; }
+      .stats-row { grid-template-columns: 1fr; }
+      .stat { border-right: none; border-bottom: 1px solid var(--border); padding: 24px; }
+      .stat:last-child { border-bottom: none; }
+      .qr-inner { flex-direction: column; align-items: flex-start; gap: 32px; }
+      .card-preview { width: 100%; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ── HEADER ── -->
-  <header class="site-header" id="siteHeader">
-    <div class="container header-inner">
-      <a class="logo" href="#">
+  <!-- HEADER -->
+  <header class="hdr" id="hdr">
+    <div class="wrap hdr-inner">
+      <a class="logo" href="#top">
         <div class="logo-mark">縁</div>
-        <div class="logo-text">
-          <span class="logo-ja">縁一寸木</span>
-          <span class="logo-en">Ohakamairi Daikou</span>
+        <div>
+          <div class="logo-ja">縁一寸木</div>
+          <div class="logo-en">Ohakamairi Daikou</div>
         </div>
       </a>
-      <a class="header-cta" href="#cta">LINEで無料相談</a>
+      <nav class="nav">
+        <a href="#top" class="current">ホーム</a>
+        <a href="#gallery">ギャラリー</a>
+        <a href="#profile">プロフィール</a>
+        <a href="#plans">料金</a>
+        <a href="../../tokusho.html">特定商取引法</a>
+        <a href="../../privacy.html">プライバシーポリシー</a>
+      </nav>
+      <a class="hdr-cta" href="#cta">LINEで無料相談</a>
+      <button class="hamburger" id="hamburger" aria-label="メニューを開閉" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
 
-  <!-- ── HERO ── -->
-  <section class="hero">
-    <div class="hero-img"></div>
-    <div class="hero-overlay"></div>
+  <!-- DRAWER -->
+  <nav class="drawer" id="drawer">
+    <a href="#top"      data-close>ホーム</a>
+    <a href="#gallery"  data-close>ギャラリー</a>
+    <a href="#profile"  data-close>プロフィール</a>
+    <a href="#plans"    data-close>料金プラン</a>
+    <a href="../../tokusho.html" data-close>特定商取引法</a>
+    <a href="../../privacy.html" data-close>プライバシーポリシー</a>
+    <a class="drawer-cta btn-line" href="#cta" data-close>LINEで無料相談</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="hero-bg"></div>
+    <div class="hero-ov"></div>
     <div class="hero-deco">縁</div>
-    <div class="hero-content">
-      <p class="eyebrow">Ohakamairi & Seisou Daikou</p>
+    <div class="hero-c">
+      <p class="eyebrow">Ohakamairi &amp; Seisou Daikou</p>
       <h1>大切なご先祖様のお墓を、<br>心を込めてお守りします。</h1>
-      <p class="hero-lead">
-        遠くに住んでいて、なかなか帰れない。<br>
-        体が思うように動かなくなってきた。<br>
-        そんなご家族に代わり、地元の私がうかがいます。
-      </p>
+      <p class="hero-lead">遠くに住んでいて、なかなか帰れない。<br>体が思うように動かなくなってきた。<br>そんなご家族に代わり、地元の私がうかがいます。</p>
       <div class="hero-btns">
         <a class="btn btn-solid" href="#plans">プランを見る</a>
         <a class="btn btn-ghost" href="#cta">まずは無料相談</a>
@@ -599,57 +418,45 @@
     </div>
   </section>
 
-  <!-- ── STATS ── -->
-  <div class="stats-strip">
-    <div class="container">
-      <div class="stats-inner">
-        <div class="stat-item">
-          <div class="stat-num">340<span class="stat-unit">件</span></div>
-          <div class="stat-label">累計対応実績</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num">98<span class="stat-unit">%</span></div>
-          <div class="stat-label">お客様満足度</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num">翌<span class="stat-unit">週〜</span></div>
-          <div class="stat-label">最短対応期間</div>
-        </div>
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="wrap">
+      <div class="stats-row">
+        <div class="stat"><div class="stat-n">340<span class="stat-u">件</span></div><div class="stat-l">累計対応実績</div></div>
+        <div class="stat"><div class="stat-n">98<span class="stat-u">%</span></div><div class="stat-l">お客様満足度</div></div>
+        <div class="stat"><div class="stat-n">翌<span class="stat-u">週〜</span></div><div class="stat-l">最短対応期間</div></div>
       </div>
     </div>
   </div>
 
-  <!-- ── PLANS ── -->
-  <section class="section" id="plans">
-    <div class="container">
-      <div class="section-head">
-        <div>
-          <p class="section-kicker">Plans</p>
-          <h2>料金プラン</h2>
-        </div>
+  <!-- PLANS -->
+  <section class="sec" id="plans">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="kicker">Plans</p><h2>料金プラン</h2></div>
         <p>すべてのプランで、施工前後の写真をLINEまたはメールでお届けします。</p>
       </div>
       <div class="card-grid">
-        <div class="plan-card">
-          <p class="card-kicker">Light</p>
+        <div class="plan">
+          <p class="ck">Light</p>
           <h3>ライトプラン</h3>
           <div class="price">¥9,800</div>
-          <p class="price-note">税込 / 1回</p>
-          <hr class="plan-hr">
-          <ul class="plan-features">
+          <p class="pnote">税込 / 1回</p>
+          <hr class="phr">
+          <ul class="plist">
             <li>合掌・礼拝・お線香・お水のお供え</li>
             <li>墓石まわりの簡単な拭き掃除</li>
             <li>施工前後の写真報告（LINE）</li>
           </ul>
         </div>
-        <div class="plan-card featured">
-          <div class="plan-badge">人気 No.1</div>
-          <p class="card-kicker">Standard</p>
+        <div class="plan feat">
+          <div class="badge">人気 No.1</div>
+          <p class="ck">Standard</p>
           <h3>スタンダードプラン</h3>
           <div class="price">¥19,800</div>
-          <p class="price-note">税込 / 1回</p>
-          <hr class="plan-hr">
-          <ul class="plan-features">
+          <p class="pnote">税込 / 1回</p>
+          <hr class="phr">
+          <ul class="plist">
             <li>合掌・礼拝・お線香・お水のお供え</li>
             <li>墓石・外柵の本格清掃</li>
             <li>草取り・落ち葉の処分</li>
@@ -657,13 +464,13 @@
             <li>施工前後の写真報告書（PDF）</li>
           </ul>
         </div>
-        <div class="plan-card">
-          <p class="card-kicker">Premium</p>
+        <div class="plan">
+          <p class="ck">Premium</p>
           <h3>プレミアムプラン</h3>
           <div class="price">¥29,800</div>
-          <p class="price-note">税込 / 1回</p>
-          <hr class="plan-hr">
-          <ul class="plan-features">
+          <p class="pnote">税込 / 1回</p>
+          <hr class="phr">
+          <ul class="plist">
             <li>スタンダードプランの全内容</li>
             <li>専門洗浄剤による墓石クリーニング</li>
             <li>撥水コーティング施工</li>
@@ -675,159 +482,181 @@
     </div>
   </section>
 
-  <!-- ── FLOW ── -->
-  <section class="section section-alt">
-    <div class="container">
-      <div class="section-head">
-        <div>
-          <p class="section-kicker">Flow</p>
-          <h2>ご依頼の流れ</h2>
-        </div>
+  <!-- FLOW -->
+  <section class="sec sec-alt">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="kicker">Flow</p><h2>ご依頼の流れ</h2></div>
         <p>LINEのご連絡から、最短1週間でお参りにうかがいます。</p>
       </div>
-      <div class="flow-grid">
-        <div class="flow-step">
-          <div class="flow-num">一</div>
-          <h3>LINEで相談</h3>
-          <p>霊園の場所・プラン・ご希望日をお知らせください。</p>
-        </div>
-        <div class="flow-step">
-          <div class="flow-num">二</div>
-          <h3>お見積り確認</h3>
-          <p>内容を確認し、料金とスケジュールをご提案します。</p>
-        </div>
-        <div class="flow-step">
-          <div class="flow-num">三</div>
-          <h3>お参り実施</h3>
-          <p>心を込めてお参り・清掃を丁寧に行います。</p>
-        </div>
-        <div class="flow-step">
-          <div class="flow-num">四</div>
-          <h3>写真で報告</h3>
-          <p>施工前後の写真・報告書をLINEでお届けします。</p>
-        </div>
+      <div class="flow">
+        <div class="fstep"><div class="fnum">一</div><h3>LINEで相談</h3><p>霊園の場所・プラン・ご希望日をお知らせください。</p></div>
+        <div class="fstep"><div class="fnum">二</div><h3>お見積り確認</h3><p>内容を確認し、料金とスケジュールをご提案します。</p></div>
+        <div class="fstep"><div class="fnum">三</div><h3>お参り実施</h3><p>心を込めてお参り・清掃を丁寧に行います。</p></div>
+        <div class="fstep"><div class="fnum">四</div><h3>写真で報告</h3><p>施工前後の写真・報告書をLINEでお届けします。</p></div>
       </div>
     </div>
   </section>
 
-  <!-- ── ABOUT SPLIT ── -->
-  <section class="section">
-    <div class="container">
-      <div class="split">
-        <div class="photo">
-          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=1000&auto=format&fit=crop" alt="お墓の清掃イメージ">
-        </div>
-        <div class="copy">
-          <p class="eyebrow">About</p>
-          <h2>個人だからできること</h2>
-          <p>大手代行業者とは違い、私一人が責任を持って対応します。担当者が毎回変わることなく、お墓の状態の変化を継続して把握できます。</p>
-          <p>地元の霊園・寺院を直接まわっているので、エリア内であれば迅速かつ丁寧に対応できます。</p>
-          <p>「急ぎで行ってほしい」「こんなことも頼める？」など、大手には難しい細かいご要望にもLINEで気軽にご相談ください。</p>
-        </div>
+  <!-- GALLERY -->
+  <section class="sec" id="gallery">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="kicker">Gallery</p><h2>施工ギャラリー</h2></div>
+        <p>清掃前後の写真を必ずお届けします。お墓の様子を遠くにいても確認できます。</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="gimg"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=800&auto=format&fit=crop" alt="お墓の清掃"></div>
+        <div class="gimg"><img src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?q=80&w=800&auto=format&fit=crop" alt="石庭"></div>
+        <div class="gimg"><img src="https://images.unsplash.com/photo-1548681528-6a5c45dbe38f?q=80&w=800&auto=format&fit=crop" alt="献花"></div>
+        <div class="gimg"><img src="https://images.unsplash.com/photo-1504701954957-2010ec3bcec1?q=80&w=800&auto=format&fit=crop" alt="石畳の道"></div>
+        <div class="gimg"><img src="https://images.unsplash.com/photo-1614254732781-66d2440db6ec?q=80&w=800&auto=format&fit=crop" alt="日本の庭"></div>
+        <div class="gimg"><img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5ce?q=80&w=800&auto=format&fit=crop" alt="緑の苔"></div>
       </div>
     </div>
   </section>
 
-  <!-- ── WHY ── -->
-  <section class="section section-alt">
-    <div class="container">
-      <div class="section-head">
-        <div>
-          <p class="section-kicker">Features</p>
-          <h2>選ばれる4つの理由</h2>
-        </div>
+  <!-- WHY -->
+  <section class="sec sec-alt">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="kicker">Features</p><h2>選ばれる4つの理由</h2></div>
         <p>地元密着の個人サービスだからこそできる、安心感と柔軟さがあります。</p>
       </div>
       <div class="why-grid">
-        <div class="why-item">
-          <div class="why-icon">🤝</div>
-          <div>
-            <h3>担当者が毎回同じ</h3>
-            <p>私一人が責任を持って対応。お墓の状態の変化も継続して把握できます。</p>
-          </div>
+        <div class="why-item"><div class="wi">🤝</div><div><h3>担当者が毎回同じ</h3><p>私一人が責任を持って対応。お墓の状態の変化も継続して把握できます。</p></div></div>
+        <div class="why-item"><div class="wi">📍</div><div><h3>地元の霊園を熟知</h3><p>エリア内の霊園・寺院を直接まわっているので、迅速かつ丁寧に対応できます。</p></div></div>
+        <div class="why-item"><div class="wi">💬</div><div><h3>LINEで気軽に相談</h3><p>「急ぎで行ってほしい」「こんなことも頼める？」など、融通が利きます。</p></div></div>
+        <div class="why-item"><div class="wi">💰</div><div><h3>大手より手頃な価格</h3><p>中間コストがかからない分、品質はそのままで価格を抑えてご提供できます。</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROFILE -->
+  <section class="sec" id="profile">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="kicker">Profile</p><h2>プロフィール</h2></div>
+      </div>
+      <div class="profile-box">
+        <div class="profile-photo">
+          <img src="https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?q=80&w=600&auto=format&fit=crop" alt="オーナー写真">
         </div>
-        <div class="why-item">
-          <div class="why-icon">📍</div>
-          <div>
-            <h3>地元の霊園を熟知</h3>
-            <p>エリア内の霊園・寺院を直接まわっているので、迅速かつ丁寧に対応できます。</p>
-          </div>
-        </div>
-        <div class="why-item">
-          <div class="why-icon">💬</div>
-          <div>
-            <h3>LINEで気軽に相談</h3>
-            <p>「急ぎで行ってほしい」「こんなことも頼める？」など、融通が利きます。</p>
-          </div>
-        </div>
-        <div class="why-item">
-          <div class="why-icon">💰</div>
-          <div>
-            <h3>大手より手頃な価格</h3>
-            <p>中間コストがかからない分、品質はそのままで価格を抑えてご提供できます。</p>
-          </div>
+        <div class="profile-text">
+          <div class="profile-name">縁一寸木 太郎</div>
+          <div class="profile-role">お墓参り代行サービス 代表</div>
+          <p>地元に生まれ育ち、幼い頃から家族で毎年お墓参りに通ってきました。遠方に住む方や体が不自由になった方が「お参りに行けない」と悔しい思いをされているのを知り、このサービスを始めました。</p>
+          <p>一件一件、自分の家のお墓と同じ気持ちで、丁寧にお参り・清掃いたします。わからないことやご不安なことは何でもLINEでご相談ください。</p>
+          <p>対応エリア：〇〇市・△△町・□□区（詳細はLINEでご確認ください）</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── VOICE ── -->
-  <section class="section">
-    <div class="container">
-      <div class="section-head">
-        <div>
-          <p class="section-kicker">Voice</p>
-          <h2>ご利用者の声</h2>
-        </div>
+  <!-- VOICE -->
+  <section class="sec sec-alt">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="kicker">Voice</p><h2>ご利用者の声</h2></div>
       </div>
       <div class="voice-grid">
         <div class="voice">
-          <div class="voice-q">"</div>
-          <p class="voice-text">東京に住んでいて、母のお墓が地元にあります。なかなか帰れないのでお盆にお願いしています。写真が届くと、ほっとします。</p>
-          <div class="voice-who">60代・女性 / 東京都在住</div>
+          <div class="vq">"</div>
+          <p class="vtext">東京に住んでいて、母のお墓が地元にあります。なかなか帰れないのでお盆にお願いしています。写真が届くと、ほっとします。</p>
+          <div class="vwho">60代・女性 / 東京都在住</div>
         </div>
         <div class="voice">
-          <div class="voice-q">"</div>
-          <p class="voice-text">足が悪くなりお参りに行けなくなりました。担当の方が毎回同じで、丁寧に対応してくださるので安心してお任せしています。</p>
-          <div class="voice-who">70代・男性 / 市内在住</div>
+          <div class="vq">"</div>
+          <p class="vtext">足が悪くなりお参りに行けなくなりました。担当の方が毎回同じで、丁寧に対応してくださるので安心してお任せしています。</p>
+          <div class="vwho">70代・男性 / 市内在住</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── CTA ── -->
-  <section class="cta" id="cta">
-    <div class="cta-img"></div>
-    <div class="container cta-inner">
+  <!-- CTA -->
+  <section class="cta-sec" id="cta">
+    <div class="cta-bg"></div>
+    <div class="wrap cta-inner">
       <div>
         <p class="eyebrow">Contact</p>
         <h2>まずは無料でご相談ください。</h2>
-        <p>「見学したい」「料金だけ聞きたい」だけでも大歓迎です。<br>LINEからお気軽にメッセージをどうぞ。</p>
+        <p>「料金だけ聞きたい」「見学したい」だけでも大歓迎です。<br>LINEからお気軽にメッセージをどうぞ。</p>
       </div>
       <button class="btn-line" id="lineBtn" type="button">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
         LINEで無料相談する
       </button>
     </div>
   </section>
 
-  <!-- ── FOOTER ── -->
-  <footer class="site-footer">
-    <p>© 2026 縁一寸木 お墓参り代行サービス &nbsp;|&nbsp; サンプルサイト</p>
+  <!-- QR CODE -->
+  <section class="qr-sec">
+    <div class="wrap">
+      <div class="qr-inner">
+        <div class="qr-box">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&color=252420&bgcolor=ffffff&data=https%3A%2F%2Fakebono489-crypto.github.io%2Fgon-html-test%2Fsamples%2Fhakamairi.html" alt="QRコード">
+        </div>
+        <div class="qr-copy">
+          <h3>名刺にQRコードを載せる</h3>
+          <p>このQRコードを名刺に印刷すると、スキャンするだけでホームページが開きます。お客様がその場で料金・サービス内容を確認できるので、問い合わせにつながりやすくなります。</p>
+          <div class="qr-url">https://akebono489-crypto.github.io/gon-html-test/samples/hakamairi.html</div>
+        </div>
+        <div class="card-preview">
+          <div class="card-info">
+            <div class="card-brand">縁一寸木</div>
+            <div class="card-sub">お墓参り・清掃代行</div>
+            <div class="card-name">縁一寸木 太郎</div>
+            <div class="card-tel">LINE / TEL 000-0000-0000</div>
+          </div>
+          <div class="card-qr">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=44x44&color=131A12&bgcolor=ffffff&data=https%3A%2F%2Fakebono489-crypto.github.io%2Fgon-html-test%2Fsamples%2Fhakamairi.html" alt="QR">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© 2026 縁一寸木 お墓参り代行サービス &nbsp;|&nbsp;
+      <a href="../../tokusho.html" style="color:rgba(255,255,255,.45);text-decoration:underline">特定商取引法</a> &nbsp;|&nbsp;
+      <a href="../../privacy.html" style="color:rgba(255,255,255,.45);text-decoration:underline">プライバシーポリシー</a>
+    </p>
   </footer>
 
   <div class="toast" id="toast">実際のサービスではLINE公式へ接続します</div>
 
   <script>
-    const header = document.querySelector('.site-header');
+    // Header scroll
+    const hdr = document.getElementById('hdr');
     window.addEventListener('scroll', () => {
-      header.classList.toggle('is-scrolled', window.scrollY > 40);
+      hdr.classList.toggle('scrolled', window.scrollY > 40);
     }, { passive: true });
 
+    // Hamburger / Drawer
+    const ham = document.getElementById('hamburger');
+    const drawer = document.getElementById('drawer');
+    ham.addEventListener('click', () => {
+      const open = drawer.classList.toggle('open');
+      ham.classList.toggle('active', open);
+      ham.setAttribute('aria-expanded', open);
+      document.body.classList.toggle('menu-open', open);
+    });
+    drawer.querySelectorAll('[data-close]').forEach(a => {
+      a.addEventListener('click', () => {
+        drawer.classList.remove('open');
+        ham.classList.remove('active');
+        ham.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('menu-open');
+      });
+    });
+
+    // LINE toast
     document.getElementById('lineBtn').addEventListener('click', () => {
       const t = document.getElementById('toast');
-      t.classList.add('is-visible');
-      setTimeout(() => t.classList.remove('is-visible'), 2800);
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2800);
     });
   </script>
 </body>
