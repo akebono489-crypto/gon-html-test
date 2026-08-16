@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="縁一寸木のお墓参り・清掃代行サービス。遠方のご家族に代わり、心を込めてお参り・お掃除いたします。">
+  <title>縁一寸木 | お墓参り・清掃代行サービス</title>
+  <style>
+    /* ── RESET & BASE ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --clr-bg:       #F4F2EE;
+      --clr-surface:  #FFFFFF;
+      --clr-text:     #252420;
+      --clr-sub:      #6A6860;
+      --clr-accent:   #5A8468;
+      --clr-accent2:  #3E6050;
+      --clr-gold:     #B09060;
+      --clr-border:   #DDD9D2;
+      --clr-hero:     #0C1410;
+      --ff-serif: "Hiragino Mincho ProN","Yu Mincho","游明朝","HG明朝E",Georgia,serif;
+      --ff-sans:  "Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic","游ゴシック",Meiryo,sans-serif;
+      --container: 1080px;
+      --header-h: 68px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--ff-sans);
+      background: var(--clr-bg);
+      color: var(--clr-text);
+      line-height: 1.75;
+      font-size: 15px;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── CONTAINER ── */
+    .container {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    /* ── HEADER ── */
+    .site-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--header-h);
+      z-index: 200;
+      transition: background 0.35s, border-color 0.35s, box-shadow 0.35s;
+    }
+    .site-header.is-scrolled {
+      background: rgba(244,242,238,0.95);
+      border-bottom: 1px solid var(--clr-border);
+      box-shadow: 0 1px 20px rgba(0,0,0,0.05);
+      backdrop-filter: blur(8px);
+    }
+    .header-inner {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo-mark {
+      width: 40px; height: 40px;
+      border: 1.5px solid rgba(255,255,255,0.6);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--ff-serif);
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+      transition: border-color 0.35s, color 0.35s;
+      flex-shrink: 0;
+    }
+    .site-header.is-scrolled .logo-mark {
+      border-color: var(--clr-accent);
+      color: var(--clr-accent);
+    }
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+    .logo-ja {
+      font-family: var(--ff-serif);
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+      transition: color 0.35s;
+      letter-spacing: 0.06em;
+    }
+    .site-header.is-scrolled .logo-ja { color: var(--clr-text); }
+    .logo-en {
+      font-size: 9px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      transition: color 0.35s;
+    }
+    .site-header.is-scrolled .logo-en { color: var(--clr-sub); }
+
+    .header-cta {
+      background: var(--clr-accent);
+      color: #fff;
+      padding: 9px 22px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      border-radius: 2px;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .header-cta:hover { background: var(--clr-accent2); }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: var(--clr-hero);
+    }
+    .hero-img {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1528360983277-13d401cdc186?q=80&w=1800&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.40;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        105deg,
+        rgba(8,16,10,0.80) 0%,
+        rgba(8,16,10,0.45) 55%,
+        rgba(8,16,10,0.20) 100%
+      );
+    }
+    .hero-deco {
+      position: absolute;
+      right: 4%;
+      bottom: 0;
+      font-family: var(--ff-serif);
+      font-size: clamp(160px, 22vw, 300px);
+      color: rgba(255,255,255,0.035);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+      letter-spacing: -0.05em;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      padding: calc(var(--header-h) + 60px) 40px 80px;
+      max-width: var(--container);
+      margin: 0 auto;
+      width: 100%;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 10px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--clr-gold);
+      margin-bottom: 28px;
+    }
+    .eyebrow::before {
+      content: '';
+      display: block;
+      width: 28px; height: 1px;
+      background: var(--clr-gold);
+    }
+    .hero-content h1 {
+      font-family: var(--ff-serif);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.5;
+      margin-bottom: 24px;
+      text-wrap: balance;
+    }
+    .hero-lead {
+      font-size: 15px;
+      color: rgba(255,255,255,0.68);
+      max-width: 420px;
+      line-height: 1.9;
+      margin-bottom: 44px;
+    }
+    .hero-btns {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 32px;
+      font-size: 14px;
+      font-family: inherit;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+    .btn-solid { background: var(--clr-accent); color: #fff; }
+    .btn-solid:hover { background: var(--clr-accent2); }
+    .btn-ghost {
+      background: transparent;
+      color: rgba(255,255,255,0.85);
+      border: 1px solid rgba(255,255,255,0.30);
+      font-weight: 400;
+    }
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.7); color: #fff; }
+
+    /* ── STATS STRIP ── */
+    .stats-strip {
+      background: var(--clr-surface);
+      border-bottom: 1px solid var(--clr-border);
+    }
+    .stats-inner {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .stat-item {
+      padding: 36px 24px;
+      text-align: center;
+      border-right: 1px solid var(--clr-border);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-family: var(--ff-serif);
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: var(--clr-accent);
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+    }
+    .stat-unit { font-size: 14px; font-weight: 400; margin-left: 2px; }
+    .stat-label { font-size: 12px; color: var(--clr-sub); margin-top: 8px; letter-spacing: 0.06em; }
+
+    /* ── SECTIONS ── */
+    .section { padding: 96px 0; }
+    .section-alt { background: var(--clr-surface); }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 40px;
+      margin-bottom: 56px;
+    }
+    .section-head > div { flex: 0 0 auto; }
+    .section-head > p { flex: 1; font-size: 14px; color: var(--clr-sub); line-height: 1.85; max-width: 420px; padding-top: 8px; }
+
+    .section-kicker {
+      font-size: 10px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--clr-accent);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section-kicker::after { content: ''; display: block; width: 24px; height: 1px; background: var(--clr-accent); }
+
+    h2 {
+      font-family: var(--ff-serif);
+      font-size: clamp(1.5rem, 2.8vw, 2rem);
+      font-weight: 700;
+      line-height: 1.4;
+      text-wrap: balance;
+    }
+
+    /* ── PLAN CARDS ── */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .plan-card {
+      background: var(--clr-surface);
+      border: 1px solid var(--clr-border);
+      padding: 36px 28px 32px;
+      position: relative;
+    }
+    .section-alt .plan-card { background: var(--clr-bg); }
+    .plan-card.featured { border-color: var(--clr-accent); }
+    .plan-badge {
+      position: absolute;
+      top: -11px; left: 50%;
+      transform: translateX(-50%);
+      background: var(--clr-accent);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 14px;
+      letter-spacing: 0.10em;
+      white-space: nowrap;
+    }
+    .card-kicker {
+      font-size: 10px;
+      letter-spacing: 0.20em;
+      text-transform: uppercase;
+      color: var(--clr-accent);
+      margin-bottom: 6px;
+    }
+    .plan-card h3 {
+      font-family: var(--ff-serif);
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+    .price {
+      font-family: var(--ff-serif);
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 4px;
+      font-variant-numeric: tabular-nums;
+    }
+    .price-note { font-size: 12px; color: var(--clr-sub); margin-bottom: 22px; }
+    .plan-hr { border: none; border-top: 1px solid var(--clr-border); margin-bottom: 20px; }
+    .plan-features { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+    .plan-features li {
+      font-size: 13px;
+      color: var(--clr-sub);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.5;
+    }
+    .plan-features li::before { content: '✓'; color: var(--clr-accent); flex-shrink: 0; }
+
+    /* ── FLOW ── */
+    .flow-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      position: relative;
+    }
+    .flow-grid::before {
+      content: '';
+      position: absolute;
+      top: 26px;
+      left: calc(12.5%);
+      right: calc(12.5%);
+      height: 1px;
+      background: var(--clr-border);
+    }
+    .flow-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 12px;
+    }
+    .flow-num {
+      width: 52px; height: 52px;
+      border: 1.5px solid var(--clr-accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--ff-serif);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--clr-accent);
+      background: var(--clr-bg);
+      position: relative;
+      z-index: 1;
+      margin-bottom: 18px;
+    }
+    .section-alt .flow-num { background: var(--clr-surface); }
+    .flow-step h3 { font-family: var(--ff-serif); font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+    .flow-step p { font-size: 13px; color: var(--clr-sub); line-height: 1.7; }
+
+    /* ── SPLIT (photo + copy) ── */
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .split.reverse { direction: rtl; }
+    .split.reverse > * { direction: ltr; }
+    .photo { border-radius: 0; overflow: hidden; }
+    .photo img { width: 100%; height: 400px; object-fit: cover; display: block; }
+    .copy .eyebrow { color: var(--clr-gold); }
+    .copy p { font-size: 15px; line-height: 1.9; color: var(--clr-sub); margin-bottom: 20px; }
+
+    /* ── VOICE ── */
+    .voice-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .voice {
+      background: var(--clr-surface);
+      border: 1px solid var(--clr-border);
+      padding: 32px;
+      position: relative;
+    }
+    .section-alt .voice { background: var(--clr-bg); }
+    .voice-q {
+      font-family: var(--ff-serif);
+      font-size: 52px;
+      color: #DDE8DE;
+      line-height: 1;
+      position: absolute;
+      top: 14px; left: 22px;
+    }
+    .voice-text {
+      font-size: 14px;
+      line-height: 1.9;
+      padding-top: 20px;
+      margin-bottom: 18px;
+    }
+    .voice-who { font-size: 12px; color: var(--clr-sub); }
+
+    /* ── WHY GRID ── */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+    }
+    .why-item {
+      background: var(--clr-bg);
+      padding: 36px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    .section-alt .why-item { background: var(--clr-surface); }
+    .why-icon {
+      width: 44px; height: 44px;
+      background: #E8F0EA;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .why-item h3 { font-family: var(--ff-serif); font-size: 15px; font-weight: 700; margin-bottom: 7px; }
+    .why-item p { font-size: 13px; color: var(--clr-sub); line-height: 1.75; }
+
+    /* ── CTA ── */
+    .cta {
+      background: #111C11;
+      padding: 96px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-img {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1800&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.15;
+    }
+    .cta-inner {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 48px;
+    }
+    .cta .eyebrow { color: var(--clr-gold); margin-bottom: 16px; }
+    .cta h2 {
+      font-family: var(--ff-serif);
+      color: #fff;
+      font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+      margin-bottom: 12px;
+    }
+    .cta p { color: rgba(255,255,255,0.55); font-size: 14px; line-height: 1.8; }
+    .btn-line {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #06C755;
+      color: #fff;
+      padding: 15px 36px;
+      font-size: 15px;
+      font-weight: 700;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      letter-spacing: 0.06em;
+      transition: background 0.2s;
+      white-space: nowrap;
+      text-decoration: none;
+    }
+    .btn-line:hover { background: #05b04c; }
+    .btn-line svg { flex-shrink: 0; }
+
+    /* ── FOOTER ── */
+    .site-footer {
+      background: #0C130C;
+      color: rgba(255,255,255,0.35);
+      padding: 32px 40px;
+      text-align: center;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+    }
+
+    /* ── TOAST ── */
+    .toast {
+      position: fixed;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%) translateY(16px);
+      background: var(--clr-text);
+      color: var(--clr-bg);
+      padding: 11px 26px;
+      font-size: 13px;
+      border-radius: 3px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s, transform 0.3s;
+      white-space: nowrap;
+      z-index: 999;
+    }
+    .toast.is-visible { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 860px) {
+      :root { --container: 100%; }
+      .container { padding: 0 24px; }
+      .hero-content { padding: calc(var(--header-h) + 48px) 24px 64px; }
+      .section { padding: 64px 0; }
+      .section-head { flex-direction: column; gap: 16px; }
+      .section-head > p { padding-top: 0; }
+      .card-grid { grid-template-columns: 1fr; }
+      .flow-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .flow-grid::before { display: none; }
+      .split { grid-template-columns: 1fr; gap: 32px; }
+      .split.reverse { direction: ltr; }
+      .photo img { height: 260px; }
+      .why-grid { grid-template-columns: 1fr; }
+      .voice-grid { grid-template-columns: 1fr; }
+      .cta-inner { flex-direction: column; align-items: flex-start; gap: 32px; }
+      .stats-inner { grid-template-columns: 1fr; }
+      .stat-item { border-right: none; border-bottom: 1px solid var(--clr-border); }
+      .stat-item:last-child { border-bottom: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── HEADER ── -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a class="logo" href="#">
+        <div class="logo-mark">縁</div>
+        <div class="logo-text">
+          <span class="logo-ja">縁一寸木</span>
+          <span class="logo-en">Ohakamairi Daikou</span>
+        </div>
+      </a>
+      <a class="header-cta" href="#cta">LINEで無料相談</a>
+    </div>
+  </header>
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="hero-img"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-deco">縁</div>
+    <div class="hero-content">
+      <p class="eyebrow">Ohakamairi & Seisou Daikou</p>
+      <h1>大切なご先祖様のお墓を、<br>心を込めてお守りします。</h1>
+      <p class="hero-lead">
+        遠くに住んでいて、なかなか帰れない。<br>
+        体が思うように動かなくなってきた。<br>
+        そんなご家族に代わり、地元の私がうかがいます。
+      </p>
+      <div class="hero-btns">
+        <a class="btn btn-solid" href="#plans">プランを見る</a>
+        <a class="btn btn-ghost" href="#cta">まずは無料相談</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── STATS ── -->
+  <div class="stats-strip">
+    <div class="container">
+      <div class="stats-inner">
+        <div class="stat-item">
+          <div class="stat-num">340<span class="stat-unit">件</span></div>
+          <div class="stat-label">累計対応実績</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">98<span class="stat-unit">%</span></div>
+          <div class="stat-label">お客様満足度</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">翌<span class="stat-unit">週〜</span></div>
+          <div class="stat-label">最短対応期間</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PLANS ── -->
+  <section class="section" id="plans">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">Plans</p>
+          <h2>料金プラン</h2>
+        </div>
+        <p>すべてのプランで、施工前後の写真をLINEまたはメールでお届けします。</p>
+      </div>
+      <div class="card-grid">
+        <div class="plan-card">
+          <p class="card-kicker">Light</p>
+          <h3>ライトプラン</h3>
+          <div class="price">¥9,800</div>
+          <p class="price-note">税込 / 1回</p>
+          <hr class="plan-hr">
+          <ul class="plan-features">
+            <li>合掌・礼拝・お線香・お水のお供え</li>
+            <li>墓石まわりの簡単な拭き掃除</li>
+            <li>施工前後の写真報告（LINE）</li>
+          </ul>
+        </div>
+        <div class="plan-card featured">
+          <div class="plan-badge">人気 No.1</div>
+          <p class="card-kicker">Standard</p>
+          <h3>スタンダードプラン</h3>
+          <div class="price">¥19,800</div>
+          <p class="price-note">税込 / 1回</p>
+          <hr class="plan-hr">
+          <ul class="plan-features">
+            <li>合掌・礼拝・お線香・お水のお供え</li>
+            <li>墓石・外柵の本格清掃</li>
+            <li>草取り・落ち葉の処分</li>
+            <li>献花（生花）</li>
+            <li>施工前後の写真報告書（PDF）</li>
+          </ul>
+        </div>
+        <div class="plan-card">
+          <p class="card-kicker">Premium</p>
+          <h3>プレミアムプラン</h3>
+          <div class="price">¥29,800</div>
+          <p class="price-note">税込 / 1回</p>
+          <hr class="plan-hr">
+          <ul class="plan-features">
+            <li>スタンダードプランの全内容</li>
+            <li>専門洗浄剤による墓石クリーニング</li>
+            <li>撥水コーティング施工</li>
+            <li>動画報告（LINEで送付）</li>
+            <li>リモート立ち会い（通話対応）</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FLOW ── -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">Flow</p>
+          <h2>ご依頼の流れ</h2>
+        </div>
+        <p>LINEのご連絡から、最短1週間でお参りにうかがいます。</p>
+      </div>
+      <div class="flow-grid">
+        <div class="flow-step">
+          <div class="flow-num">一</div>
+          <h3>LINEで相談</h3>
+          <p>霊園の場所・プラン・ご希望日をお知らせください。</p>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">二</div>
+          <h3>お見積り確認</h3>
+          <p>内容を確認し、料金とスケジュールをご提案します。</p>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">三</div>
+          <h3>お参り実施</h3>
+          <p>心を込めてお参り・清掃を丁寧に行います。</p>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">四</div>
+          <h3>写真で報告</h3>
+          <p>施工前後の写真・報告書をLINEでお届けします。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ABOUT SPLIT ── -->
+  <section class="section">
+    <div class="container">
+      <div class="split">
+        <div class="photo">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=1000&auto=format&fit=crop" alt="お墓の清掃イメージ">
+        </div>
+        <div class="copy">
+          <p class="eyebrow">About</p>
+          <h2>個人だからできること</h2>
+          <p>大手代行業者とは違い、私一人が責任を持って対応します。担当者が毎回変わることなく、お墓の状態の変化を継続して把握できます。</p>
+          <p>地元の霊園・寺院を直接まわっているので、エリア内であれば迅速かつ丁寧に対応できます。</p>
+          <p>「急ぎで行ってほしい」「こんなことも頼める？」など、大手には難しい細かいご要望にもLINEで気軽にご相談ください。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WHY ── -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">Features</p>
+          <h2>選ばれる4つの理由</h2>
+        </div>
+        <p>地元密着の個人サービスだからこそできる、安心感と柔軟さがあります。</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-item">
+          <div class="why-icon">🤝</div>
+          <div>
+            <h3>担当者が毎回同じ</h3>
+            <p>私一人が責任を持って対応。お墓の状態の変化も継続して把握できます。</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-icon">📍</div>
+          <div>
+            <h3>地元の霊園を熟知</h3>
+            <p>エリア内の霊園・寺院を直接まわっているので、迅速かつ丁寧に対応できます。</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-icon">💬</div>
+          <div>
+            <h3>LINEで気軽に相談</h3>
+            <p>「急ぎで行ってほしい」「こんなことも頼める？」など、融通が利きます。</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-icon">💰</div>
+          <div>
+            <h3>大手より手頃な価格</h3>
+            <p>中間コストがかからない分、品質はそのままで価格を抑えてご提供できます。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── VOICE ── -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">Voice</p>
+          <h2>ご利用者の声</h2>
+        </div>
+      </div>
+      <div class="voice-grid">
+        <div class="voice">
+          <div class="voice-q">"</div>
+          <p class="voice-text">東京に住んでいて、母のお墓が地元にあります。なかなか帰れないのでお盆にお願いしています。写真が届くと、ほっとします。</p>
+          <div class="voice-who">60代・女性 / 東京都在住</div>
+        </div>
+        <div class="voice">
+          <div class="voice-q">"</div>
+          <p class="voice-text">足が悪くなりお参りに行けなくなりました。担当の方が毎回同じで、丁寧に対応してくださるので安心してお任せしています。</p>
+          <div class="voice-who">70代・男性 / 市内在住</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section class="cta" id="cta">
+    <div class="cta-img"></div>
+    <div class="container cta-inner">
+      <div>
+        <p class="eyebrow">Contact</p>
+        <h2>まずは無料でご相談ください。</h2>
+        <p>「見学したい」「料金だけ聞きたい」だけでも大歓迎です。<br>LINEからお気軽にメッセージをどうぞ。</p>
+      </div>
+      <button class="btn-line" id="lineBtn" type="button">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+        LINEで無料相談する
+      </button>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="site-footer">
+    <p>© 2026 縁一寸木 お墓参り代行サービス &nbsp;|&nbsp; サンプルサイト</p>
+  </footer>
+
+  <div class="toast" id="toast">実際のサービスではLINE公式へ接続します</div>
+
+  <script>
+    const header = document.querySelector('.site-header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('is-scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    document.getElementById('lineBtn').addEventListener('click', () => {
+      const t = document.getElementById('toast');
+      t.classList.add('is-visible');
+      setTimeout(() => t.classList.remove('is-visible'), 2800);
+    });
+  </script>
+</body>
+</html>
