@@ -44,7 +44,6 @@
       height: 100%;
       display: flex; align-items: center; justify-content: space-between; gap: 16px;
     }
-    /* logo */
     .logo { display: flex; align-items: center; gap: 10px; }
     .logo-mark {
       width: 38px; height: 38px;
@@ -59,20 +58,17 @@
     .logo-en { font-size: 9px; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.55); transition: color .35s; line-height: 1; }
     .hdr.scrolled .logo-ja { color: var(--text); }
     .hdr.scrolled .logo-en { color: var(--sub); }
-    /* nav */
     .nav { display: flex; align-items: center; gap: 24px; }
     .nav a { font-size: 13px; color: rgba(255,255,255,.8); letter-spacing: .04em; transition: color .2s; }
     .nav a:hover, .nav a.current { color: #fff; }
     .hdr.scrolled .nav a { color: var(--sub); }
     .hdr.scrolled .nav a:hover, .hdr.scrolled .nav a.current { color: var(--accent); }
-    /* cta */
     .hdr-cta {
       background: var(--accent); color: #fff;
       padding: 8px 18px; font-size: 12px; font-weight: 700;
       letter-spacing: .08em; border-radius: 2px; transition: background .2s; white-space: nowrap;
     }
     .hdr-cta:hover { background: var(--accent2); }
-    /* hamburger */
     .hamburger {
       display: none;
       width: 36px; height: 36px;
@@ -87,7 +83,6 @@
     .hamburger.active span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
     .hamburger.active span:nth-child(2) { opacity: 0; }
     .hamburger.active span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
-    /* drawer */
     .drawer {
       display: none;
       position: fixed; inset: 0; top: var(--hh); z-index: 190;
@@ -114,7 +109,7 @@
     }
     .hero-bg {
       position: absolute; inset: 0;
-      background-image: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=1800&auto=format&fit=crop');
+      background-image: url('hakamairi-imgs/hero.jpg');
       background-size: cover; background-position: center;
       opacity: .55;
     }
@@ -281,7 +276,7 @@
     .cta-sec { background: #101810; padding: 88px 0; position: relative; overflow: hidden; }
     .cta-bg {
       position: absolute; inset: 0;
-      background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=1600&auto=format&fit=crop');
+      background-image: url('hakamairi-imgs/hero.jpg');
       background-size: cover; background-position: center; opacity: .15;
     }
     .cta-inner { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 48px; }
@@ -523,27 +518,27 @@
       </div>
       <div class="gallery-grid">
         <div class="gitem">
-          <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=90&w=900&auto=format&fit=crop" alt="お墓参り">
+          <img src="hakamairi-imgs/g1-omairi.jpg" alt="お墓参り">
           <div class="gitem-cap"><span>お参り</span><p>合掌・礼拝の様子</p></div>
         </div>
         <div class="gitem">
-          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=90&w=900&auto=format&fit=crop" alt="墓石清掃">
+          <img src="hakamairi-imgs/g2-seisou.jpg" alt="墓石清掃">
           <div class="gitem-cap"><span>清掃</span><p>墓石の拭き掃除・水洗い</p></div>
         </div>
         <div class="gitem">
-          <img src="https://images.unsplash.com/photo-1490750967868-88df5691cc3b?q=90&w=900&auto=format&fit=crop" alt="献花">
+          <img src="hakamairi-imgs/g3-kenka.jpg" alt="献花">
           <div class="gitem-cap"><span>献花</span><p>季節の生花をお供え</p></div>
         </div>
         <div class="gitem">
-          <img src="https://images.unsplash.com/photo-1516981879613-9f5da904015f?q=90&w=900&auto=format&fit=crop" alt="お線香・灯籠">
-          <div class="gitem-cap"><span>お線香・灯籠</span><p>お線香・お水のお供え</p></div>
+          <img src="hakamairi-imgs/g4-osenko.jpg" alt="お線香">
+          <div class="gitem-cap"><span>お線香</span><p>お線香・お水のお供え</p></div>
         </div>
         <div class="gitem">
-          <img src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?q=90&w=900&auto=format&fit=crop" alt="住職へのご挨拶">
+          <img src="hakamairi-imgs/g5-aisatsu.jpg" alt="住職へのご挨拶">
           <div class="gitem-cap"><span>ご挨拶</span><p>住職・管理者へのご挨拶</p></div>
         </div>
         <div class="gitem">
-          <img src="https://images.unsplash.com/photo-1601134467661-3d775b999c4b?q=90&w=900&auto=format&fit=crop" alt="霊園の様子">
+          <img src="hakamairi-imgs/g6-reien.jpg" alt="霊園の様子">
           <div class="gitem-cap"><span>霊園</span><p>対応霊園・墓地の様子</p></div>
         </div>
       </div>
@@ -575,7 +570,7 @@
       </div>
       <div class="profile-box">
         <div class="profile-photo">
-          <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=90&w=600&auto=format&fit=crop" alt="オーナー写真">
+          <img src="hakamairi-imgs/profile.jpg" alt="オーナー写真">
         </div>
         <div class="profile-text">
           <div class="profile-name">縁一寸木 太郎</div>
@@ -663,13 +658,11 @@
   <div class="toast" id="toast">実際のサービスではLINE公式へ接続します</div>
 
   <script>
-    // Header scroll
     const hdr = document.getElementById('hdr');
     window.addEventListener('scroll', () => {
       hdr.classList.toggle('scrolled', window.scrollY > 40);
     }, { passive: true });
 
-    // Hamburger / Drawer
     const ham = document.getElementById('hamburger');
     const drawer = document.getElementById('drawer');
     ham.addEventListener('click', () => {
@@ -687,7 +680,6 @@
       });
     });
 
-    // LINE toast
     document.getElementById('lineBtn').addEventListener('click', () => {
       const t = document.getElementById('toast');
       t.classList.add('show');
